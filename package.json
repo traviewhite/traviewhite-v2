@@ -12,6 +12,7 @@
   "dependencies": {
     "@popmotion/popcorn": "^0.4.4",
     "framer-motion": "^2.9.4",
+    "gsap": "^3.5.1",
     "include-media": "^1.4.9",
     "next": "9.5.5",
     "react": "17.0.0",

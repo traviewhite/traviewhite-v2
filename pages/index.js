@@ -1,13 +1,43 @@
+import React, { useEffect, useRef, useState } from 'react'
 import Layout from '../components/Layout'
 import Head from 'next/head'
+import { gsap, TweenMax, Power3 } from 'gsap'
 
 export default function Home() {
+
+  let menu = useRef(null)
+
+  const [state, setState] = useState(false);
+
+  const menuExpand = () => {
+    TweenMax.to(menu, .6, {maxWidth: "350px", width: "100%", height: "80vh", ease: Power3.easeOut})
+    setState(true)
+  }
+  const menuShrink = () => {
+    TweenMax.to(menu, .5, {width: 60, height: 60, ease: Power3.easeOut})
+    setState(false)
+  }
+
+
+  useEffect(() => {
+    TweenMax.fromTo("nav", .7, {opacity: 0}, {opacity: 1, duration: 0.5}),
+    TweenMax.fromTo(".home_trav", .7, {opacity: 0, y: -40}, {opacity: 1, y: 0, duration: 0.6, delay: 0.3}),
+    TweenMax.fromTo(".home_mags", .6, {opacity: 0, y: -30}, {opacity: 1, y: 0, duration: 0.6, delay: 0.5}),
+    TweenMax.fromTo(".home_logo", .7, {opacity: 0, y: 30}, {opacity: 1, y: 0, duration: 0.6, delay: 0.6}),
+    TweenMax.fromTo("h4", .7, {opacity: 0, y: 40}, {opacity: 1, y: 0, duration: 0.6, delay: 0.7})
+  }, [])
+
+
   return (
     <Layout>
       <Head>
         <title>traviewhite</title>
       </Head>
-      <nav>M</nav>
+      <nav
+        onClick={state !== true ? menuExpand : menuShrink}
+        ref={el => menu = el}
+        className="menu">M
+      </nav>
       <div className="heading">
         <div className="center">
           <div className="center_img">

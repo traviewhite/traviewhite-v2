@@ -1,65 +1,88 @@
+import Layout from '../components/Layout'
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <Layout>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>traviewhite</title>
       </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
+      <nav>M</nav>
+      <div className="heading">
+        <div className="center">
+          <div className="center_img">
+            <img className="home_trav" src="../traviswhite_portrait_min.jpg" alt="Travis White Avitar" />
+            <img className="home_mags" src="../maggie_portrait_min.jpg" alt="Maggie the Dog Avitar" />
+          </div>
+          <img className="home_logo" src="../logotest.png" alt="Travis White Logo" />
+        </div>
+        <h4>a front-end developer &<br/>designer</h4>
+      </div>
+      <main>
+        <div className="box_wrapper">
+          <div className="box_top">
+            <h2>SKILLS</h2>
+          </div>
+          <div className="box">
             <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
+              Hotmail choker necklace frosted tips hot pockets inflatable furniture seinfeld, dawson’s creek game boy color alta vista digital pets mia hamm magic johnson.  
             </p>
-          </a>
+            <div className="skill_tags">
+              <h5>react</h5>
+              <h5>scss</h5>
+              <h5>framer</h5>
+              <h5>figma</h5>
+              <h5>pencil</h5>
+              <h5>paper</h5>
+              <h5>procreate</h5>
+              <h5>java</h5>
+            </div>
+          </div>
+        </div>
+
+        <div className="box_wrapper">
+          <div className="box_top">
+            <h2>WORK</h2>
+          </div>
+          <div className="box">
+            <div className="work_box">
+              <img src="../brookewinka.png" alt="" />
+              <h3>BROOKEWINKA.COM</h3>
+              <p>designer portfolio site using next.js and scss</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="box_wrapper">
+          <div className="box_top">
+            <h2>EVERYTHING ELSE</h2>
+          </div>
+          <div className="box">
+            <div className="else_box">
+              <img src="../SushiQuadFinal_2018.png" alt="" />
+              <h3>PRINTMAKING</h3>
+              <p>some of my printmaking work b</p>
+            </div>
+            <div className="else_box">
+              <img src="../smoke.jpg" alt="" />
+              <h3>PHOTOGRAPHY</h3>
+              <p>some of my photo work b</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="box_wrapper">
+          <div className="box_top">
+            <h2>CONTACT ME!</h2>
+          </div>
+          <div className="box">
+            <div className="contact_box">
+              <h3>HIT ME UP</h3>
+              <p>traviewhite@gmail.com</p>
+            </div>
+          </div>
         </div>
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
+    </Layout>
   )
 }

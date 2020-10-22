@@ -1,7 +1,6 @@
 html,
 body {
-  padding: 0;
-  margin: 0;
+  background-color: #FFE141;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
@@ -13,4 +12,10 @@ a {
 
 * {
   box-sizing: border-box;
+	font-kerning: auto;
+	text-rendering: optimizeLegibility;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
 }

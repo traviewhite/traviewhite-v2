@@ -121,6 +121,7 @@ nav {
           width: 180px;
         }
         @include media("<tablet") {
+          padding: 0.3em;
           height: 120px;
           width: 120px;
           top: 1.5em;
@@ -138,7 +139,7 @@ nav {
       }
       @include media("<tablet") {
         width: 20em;
-        bottom: 30px;
+        bottom: 20px;
       }
     }
   }
@@ -149,7 +150,7 @@ nav {
     transform: skewY(-3.5deg);
     transform: rotate(-6.5deg);
     @include media("<tablet") {
-      margin: -1.6em 0 0;
+      margin: -1em 0 0;
     }
   }
 }
@@ -174,14 +175,17 @@ main {
       border-radius: 6px;
       box-shadow: 12px 15px $YellowDk;
       @include media("<tablet") {
-        padding: 20px 1.6em 20px 2em;
+        padding: 20px 1.2em 20px 1.6em;
       }
       h2 {
         letter-spacing: 8px;
         color: $primaryYellow;
         text-shadow: 4px 4px $Navy;
         @include media("<tablet") {
-          font-size: 2.3em;
+          font-size: 2.2em;
+        }
+        @include media("<=phone") {
+          font-size: 2em;
         }
       }
     }
@@ -247,7 +251,7 @@ main {
         img {
           max-width: 85%;
           width: 100%;
-          height: 300px;
+          height: 350px;
           margin: 2em 0 0;
           border-radius: 8px;
           border: 4px solid $NavyLt;
@@ -255,6 +259,13 @@ main {
           object-fit: cover;
           object-position: center;
           filter: saturate(0.5);
+          @include media("<tablet") {
+            height: 200px;
+          }
+          @include media("<=phone") {
+            height: 150px;
+          }
+
         }
         h3 {
           margin: 0.5em auto 0;

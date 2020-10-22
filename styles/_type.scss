@@ -66,10 +66,10 @@ h4 {
     font-size: 2.5em;
   }
   @include media("<tablet") {
-    font-size: 1.5em;
+    font-size: 1.4em;
   }
   @include media("<=phone") {
-    font-size: 1.4em;
+    font-size: 1.3em;
   }
 }
 h5 {

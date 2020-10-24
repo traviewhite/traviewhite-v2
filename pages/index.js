@@ -1,53 +1,14 @@
-import React, { useEffect, useRef, useState } from 'react'
 import Layout from '../components/Layout'
+import Header from '../components/Header'
 import Head from 'next/head'
-import { gsap, TweenMax, Power3 } from 'gsap'
 
 export default function Home() {
-
-  let menu = useRef(null)
-
-  const [state, setState] = useState(false);
-
-  const menuExpand = () => {
-    TweenMax.to(menu, .6, {maxWidth: "350px", width: "100%", height: "80vh", ease: Power3.easeOut})
-    setState(true)
-  }
-  const menuShrink = () => {
-    TweenMax.to(menu, .5, {width: 60, height: 60, ease: Power3.easeOut})
-    setState(false)
-  }
-
-
-  useEffect(() => {
-    TweenMax.fromTo("nav", .7, {opacity: 0}, {opacity: 1, duration: 0.5}),
-    TweenMax.fromTo(".home_trav", .7, {opacity: 0, y: -40}, {opacity: 1, y: 0, duration: 0.6, delay: 0.3}),
-    TweenMax.fromTo(".home_mags", .6, {opacity: 0, y: -30}, {opacity: 1, y: 0, duration: 0.6, delay: 0.5}),
-    TweenMax.fromTo(".home_logo", .7, {opacity: 0, y: 30}, {opacity: 1, y: 0, duration: 0.6, delay: 0.6}),
-    TweenMax.fromTo("h4", .7, {opacity: 0, y: 40}, {opacity: 1, y: 0, duration: 0.6, delay: 0.7})
-  }, [])
-
-
   return (
     <Layout>
       <Head>
         <title>traviewhite</title>
       </Head>
-      <nav
-        onClick={state !== true ? menuExpand : menuShrink}
-        ref={el => menu = el}
-        className="menu">M
-      </nav>
-      <div className="heading">
-        <div className="center">
-          <div className="center_img">
-            <img className="home_trav" src="../traviswhite_portrait_min.jpg" alt="Travis White Avitar" />
-            <img className="home_mags" src="../maggie_portrait_min.jpg" alt="Maggie the Dog Avitar" />
-          </div>
-          <img className="home_logo" src="../logotest.png" alt="Travis White Logo" />
-        </div>
-        <h4>a front-end developer &<br/>designer</h4>
-      </div>
+      <Header />
       <main>
         <div className="box_wrapper">
           <div className="box_top">

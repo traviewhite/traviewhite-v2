@@ -9,15 +9,16 @@ const menuvariants = {
   open: {
     opacity: 1,
     display: 'block',
-    visibility: 'visible',
     overflow: 'no-scroll',
+    width: 'auto',
+    height: 'auto',
     transition: {
-      opacity: { delay: 0, duration: 0.3, ease: "easeIn" }
+      opacity: { delay: 0.1, duration: 0.3, ease: "easeIn" }      
     }
   },
   closed: {
     opacity: 0,
-    visibility: 'hidden',
+    display: 'none',
     transition: {
       opacity: { duration: 0.07 }
     }

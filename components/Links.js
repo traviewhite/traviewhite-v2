@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 const ulvariants = {
   open: {
-    transition: { delay: 0, staggerChildren: 0.04, delayChildren: 0.02 }
+    transition: { delay: 0.1, staggerChildren: 0.04, delayChildren: 0.02 }
   },
   closed: {
     transition: { delay: 0, staggerChildren: 0.2, staggerDirection: -1 }

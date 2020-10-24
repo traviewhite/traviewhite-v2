@@ -8,8 +8,8 @@ const Nav = () => {
   let menu = useRef(null)
 
   const [state, setState] = useState(false)
-
-  let targetElement = document.querySelector("html")
+  
+  //let targetElement = document.querySelector("html")
 
   const menuExpand = () => {
     TweenMax.to(menu, .6, { maxWidth: "350px", width: "100%", height: "550px", ease: Power3.easeOut })
@@ -32,9 +32,9 @@ const Nav = () => {
   const [isOpen, toggleOpen] = useCycle(false, true)
 
   useEffect(() => {
-    state
-    ? targetElement.classList.add("no-scroll")
-    : targetElement.classList.remove("no-scroll")
+    //state
+    //? targetElement.classList.add("no-scroll")
+    //: targetElement.classList.remove("no-scroll")
   })
 
   return (

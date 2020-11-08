@@ -3,10 +3,10 @@ import Link from 'next/link'
 
 const ulvariants = {
   open: {
-    transition: { delay: 0.1, staggerChildren: 0.04, delayChildren: 0.02 }
+    transition: { delay: 0.3, staggerChildren: 0.08, delayChildren: 0.1 }
   },
   closed: {
-    transition: { delay: 0, staggerChildren: 0.2, staggerDirection: -1 }
+    transition: { delay: 0, staggerChildren: 0.02, staggerDirection: -1 }
   }
 }
 
@@ -30,26 +30,32 @@ const variants = {
 const Links = () => (
   <motion.ul variants={ ulvariants }>
     <motion.li variants={variants}>
-      <Link href="/design">
-        <a>DESIGN</a>
+      <Link href="/code">
+        <a>CODE</a>
       </Link>
     </motion.li>
 
     <motion.li variants={variants}>
-      <Link href="/illustration">
-        <a>ILLUSTRATION</a>
+      <Link href="/design">
+        <a>DESIGN</a>
+      </Link>
+    </motion.li>
+    
+    <motion.li variants={variants}>
+      <Link href="/fine-art">
+        <a>FINE ART</a>
       </Link>
     </motion.li>
 
     <motion.li variants={variants}>
       <Link href="/fine-art">
-        <a>PHOTOGRAPHY</a>
+        <a>PHOTO</a>
       </Link>
     </motion.li>
-    
+
     <motion.li variants={variants}>
       <Link href="/about">
-          <a className="aboutbtn">ABOUT</a>
+        <a>ABOUT</a>
       </Link>
     </motion.li>
   </motion.ul>

@@ -9,6 +9,7 @@ const Layout = ({ children })  => {
       <Head />
       <Nav />
       {children}
+      <div className="footerC"><p>©2020 traviewhite.com | TRAVIS WHITE</p></div>
     </div>
   )
 }

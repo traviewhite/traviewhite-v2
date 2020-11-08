@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 //import ReactDom from 'react-dom'
 import { useIntersection } from 'react-use'
 import { gsap, TweenMax, TimelineLite, Power3 } from 'gsap'
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+//import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import Layout from '../components/Layout'
 import Header from '../components/Header'
 import Head from 'next/head'
@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faInstagram, faDribbble, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
 //var ReactDOM = require('react-dom')
-gsap.registerPlugin(ScrollTrigger)
+//gsap.registerPlugin(ScrollTrigger)
 
 const workImg1 = "/brookewinka.png"
 const workTitle1 = "brookewinka.com"
@@ -31,7 +31,7 @@ export default function Home() {
     TweenMax.fromTo("h4", .7, {opacity: 0, y: 40}, {opacity: 1, y: 0, duration: 0.6, delay: 0.75, ease: Power3.easeOut})
   }, [])
   */
-  /*
+
   const sectionRef = useRef(null);
 
   let intersection = useIntersection(sectionRef, {
@@ -65,7 +65,7 @@ export default function Home() {
     : fadeIn(".fadeIn");
   }, []);
 
-  */
+
 
   //let tw = new TimelineLite({ delay: 0.3 });
   /*
@@ -75,38 +75,31 @@ export default function Home() {
   */
   useEffect(() => {
     //tw.fromTo(".heading", 0.6, { y: -30, opacity: 0 }, { y: 0, opacity: 1, ease: Power3.easeOut, duration: 0.5, delay: 0 });
-    // const tl = gsap.timeline();
-    // tl.from(".box_wrapper", {xPercent: -100});
-    // ScrollTrigger.create({
-    //   animation: tl,
-    //   trigger: ".shit",
-    //   start: 200,
-    // });
-    
-    let sections = gsap.utils.toArray(".box_wrapper");    
-    
-    var animationTrigger = gsap.timeline({
+
+   
+
+    /*
+    gsap.from(".heading", {
+      duration: 0.2,
+      ease: "ease-in",
       scrollTrigger: {
-        trigger: ".box_wrapper",
-        start: 200,
-        end: 500,
-        //markers: true,
-        toggleActions: "play none none reverse"
+        trigger: "main",
+        start: 'top top',
+        end: "5000",
+        markers: 'true',
+        toggleClass: {targets: '.home_logo', className: '.home_logo-scroll'}
       }
     })
-    animationTrigger.fromTo(sections, .5, {opacity: 0, y:-40}, {opacity: 1, y:0, duration: 0.4, overwrite: "auto"})
-/*
-    ScrollTrigger.create({
-      trigger: ".piss",
-      start: "top center",
-      markers: 'true',
-      endTrigger: ".shit",
-      end: "bottom 50%+=100px",
-      toggleClass: {targets: '.fudge', className: '.fudge2'}
-    });
-*/
+    */
 
   }, [])
+
+  {/*
+  function movefunction() {
+      elementFirst.classList.toggle('home_logo-scroll')
+  }
+  */}
+
 
   return (
     <Layout>
@@ -115,12 +108,12 @@ export default function Home() {
       </Head>
       <Header />
       <main>
-        <div className="box_wrapper fudge">
+        <div ref={sectionRef} className="box_wrapper">
           <div className="box_top">
-            <h2 className="">SKILLS</h2>
+            <h2 className="fadeIn">SKILLS</h2>
           </div>
           <div className="box">
-            <p className="">
+            <p className="fadeIn">
               Hotmail choker necklace frosted tips hot pockets inflatable furniture seinfeld, dawson’s creek game boy color alta vista digital pets mia hamm magic johnson.  
             </p>
             <div className="skill_tags">
@@ -129,22 +122,20 @@ export default function Home() {
               <h5>framer</h5>
               <h5>figma</h5>
               <h5>pencil</h5>
-              <h5 className="">paper</h5>
+              <h5>paper</h5>
               <h5>procreate</h5>
               <h5>java</h5>
             </div>
           </div>
         </div>
 
-        <div className="box_wrapper">
+        <div ref={sectionRef} className="box_wrapper">
           <div className="box_top">
-            <h2 className="">CODE</h2>
+            <h2 className="fadeIn">CODE</h2>
           </div>
           <div className="box">
             <div className="work_box">
-              <img src={workImg1} 
-                //width="1136" height="734" 
-                alt={workTitle1} />
+              <Image src={workImg1} width="1136" height="734" alt={workTitle1} />
               <h3>BROOKEWINKA.COM</h3>
               <p>designer portfolio site using next.js and scss</p>
             </div>
@@ -157,9 +148,7 @@ export default function Home() {
           </div>
           <div className="box">
             <div className="else_box">
-              <img src="/SushiQuadFinal_2018.png" 
-                //width="840" height="662" 
-                alt={""} />
+              <Image src="/SushiQuadFinal_2018.png" width="840" height="662" alt={""} />
               <h3>PRINTMAKING</h3>
               <p>some of my printmaking work b</p>
             </div>
@@ -172,16 +161,12 @@ export default function Home() {
           </div>
           <div className="box">
             <div className="else_box">
-              <img src="/smoke.jpg" 
-                //width="850" height="600" 
-                alt="" />
+              <Image src="/smoke.jpg" width="850" height="600" alt="" />
               <h3>ILLUSTRATION</h3>
               <p>some of my photo work b</p>
             </div>
             <div className="else_box">
-              <img src="/SushiQuadFinal_2018.png" 
-                //width="840" height="662" 
-                alt={""} />
+              <Image src="/SushiQuadFinal_2018.png" width="840" height="662" alt={""} />
               <h3>PRINTMAKING</h3>
               <p>some of my printmaking work b</p>
             </div>
@@ -194,9 +179,7 @@ export default function Home() {
           </div>
           <div className="box">
             <div className="else_box">
-              <img src="/smoke.jpg" 
-                //width="840" height="662" 
-                alt={""} />
+              <Image src="/smoke.jpg" width="840" height="662" alt={""} />
               <h3>PHOTOS</h3>
               <p>some of my printmaking work b</p>
             </div>

@@ -1,19 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { TweenMax, Power3 } from 'gsap'
-import { motion, useCycle } from 'framer-motion'
+import { motion, useCycle, useSpring } from 'framer-motion'
 import NavToggle from '../components/NavToggle'
-import NavMenu from '../components/NavMenu'
+import Links from '../components/Links'
 
-const menuvariantss = {
+const menuBtn = {
   open: {
     opacity: 1,
     overflow: 'no-scroll',
     width: '350px',
     //maxWidth: '350px',
-    height: '550px',
+    height: '560px',
     transition: {
-      width: {tween: 100, duration: 0.2, ease: 'easeIn'},
-      height: {tween: 100, duration: 0.2, ease: 'easeIn'}      
+      width: {tween: 100, duration: 0.15, ease: 'easeIn'},
+      height: {tween: 100, duration: 0.15, ease: 'easeIn'}      
     }
   },
   closed: {
@@ -21,12 +20,31 @@ const menuvariantss = {
     height: '60px',
     opacity: 1,
     transition: {
-      width: {tween: 100, duration: 0.2, ease: 'easeOut'},
-      height: {tween: 100, duration: 0.2, ease: 'easeOut'}
+      width: {tween: 100, duration: 0.1, ease: 'easeOut'},
+      height: {tween: 100, duration: 0.1, ease: 'easeOut'}
     }
   }
 }
-const back = {
+const menuVariants = {
+  open: {
+    opacity: 1,
+    display: 'block',
+    overflow: 'no-scroll',
+    width: 'auto',
+    height: 'auto',
+    transition: {
+      opacity: { delay: 0.1, duration: 0.3, ease: "easeIn" }      
+    }
+  },
+  closed: {
+    opacity: 0,
+    display: 'none',
+    transition: {
+      opacity: { duration: 0.07 }
+    }
+  }
+}
+const backDim = {
   open: {
     opacity: 0.4,
     overflow: 'no-scroll',
@@ -38,7 +56,7 @@ const back = {
     right: '0px',
     left: '0px',
     display: 'block',
-    backgroundColor: 'black',
+    backgroundColor: '#FB9271',
     zIndex: 99,
     //filter: 'blur(10px)',
     transition: {
@@ -65,59 +83,53 @@ const back = {
 }
 
 const Nav = () => {
- // let menu = useRef(null)
+  /*
 
-//  const [state, setState] = useState(false)
-  
-  //let targetElement = document.querySelector("html")
-
-//  const menuExpand = () => {
- //   TweenMax.to(menu, .6, { maxWidth: "350px", width: "100%", height: "550px", ease: Power3.easeOut })
-//    setState(true)
-//  }
-//  const menuShrink = () => {
-////    TweenMax.to(menu, .5, {width: 60, height: 60, ease: Power3.easeOut})
- //   setState(false)
- // }
+  const [state, setState] = useState(false)
+  this.targetElement = document.querySelector('html')
+  const x = useSpring(0, { opacity: 0 })
   useEffect(() => {
-    //TweenMax.fromTo("nav", .7, {opacity: 0}, {opacity: 1, duration: 0.1, ease: Power3.easeIn}),
-    TweenMax.fromTo(".home_trav", .7, {opacity: 0, y: -40}, {opacity: 1, y: 0, duration: 0.6, delay: 0.3}),
-    TweenMax.fromTo(".home_mags", .6, {opacity: 0, y: -30}, {opacity: 1, y: 0, duration: 0.6, delay: 0.4, ease: Power3.easeOut}),
-    TweenMax.fromTo(".home_logo", .7, {opacity: 0, y: 30}, {opacity: 1, y: 0, duration: 0.6, delay: 0.6, ease: Power3.easeOut}),
-    TweenMax.fromTo("h4", .7, {opacity: 0, y: 40}, {opacity: 1, y: 0, duration: 0.6, delay: 0.75, ease: Power3.easeOut})
-  }, [])
+    state
+    ? targetElement.classList.add("no-scroll")
+    : targetElement.classList.remove("no-scroll")
+  })
   
- // const menuToggle = state !== true ? menuExpand : menuShrink
-  const [isOpen, toggleOpen] = useCycle(false, true)
+  useEffect(() => {
+    x.onChange(() => {
+      x.get() > 1 ? setState(false) : setState(true)
+    })
+  }, [x])
+  
+  */
 
- // useEffect(() => {
-    //state
-    //? targetElement.classList.add("no-scroll")
-    //: targetElement.classList.remove("no-scroll")
- // })
+  const [isOpen, toggleOpen] = useCycle(false, true)
 
   return (
     <>
-    <motion.nav
-      initial={false}
-      animate={isOpen ? "open" : "closed"}
-      variants={menuvariantss}
-      //ref={el => menu = el}
-      onClick={() => { toggleOpen() }}
-      //onClick={() => { menuToggle(), toggleOpen() }}
-      //toggle={() => { toggleOpen() }}
-    >
-      <NavToggle />
-      <NavMenu />
-    </motion.nav>
-    <motion.div
-    initial={false}
-    animate={isOpen ? "open" : "closed"} 
-    variants={back}
-    onClick={() => { toggleOpen() }}
-    ></motion.div>
+      <motion.nav
+        initial={false}
+        animate={isOpen ? "open" : "closed"}
+        variants={ menuBtn }
+        //ref={el => menu = el}
+        onClick={() => { toggleOpen() }}
+        //onClick={() => { menuToggle(), toggleOpen() }}
+        //toggle={() => { toggleOpen() }}
+      >
+        <NavToggle />
+        <motion.div variants={ menuVariants }>
+          <motion.div className="nav_menu">
+            <Links />
+          </motion.div>
+        </motion.div>
+      </motion.nav>
+      <motion.div
+        initial={false}
+        animate={isOpen ? "open" : "closed"} 
+        variants={ backDim }
+        onClick={() => { toggleOpen() }}
+      />
     </>
   )
 }
 
-export default Nav
+export default Nav 

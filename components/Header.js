@@ -3,13 +3,18 @@ import { TweenMax, Power3 } from 'gsap'
 import Link from 'next/link'
 import Image from 'next/image' // one day
 
-const logo = "/logo2.svg"
+const logo = "/twhite_logo.svg"
+const logoAlt = "Travis White Logo"
 const travis = "/traviswhite_portrait_min.jpg"
+const travisAlt = "Travis White Avitar"
 const maggie = "/maggie_portrait_min.jpg"
+const maggieAlt = "Maggie the Dog Avitar"
 
 export default function Header() {
+
   useEffect(() => {
-    TweenMax.fromTo(".home_trav", .7, {opacity: 0, y: -40}, {opacity: 1, y: 0, duration: 0.6, delay: 0.3}),
+    TweenMax.fromTo(".heading", .1, {opacity: 0, y: 10}, {opacity: 1, y: 0, duration: 0.1, delay: 0.01, ease: Power3.easeOut}),
+    TweenMax.fromTo(".home_avi", .7, {opacity: 0, y: -40}, {opacity: 1, y: 0, duration: 0.6, delay: 0.3}),
     TweenMax.fromTo(".home_mags", .6, {opacity: 0, y: -30}, {opacity: 1, y: 0, duration: 0.6, delay: 0.4, ease: Power3.easeOut}),
     TweenMax.fromTo(".home_logo", .7, {opacity: 0, y: 30}, {opacity: 1, y: 0, duration: 0.6, delay: 0.6, ease: Power3.easeOut}),
     TweenMax.fromTo("h4", .7, {opacity: 0, y: 40}, {opacity: 1, y: 0, duration: 0.6, delay: 0.75, ease: Power3.easeOut})
@@ -18,25 +23,24 @@ export default function Header() {
   return (
     <div className="heading">
       <div className="center">
-        <div className="center_img">
-          <div className="home_trav">
-            <img src={travis} 
-            //width="500" height="500" 
-            alt="Travis White Avitar" />
+        <Link href="/about">
+          <div className="center_img">
+            <div className="home_avi">
+              <img src={travis}
+                alt={travisAlt} />
+            </div>
+            <div className="home_mags">
+              <img src={maggie}
+                alt={maggieAlt}/>
+            </div>
           </div>
-          <div className="home_mags">
-            <img src={maggie}  
-            //width="300" height="300" 
-            alt="Maggie the Dog Avitar"/>
-          </div>
-        </div>
+        </Link>
         <div className="center_text">
           <Link href="/">
             <a>
               <div className="home_logo">
-                <img src={logo} 
-                //width="972" height="440" 
-                alt="Travis White Logo"  />
+                <img src={logo}
+                  alt={logoAlt} />
               </div>
             </a>
           </Link>

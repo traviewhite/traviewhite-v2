@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { motion, useCycle, useSpring } from 'framer-motion'
-import NavToggle from '../components/NavToggle'
-import Links from '../components/Links'
+import NavToggle from 'components/NavToggle'
+import Links from 'components/Links'
 
 const menuBtn = {
   open: {

@@ -1,112 +1,40 @@
 import React, { useEffect, useRef, useState } from 'react'
 //import ReactDom from 'react-dom'
-import { useIntersection } from 'react-use'
 import { gsap, TweenMax, TimelineLite, Power3 } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
-import Layout from '../components/Layout'
-import Header from '../components/Header'
+// import { useIntersection } from 'react-use'
+import Layout from 'components/Layout'
+import Header from 'components/Header'
+import Contact from 'components/Contact'
+import { indexIntroData, skillsData, indexMidData } from 'components/content'
 import Head from 'next/head'
-import Image from 'next/image'
+import Link from 'next/link'
+// import Image from 'next/image' //one day
+// import PhotoLinks from 'components/PhotoLinks' coming soon
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGithub, faInstagram, faDribbble, faLinkedin } from '@fortawesome/free-brands-svg-icons'
-
-//var ReactDOM = require('react-dom')
-gsap.registerPlugin(ScrollTrigger)
-
-const workImg1 = "/brookewinka.png"
-const workTitle1 = "brookewinka.com"
 /*
 if (process.client) {
   gsap.registerPlugin(TextPlugin, ScrollTrigger)
 }
 */
 
+gsap.registerPlugin(ScrollTrigger)
+
 export default function Home() {
-  /*
-  useEffect(() => {
-    TweenMax.fromTo(".home_trav", .7, {opacity: 0, y: -40}, {opacity: 1, y: 0, duration: 0.6, delay: 0.3}),
-    TweenMax.fromTo(".home_mags", .6, {opacity: 0, y: -30}, {opacity: 1, y: 0, duration: 0.6, delay: 0.4, ease: Power3.easeOut}),
-    TweenMax.fromTo(".home_logo", .7, {opacity: 0, y: 30}, {opacity: 1, y: 0, duration: 0.6, delay: 0.6, ease: Power3.easeOut}),
-    TweenMax.fromTo("h4", .7, {opacity: 0, y: 40}, {opacity: 1, y: 0, duration: 0.6, delay: 0.75, ease: Power3.easeOut})
-  }, [])
-  */
-  /*
-  const sectionRef = useRef(null);
 
-  let intersection = useIntersection(sectionRef, {
-    root: null,
-    rootMargin: "0px",
-    threshold: 1
-  });
-  
-  useEffect(() => {
-    const fadeIn = element => {
-      gsap.to(element, 1, {
-        opacity: 1,
-        y: -50,
-        duration: 1,
-        ease: "power4.out",
-        stagger: {
-          amount: 0.3
-        }
-      });
-    };
-    const fadeOut = element => {
-      gsap.to(element, 1, {
-        opacity: 0,
-        y: -20,
-        duration: 1,
-        ease: "power4.out"
-      });
-    };
-    intersection && intersection.intersectionRatio < 1
-    ? fadeOut(".fadeIn")
-    : fadeIn(".fadeIn");
-  }, []);
-
-  */
-
-  //let tw = new TimelineLite({ delay: 0.3 });
-  /*
-    var elementFirst = () => (
-        document.querySelector('.home_logo')
-    )
-  */
-  useEffect(() => {
-    //tw.fromTo(".heading", 0.6, { y: -30, opacity: 0 }, { y: 0, opacity: 1, ease: Power3.easeOut, duration: 0.5, delay: 0 });
-    // const tl = gsap.timeline();
-    // tl.from(".box_wrapper", {xPercent: -100});
-    // ScrollTrigger.create({
-    //   animation: tl,
-    //   trigger: ".shit",
-    //   start: 200,
-    // });
+  // useEffect(() => {    
+  //   let sections = gsap.utils.toArray(".trig");    
     
-    let sections = gsap.utils.toArray(".box_wrapper");    
-    
-    var animationTrigger = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".box_wrapper",
-        start: 200,
-        end: 500,
-        //markers: true,
-        toggleActions: "play none none reverse"
-      }
-    })
-    animationTrigger.fromTo(sections, .5, {opacity: 0, y:-40}, {opacity: 1, y:0, duration: 0.4, overwrite: "auto"})
-/*
-    ScrollTrigger.create({
-      trigger: ".piss",
-      start: "top center",
-      markers: 'true',
-      endTrigger: ".shit",
-      end: "bottom 50%+=100px",
-      toggleClass: {targets: '.fudge', className: '.fudge2'}
-    });
-*/
+  //   var animationTrigger = gsap.timeline({
+  //     scrollTrigger: {
+  //       trigger: ".trig",
+  //       //markers: true,
+  //       toggleActions: "play none none reverse"
+  //     }
+  //   })
 
-  }, [])
+  //   animationTrigger.fromTo(sections, .5, {opacity: 0, y:-40}, {opacity: 1, y:0, duration: 0.4})
+  // }, [])
 
   return (
     <Layout>
@@ -115,112 +43,92 @@ export default function Home() {
       </Head>
       <Header />
       <main>
-        <div className="box_wrapper fudge">
-          <div className="box_top">
-            <h2 className="">SKILLS</h2>
-          </div>
-          <div className="box">
-            <p className="">
-              Hotmail choker necklace frosted tips hot pockets inflatable furniture seinfeld, dawson’s creek game boy color alta vista digital pets mia hamm magic johnson.  
-            </p>
-            <div className="skill_tags">
-              <h5>react</h5>
-              <h5>scss</h5>
-              <h5>framer</h5>
-              <h5>figma</h5>
-              <h5>pencil</h5>
-              <h5 className="">paper</h5>
-              <h5>procreate</h5>
-              <h5>java</h5>
-            </div>
-          </div>
-        </div>
 
-        <div className="box_wrapper">
-          <div className="box_top">
-            <h2 className="">CODE</h2>
-          </div>
-          <div className="box">
-            <div className="work_box">
-              <img src={workImg1} 
-                //width="1136" height="734" 
-                alt={workTitle1} />
-              <h3>BROOKEWINKA.COM</h3>
-              <p>designer portfolio site using next.js and scss</p>
-            </div>
-          </div>
-        </div>
+        { introSection }
+        { midSection }
 
-        <div className="box_wrapper">
-          <div className="box_top">
-            <h2>DESIGN</h2>
-          </div>
-          <div className="box">
-            <div className="else_box">
-              <img src="/SushiQuadFinal_2018.png" 
-                //width="840" height="662" 
-                alt={""} />
-              <h3>PRINTMAKING</h3>
-              <p>some of my printmaking work b</p>
-            </div>
-          </div>
-        </div>
-
+        {/* 
         <div className="box_wrapper">
           <div className="box_top">
             <h2>FINE ART</h2>
           </div>
           <div className="box">
             <div className="else_box">
-              <img src="/smoke.jpg" 
-                //width="850" height="600" 
+              <img src="/smoke.jpg"
                 alt="" />
-              <h3>ILLUSTRATION</h3>
+              <h3>ILLUSTRATION & PRINTMAKING</h3>
               <p>some of my photo work b</p>
             </div>
             <div className="else_box">
-              <img src="/SushiQuadFinal_2018.png" 
-                //width="840" height="662" 
-                alt={""} />
+              <img src="/SushiQuadFinal_2018.png"
+                alt="" />
               <h3>PRINTMAKING</h3>
               <p>some of my printmaking work b</p>
             </div>
           </div>
         </div>
+        */}
 
         <div className="box_wrapper">
           <div className="box_top">
-            <h2>PHOTO</h2>
-          </div>
-          <div className="box">
-            <div className="else_box">
-              <img src="/smoke.jpg" 
-                //width="840" height="662" 
-                alt={""} />
-              <h3>PHOTOS</h3>
-              <p>some of my printmaking work b</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="box_wrapper">
-          <div className="box_top">
-            <h2>CONTACT ME!</h2>
+            <Link href="/about">
+              <h2>CONTACT ME!</h2>
+            </Link>
           </div>
           <div className="box">
             <div className="contact_box">
               <h3>HIT ME UP</h3>
-              <p>traviewhite@gmail.com</p>
-              <div className="iconsC">
-                <FontAwesomeIcon icon={faGithub} />
-                <FontAwesomeIcon icon={faInstagram} />
-                <FontAwesomeIcon icon={faDribbble} />
-                <FontAwesomeIcon icon={faLinkedin} />
-              </div>
+                <a href="mailto:winkabrooke@gmail.com?Subject=Whats%20up!">
+                  <p className="cyan_btn">traviewhite@gmail.com</p>
+                </a>
+              <Contact />
             </div>
           </div>
         </div>
+
       </main>
     </Layout>
   )
 }
+
+const introSection = indexIntroData.map((value) =>
+  <div className="box_wrapper trig">
+    <div className="box_top">
+      <h2>{value.introTitle}</h2>
+    </div>
+    <div className="box">
+      <p>{value.skillBlurb}<br/><br/>{value.skillBlurbEnd}</p>
+      <div className="skill_tags">
+        { skillsData.map((skill) => (
+          <h5>{skill}</h5>
+        )) }
+      </div>
+    </div>
+  </div>
+);
+
+const midSection = indexMidData.map((value) =>
+  <div className="box_wrapper">
+    <div className="box_top">
+      <Link href={value.boxLink}>
+        <a><h2>{value.boxTitle}</h2></a>
+      </Link>
+    </div>
+    <div className="box">
+      <div className="work_box">
+        <Link href={value.itemLink}>
+          <img src={value.img}
+            alt={value.imgAlt} />
+        </Link>
+        <h3>{value.itemTitle}</h3>
+        <p>{value.itemBlurb}</p>
+      </div>
+
+      <Link href={value.boxLink}>
+        <div className="cta_btn">
+          <a>VIEW MORE</a>
+        </div>
+      </Link>
+    </div>
+  </div>
+);

@@ -1,14 +1,16 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import Layout from '../components/Layout'
-import Tnav from '../components/Tnav'
-import { m, motion } from 'framer-motion'
+import Layout from 'components/Layout'
+import Tnav from 'components/Tnav'
+import { motion } from 'framer-motion'
+import { designImg } from 'components/content'
 
 export default function Design () {
 
-  const images = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  const listItems = images.map((images) =>
-    <li className="thumbnail">{images}</li>
+  const designImages = designImg.map((value, i) =>
+    <li className="thumbnail">
+      <img key={i} src={value.img} />
+    </li>
   );
 
   return (
@@ -18,11 +20,12 @@ export default function Design () {
       </Head>
       <Tnav />
       <main>
-        <motion.div className="filter">filter?</motion.div>
-        <motion.ul className="gallerywrapper">
-          {listItems}
+        <motion.ul className="gallery_wrapper">
+          {designImages}
         </motion.ul>
       </main>
     </Layout>
   )
 }
+
+//<motion.div className="gallery_title"><h3>design&nbsp;<br/>gallery</h3></motion.div>

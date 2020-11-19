@@ -3,7 +3,7 @@ import Head from 'next/head';
 export default () => (
   <Head>
     <meta charSet="UTF-8" />
-    <link hrefLang="en" />
+    <link hrefLang="en-US" lang="en-US"/>
     
     <meta name="Description" content="Hi, I’m Travis!
       I’m a Graphic Designer!" />

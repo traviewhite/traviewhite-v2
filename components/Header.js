@@ -13,7 +13,7 @@ const maggieAlt = "Maggie the Dog Avitar"
 export default function Header() {
 
   useEffect(() => {
-    TweenMax.fromTo(".heading", .1, {opacity: 0, y: 10}, {opacity: 1, y: 0, duration: 0.1, delay: 0.01, ease: Power3.easeOut}),
+    TweenMax.fromTo(".heading", 1, {opacity: 0, y: 10}, {opacity: 1, y: 0, duration: 0.1, delay: 0.25, ease: Power3.easeOut}),
     TweenMax.fromTo(".home_avi", .7, {opacity: 0, y: -40}, {opacity: 1, y: 0, duration: 0.6, delay: 0.3}),
     TweenMax.fromTo(".home_mags", .6, {opacity: 0, y: -30}, {opacity: 1, y: 0, duration: 0.6, delay: 0.4, ease: Power3.easeOut}),
     TweenMax.fromTo(".home_logo", .7, {opacity: 0, y: 30}, {opacity: 1, y: 0, duration: 0.6, delay: 0.6, ease: Power3.easeOut}),

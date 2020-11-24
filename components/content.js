@@ -130,13 +130,13 @@ export const codeData = [
     description: "designer portfolio site using next.js and scss", 
     img: "/brookewinka_web.png", 
     alt: "i", 
-    link: "/", 
+    link: "https://brookewinka.com", 
     gitLink: "/"
   },
   {
     id: 0-2,
     title: "TRI-COUNTY WELDING", 
-    description: "abj akbj dkjb", 
+    description: "tri co weld bbb", 
     img: "/trico_web.png", 
     alt: "i", 
     link: "/", 
@@ -145,7 +145,7 @@ export const codeData = [
   {
     id: 0-3,
     title: "SOUL GARDEN", 
-    description: "bkbjask dbk askbj dfb", 
+    description: "soul garden bbb", 
     img: "/SushiQuadFinal_2018.png", 
     alt: "i",
     link: "/",

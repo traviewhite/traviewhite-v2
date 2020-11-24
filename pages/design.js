@@ -4,12 +4,21 @@ import Layout from 'components/Layout'
 import Tnav from 'components/Tnav'
 import { motion } from 'framer-motion'
 import { designImg } from 'components/content'
+import posts from 'components/posts'
 
 export default function Design () {
 
   const designImages = designImg.map((value, i) =>
     <li className="thumbnail">
       <img key={i} src={value.img} />
+    </li>
+  );
+
+  const designTings = Object.entries(posts).map((value, i) =>
+    <li key={i} className="thumbnail">
+      <Link href="/design/[id]" as={"/design/" + value[0]}>
+        <a><img src={value[1].img} /></a>
+      </Link>
     </li>
   );
 
@@ -22,6 +31,7 @@ export default function Design () {
       <main>
         <motion.ul className="gallery_wrapper">
           {designImages}
+          {designTings}
         </motion.ul>
       </main>
     </Layout>

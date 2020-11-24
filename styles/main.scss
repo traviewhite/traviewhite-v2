@@ -175,11 +175,13 @@ $fontStackCode: 'Fira Code', monospace;
       }
     }
     .code_description {
-      margin: 0.6em 0.6em;
+      margin: 0.8em 0.6em;
       h3 {
         text-align: left;
         letter-spacing: 1px;
         margin-bottom: 5px;
+        font-size: 1.8em;
+        color: $Navy;
       }
       hr {
         margin: 2px 0 15px;
@@ -188,16 +190,39 @@ $fontStackCode: 'Fira Code', monospace;
       }
       p {
         font-size: 0.9em;
-        color: $Red;
+        color: $NavyLt;
       }
-      .code_links {
+      .code_deliverables {
         display: flex;
         flex-direction: row;
-        justify-content: flex-end;
-        a {
-          font-size: 1.5em;
-          color: $NavyLt;
-          margin: 0 6px;
+        justify-content: space-between;
+        .code_sub_desc {
+          h5 {
+            font-size: 1.4em;
+            font-weight: 600;
+            letter-spacing: 0px;
+            margin-bottom: 5px;
+            color: $Navy;
+          }
+          p {
+            // color: inherit;
+          }
+        }
+        .code_links {
+          align-self: flex-end;
+          a {
+            font-size: 1.5em;
+            color: $NavyLt;
+            margin: 0 6px;
+            cursor: pointer;
+            transition: ease 0.05s;
+            :nth-child(n) {
+              &:hover {
+                color: $Red;
+                transform: translateX(-1px) translateY(-1px);
+              }
+            }
+          }
         }
       }
     }
@@ -367,5 +392,22 @@ $fontStackCode: 'Fira Code', monospace;
         transform: translateX(-1px) translateY(-1px);
       }
     }
+  }
+}
+
+
+
+.design_pages {
+  margin-top: 3em;
+  text-align: center;
+  h1 {
+
+  }
+  p {
+    margin-bottom: 2em;
+  }
+  img {
+    width: 100%;
+    margin: 2em auto;
   }
 }

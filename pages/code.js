@@ -14,26 +14,30 @@ export default function Code () {
   const codeItems = codeData.map((value) =>
     <li className="code">
       <Link href={value.link}>
-        <img src={value.img} alt={value.alt} unsized />
+        <a target="_blank"><img src={value.img} alt={value.alt} unsized /></a>
       </Link>
       <div className="code_description">
         <h3>{value.title}</h3>
         <p>{value.description}</p>
-        <hr/>
+        {/* <hr/> */}
         <br/>
-        <h5>DELIVERED</h5>
-        <p>WEB DEV</p>
-        <div className="code_links">
-          <Link href={value.gitLink}>
-            <a target="_blank">
-              <FontAwesomeIcon icon={faGithub} />
-            </a>
-          </Link>
-          <Link href={value.link}>
-            <a target="_blank">
-              <FontAwesomeIcon icon={faExternalLinkAlt} />
-            </a>
-          </Link>
+        <div className="code_deliverables">
+          <div className="code_sub_desc">
+            <h5>DELIVERED</h5>
+            <p>WEB DEV</p>
+          </div>
+          <div className="code_links">
+            <Link href={value.gitLink}>
+              <a target="_blank">
+                <FontAwesomeIcon icon={faGithub} />
+              </a>
+            </Link>
+            <Link href={value.link}>
+              <a target="_blank">
+                <FontAwesomeIcon icon={faExternalLinkAlt} />
+              </a>
+            </Link>
+          </div>
         </div>
       </div>
     </li>

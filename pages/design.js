@@ -23,7 +23,9 @@ export default function Design ({ post }) {
 
   const designItems = post.map((p) => 
     <li key={p.sys.id} id={p.fields.slug} className="thumbnail">
-      <Link href="/design/[slug]" as={"/design/" + p.fields.slug}>
+      <Link href={"/design/[slug]" + p.fields.slug} 
+        //as={"/design/" + p.fields.slug}
+      >
         <a><img src={p.fields.image[0].url} alt={p.fields.title} /></a>
       </Link>
     </li>
@@ -60,14 +62,14 @@ export default function Design ({ post }) {
 }
 
 export async function getStaticProps() {
-  let res = await fetchEntriesPost()
+  let data = await fetchEntriesPost()
   // const posts = await res.map((p) => {
   //   return p.fields
   // })
 
   return {
     props: {
-      post: await res,
+      post: await data,
     },
     revalidate: 1,
   }

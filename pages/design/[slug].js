@@ -59,7 +59,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   let data = await client.getEntries({
     content_type: "post",
-    "fields.slug": params.slug,
+    "fields.slug[0]": params.slug,
   })
 
   return {

@@ -24,9 +24,9 @@ export default function Design ({ post }) {
   const designItems = post.map((p) => 
     <li key={p.sys.id} id={p.fields.slug} className="thumbnail">
       <Link
-        href={"/design/" + p.fields.slug} 
-        // href="/design/[slug]"
-        //as={"/design/" + p.fields.slug}
+        // href={"/design/" + p.fields.slug} 
+        href="/design/[slug]"
+        as={"/design/" + p.fields.slug}
       >
         <a><img src={p.fields.image[0].url} alt={p.fields.title} /></a>
       </Link>

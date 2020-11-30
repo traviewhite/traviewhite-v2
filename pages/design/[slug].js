@@ -3,7 +3,43 @@ import Layout from 'components/Layout'
 import Tnav from 'components/Tnav'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
-import { client } from 'utils/contentfulPosts'
+// import { client } from 'utils/contentfulPosts'
+
+const space = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID
+const accessToken = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN
+
+export const client = require('contentful').createClient({
+  space: space,
+  accessToken: accessToken,
+})
+
+export async function getStaticPaths() {
+  let res = await client.getEntries({
+    content_type: 'post',
+  })
+  const paths = res.items.map((item) => ({
+    params: { slug: item.fields.slug },
+  }))
+  
+  return {
+    paths,
+    fallback: true,
+  }
+}
+
+export async function getStaticProps({ params }) {
+  let res = await client.getEntries({
+    content_type: 'post',
+    "fields.slug": params.slug,
+  })
+
+  return {
+    props: {
+      post: res.items[0],
+    },
+    revalidate: 1,
+  }
+}
 
 export default function Post({ post }) {
   // const router = useRouter();
@@ -33,32 +69,4 @@ export default function Post({ post }) {
       </main>
     </Layout>
   )
-}
-
-export async function getStaticPaths() {
-  let res = await client.getEntries({
-    content_type: 'post',
-  })
-  const paths = res.items.map((item) => ({
-    params: { slug: item.fields.slug },
-  }))
-  
-  return {
-    paths,
-    fallback: true,
-  }
-}
-
-export async function getStaticProps({ params }) {
-  let res = await client.getEntries({
-    content_type: 'post',
-    "fields.slug": params.slug,
-  })
-
-  return {
-    props: {
-      post: await res.items[0],
-    },
-    revalidate: 1,
-  }
 }

@@ -12,6 +12,9 @@ module.exports = {
   build: {
     transpile: ['gsap'],
   },
+  images: {
+    domains: ["res.cloudinary.com"],
+  },
 };
 //module.exports = require("gsap/ScrollTrigger")
 

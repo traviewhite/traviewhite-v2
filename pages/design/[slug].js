@@ -8,34 +8,33 @@ import { useRouter } from 'next/router'
 const space = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID
 const accessToken = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN
 
-export const client = require('contentful').createClient({
+let client = require('contentful').createClient({
   space: space,
   accessToken: accessToken,
 })
 
 export async function getStaticPaths() {
-  let res = await client.getEntries({
+  let data = await client.getEntries({
     content_type: 'post',
   })
-  const paths = res.items.map((item) => ({
-    params: { slug: item.fields.slug },
-  }))
   
   return {
-    paths,
+    paths: data.items.map((item) => ({
+      params: { slug: item.fields.slug },
+    })),
     fallback: true,
   }
 }
 
 export async function getStaticProps({ params }) {
-  let res = await client.getEntries({
+  let data = await client.getEntries({
     content_type: 'post',
     "fields.slug": params.slug,
   })
 
   return {
     props: {
-      post: res.items[0],
+      post: data.items[0],
     },
     revalidate: 1,
   }
@@ -49,7 +48,7 @@ export default function Post({ post }) {
   const imageGallery = Object.entries(post.fields.image).map((p, i) => 
     <img key={i} src={p[1].url} alt={p[1].url} />
   )
-
+  console.log(post)
   return (
     <Layout>
       <Head>

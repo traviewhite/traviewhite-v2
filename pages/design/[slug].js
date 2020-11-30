@@ -48,20 +48,22 @@ export async function getStaticPaths() {
     content_type: "post",
   })
   
+  console.log(data.items[0].fields.slug)
+
   return {
-    paths: data.items.map((item) => ({
-      params: { slug: item.fields.slug },
+    paths: Object.entries(data.items).map((item) => ({
+      params: { slug: item[1].fields.slug },
     })),
-    fallback: true,
+    fallback: false,
   }
 }
 
 export async function getStaticProps({ params }) {
   let data = await client.getEntries({
     content_type: "post",
-    "fields.slug[0]": params.slug,
+    "fields.slug": params.slug,
   })
-
+  console.log(`Building page: ${data.items[0].fields.slug}`)
   return {
     props: {
       post: data.items[0],

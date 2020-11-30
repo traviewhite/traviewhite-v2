@@ -15,7 +15,7 @@ let client = require('contentful').createClient({
 
 export async function getStaticPaths() {
   let data = await client.getEntries({
-    content_type: 'post',
+    content_type: "post",
   })
   
   return {
@@ -28,7 +28,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   let data = await client.getEntries({
-    content_type: 'post',
+    content_type: "post",
     "fields.slug": params.slug,
   })
 

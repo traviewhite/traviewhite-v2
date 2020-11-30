@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 const ulvariants = {
   open: {
@@ -27,38 +28,41 @@ const variants = {
   }
 }
 
-const Links = () => (
-  <motion.ul variants={ ulvariants }>
-    <Link href="/code">
-      <motion.li variants={variants}>
-        <a>CODE</a>
-      </motion.li>
-    </Link>
+const Links = () => {
+  const router = useRouter()
+  return (
+    <motion.ul variants={ ulvariants }>
+      <Link href="/code">
+        <motion.li variants={variants}>
+          <a className={router.pathname === '/code' ? 'active' : '' }>CODE</a>
+        </motion.li>
+      </Link>
 
-    <Link href="/design">
-      <motion.li variants={variants}>
-        <a>DESIGN</a>
-      </motion.li>
-    </Link>
-    
-    <Link href="/fine-art">
-      <motion.li variants={variants}>
-        <a>FINE ART</a>
-      </motion.li>
-    </Link>
+      <Link href="/design">
+        <motion.li variants={variants}>
+          <a className={router.pathname === '/design' ? 'active' : '' }>DESIGN</a>
+        </motion.li>
+      </Link>
+      
+      <Link href="/fine-art">
+        <motion.li variants={variants}>
+          <a className={router.pathname === '/fine-art' ? 'active' : '' }>FINE ART</a>
+        </motion.li>
+      </Link>
 
-    <Link href="/photo">
-      <motion.li variants={variants}>
-        <a>PHOTO</a>
-      </motion.li>
-    </Link>
+      <Link href="/photo">
+        <motion.li variants={variants}>
+          <a className={router.pathname === '/photo' ? 'active' : '' }>PHOTO</a>
+        </motion.li>
+      </Link>
 
-    <Link href="/about">
-      <motion.li variants={variants}>
-        <a>ABOUT</a>
-      </motion.li>
-    </Link>
-  </motion.ul>
-)
+      <Link href="/about">
+        <motion.li variants={variants}>
+          <a className={router.pathname === '/about' ? 'active' : '' }>ABOUT</a>
+        </motion.li>
+      </Link>
+    </motion.ul>
+  )
+}
 
 export default Links

@@ -50,6 +50,12 @@ nav {
           box-shadow: 1px 2px $shadow;
           // transform: translateX(4px) translateY(5px);
         }
+        a {
+          &.active {
+            color: $Navy;
+            // text-decoration: underline;
+          }
+        }
       }
     }
   }

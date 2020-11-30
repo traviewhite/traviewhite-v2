@@ -132,38 +132,5 @@ export const codeData = [
     alt: "i", 
     link: "https://brookewinka.com", 
     gitLink: "/"
-  },
-  {
-    id: 0-2,
-    title: "TRI-COUNTY WELDING", 
-    description: "tri co weld bbb", 
-    img: "/trico_web.png", 
-    alt: "i", 
-    link: "/", 
-    gitLink: "/"
-  },
-  {
-    id: 0-3,
-    title: "SOUL GARDEN", 
-    description: "soul garden bbb", 
-    img: "/SushiQuadFinal_2018.png", 
-    alt: "i",
-    link: "/",
-    gitLink: "/"
-  }
-];
-
-// about
-export const aboutData = [
-  {
-    title: "ABOUT ME",
-    img: "/meme.jpg", 
-    alt: "i",
-    intro: "👋 Hi,  I'm Travis",
-    descriptionIntro: "A web developer and graphic designer based in the midwest. My primary focus is web development & graphic design; as well as illustration and printmaking.",
-    descriptionMid: "I have a bachelors degree in Graphic Design (BFA) and a Studio Art minor from Eastern Illinois University.",
-    descriptionOutro: "Hit me up if you'd like to work together!",
-    resumeLink: "/",
-    portfolioLink: "/"
   }
 ];

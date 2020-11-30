@@ -74,7 +74,7 @@ const backDim = {
     right: '0px',
     left: '0px',
     display: 'none',
-    backgroundColor: 'none',
+    backgroundColor: '#fff',
     zIndex: -10,
     transition: {
       opacity: {duration: 0.4}

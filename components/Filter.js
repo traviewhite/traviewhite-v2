@@ -34,7 +34,7 @@ const menuVariants = {
     opacity: 1,
     display: 'block',
     transition: {
-      opacity: { delay: 0, duration: 0.15, ease: "easeIn" }      
+      opacity: { delay: 0, duration: 0.05, ease: "easeIn" }      
     }
   },
   closed: {

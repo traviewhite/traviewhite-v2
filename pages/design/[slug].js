@@ -6,14 +6,15 @@ import { useRouter } from 'next/router'
 // import { client } from 'utils/contentfulPosts'
 
 export default function DesignData({ post }) {
-  // const router = useRouter();
-  // const post = posts[router.query.id]
-  // if (!post) return <p></p>
+  // console.log(post)
+  // const router = useRouter()
+  // const posts = post[router.query.slug]
+  // if (!posts) return <p>404!</p>
 
   const imageGallery = Object.entries(post.fields.image).map((p, i) => 
     <img key={i} src={p[1].url} alt={p[1].url} />
   )
-  //console.log(post)
+
   return (
     <Layout>
       <Head>

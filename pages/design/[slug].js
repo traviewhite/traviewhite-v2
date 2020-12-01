@@ -7,31 +7,43 @@ import { useRouter } from 'next/router'
 
 export default function DesignData({ post }) {
   console.log(post)
-  // const router = useRouter()
-  // const posts = post[router.query.fields]
-  // if (!posts) return <p>404!</p>
+  const router = useRouter()
 
-  const imageGallery = Object.entries(post.fields.image).map((p, i) => 
-    <img key={i} src={p[1].url} alt={p[1].url} />
+  if (!router.isFallback && !post) {
+    return <p>404!</p>
+  }
+
+  // const imageGallery = Object.entries(post.fields.image).map((p, i) => 
+  //   <img key={i} src={p[1].url} alt={p[1].url} />
+  // )
+  const imageGallery = post.fields.image.map((p, i) => 
+    <img key={i} src={p.url} alt={'p[1].url'} />
   )
+
 
   return (
     <Layout>
-      <Head>
-        <title>{post.fields.title} | Travis White</title>
-      </Head>
-      <Tnav />
-      <main>
-        <div className="design_pages">
-          <div className="design_text_content">
-            <h2>{post.fields.title}</h2>
-            <p>Mood rings animated gifs keds got milk cut-off jean shorts hot pockets. 
-              Converse discovery zone girl power zack morris scrolling text, stretch armstrong 
-              george michael cornrows I don’t want no scrubs hotmail.</p>
-          </div>
-          {imageGallery}
-        </div>
-      </main>
+      {router.isFallback ? (
+        <p>Loading...</p>
+      ) : (
+        <>
+          <Head>
+            <title>{post.fields.title} | Travis White</title>
+          </Head>
+          <Tnav />
+          <main>
+            <div className="design_pages">
+              <div className="design_text_content">
+                <h2>{post.fields.title}</h2>
+                <p>Mood rings animated gifs keds got milk cut-off jean shorts hot pockets. 
+                  Converse discovery zone girl power zack morris scrolling text, stretch armstrong 
+                  george michael cornrows I don’t want no scrubs hotmail.</p>
+              </div>
+              {imageGallery}
+            </div>
+          </main>
+        </>
+      )}
     </Layout>
   )
 }
@@ -48,14 +60,13 @@ export async function getStaticPaths() {
   let data = await client.getEntries({
     content_type: "post",
   })
-  
-  console.log(data.items[0].fields.slug)
-
+  // console.log(data.items[0].fields.slug)
   return {
-    paths: Object.entries(data.items).map((item) => ({
-      params: { slug: item[1].fields.slug },
-    })),
-    fallback: false,
+    // paths: Object.entries(data.items).map((item) => ({
+    //   params: { slug: item[1].fields.slug },
+    // })),
+    paths: data.items.fields?.map(({ slug }) => `/design/${slug}`) ?? [],
+    fallback: true,
   }
 }
 
@@ -64,10 +75,10 @@ export async function getStaticProps({ params }) {
     content_type: "post",
     "fields.slug": params.slug,
   })
-  console.log(`Building page: ${data.items[0].fields.slug}`)
+  // console.log(`Building page: ${data.items[0].fields.slug}`)
   return {
     props: {
-      post: data.items[0],
+      post: data.items[0] ?? null,
     },
     revalidate: 1,
   }

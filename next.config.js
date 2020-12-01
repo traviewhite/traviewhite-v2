@@ -6,6 +6,7 @@ module.exports = withTM({
 
 module.exports = {
   target: "serverless",
+  distDir: 'build',
   devIndicators: {
     autoPrerender: false,
   },

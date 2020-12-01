@@ -4,7 +4,6 @@ import Layout from 'components/Layout'
 import Tnav from 'components/Tnav'
 import { fetchEntriesPost } from 'utils/contentfulPosts'
 import { motion } from 'framer-motion'
-import { useRouter } from 'next/router'
 // import { useEffect, useState } from 'react'
 
 export default function Design ({ post }) {
@@ -22,18 +21,23 @@ export default function Design ({ post }) {
 
   //<--- TO HERE
 
-  const router = useRouter()
-  
+  // <li key={p.sys.id} id={p.fields.slug} className="thumbnail" onClick={() => {
+  //   router.push({ 
+  //     pathname: '/design/[slug]', 
+  //     query: { slug: p.fields.slug },
+  //   })
+  // }}>
+
   const designItems = post.map((p) => 
-    <li key={p.sys.id} id={p.fields.slug} className="thumbnail" onClick={() => {
-      router.push({ 
-        pathname: '/design/[slug]', 
-        query: { slug: p.fields.slug },
-      })
-    }}>
-     
+    <li key={p.sys.id} id={p.fields.slug} className="thumbnail">
+      <Link
+        // href={"/design/" + p.fields.slug} 
+        // href="/design/[slug]"
+        href="/design/[slug]"
+        as={"/design/" + p.fields.slug}
+      >
         <a><img src={p.fields.image[0].url} alt={p.fields.title} /></a>
-      
+      </Link>
     </li>
   )
 

@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 // import { client } from 'utils/contentfulPosts'
 
 export default function DesignData({ post }) {
-  // console.log(post)
+  console.log(post)
   // const router = useRouter()
   // const posts = post[router.query.fields]
   // if (!posts) return <p>404!</p>
@@ -55,7 +55,7 @@ export async function getStaticPaths() {
     paths: Object.entries(data.items).map((item) => ({
       params: { slug: item[1].fields.slug },
     })),
-    fallback: true,
+    fallback: false,
   }
 }
 

@@ -28,6 +28,7 @@ export default function Design ({ post }) {
   //     query: { slug: p.fields.slug },
   //   })
   // }}>
+  const router = useRouter()
 
   const designItems = post.map((p) => 
     <li key={p.sys.id} id={p.fields.slug} className="thumbnail">

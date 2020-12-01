@@ -16,9 +16,9 @@ export default function DesignData({ post }) {
   // const imageGallery = Object.entries(post.fields.image).map((p, i) => 
   //   <img key={i} src={p[1].url} alt={p[1].url} />
   // )
-  const imageGallery = post.fields.image.map((p, i) => 
-    <img key={i} src={p.url} alt={'p[1].url'} />
-  )
+  // const imageGallery = post.fields.image.map((p, i) => 
+  //   <img key={i} src={p.url} alt={'p[1].url'} />
+  // )
 
 
   return (
@@ -39,7 +39,7 @@ export default function DesignData({ post }) {
                   Converse discovery zone girl power zack morris scrolling text, stretch armstrong 
                   george michael cornrows I don’t want no scrubs hotmail.</p>
               </div>
-              {imageGallery}
+              {/* {imageGallery} */}
             </div>
           </main>
         </>

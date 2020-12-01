@@ -28,18 +28,28 @@ export default function Design ({ post }) {
   //     query: { slug: p.fields.slug },
   //   })
   // }}>
+
+  // <li key={p.sys.id} id={p.fields.slug} className="thumbnail">
+  //   <a onClick={() => {
+  //     router.push({ 
+  //       pathname: '/design/[slug]', 
+  //       query: { slug: p.fields.slug },
+  //     })
+  //   }}>
+  //     <img src={p.fields.image[0].url} alt={p.fields.title} />
+  //   </a>
+  // </li>
+
   const router = useRouter()
 
   const designItems = post.map((p) => 
     <li key={p.sys.id} id={p.fields.slug} className="thumbnail">
-      <a onClick={() => {
-        router.push({ 
-          pathname: '/design/[slug]', 
-          query: { slug: p.fields.slug },
-        })
-      }}>
-        <img src={p.fields.image[0].url} alt={p.fields.title} />
-      </a>
+      <Link href="/design/[slug]" as={`/design/${p.fields.slug}`}>
+        <a>
+          <img src={p.fields.image[0].url} alt={p.fields.title} />
+        </a>
+      </Link>
+
     </li>
   )
 

@@ -1,13 +1,15 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import Layout from 'components/Layout'
-import Tnav from 'components/Tnav'
+import Layout, { Name } from 'components/Layout'
+import { fetchEntriesFineArt } from 'utils/contentfulPosts'
+import { useRouter } from 'next/router'
 import { motion, useCycle, AnimatePresence } from 'framer-motion'
 import { twhiteImg, designImg } from 'components/content'
 import Filter from 'components/Filter'
 import Example from 'components/shoot'
 
-export default function FineArt () {
+export default function FineArt ({ fineArt }) {
+  const router = useRouter()
 
   const zoomBi = {
     open: {
@@ -70,15 +72,19 @@ export default function FineArt () {
  
   const [isOpen, toggleOpen] = useCycle(false, true)
   
-  const listItems = designImg.map((value, index) =>
-    <motion.li className="fineart_select">
-      <motion.img
-        src={value.img}
-        key={index}
-        // animate={ isOpen ? "open" : "closed" }
-        // onClick={ toggleOpen }
-        // variants={ zoomTi } 
-      />
+  const listItems = fineArt.map((a, i) =>
+    <motion.li className="fineart-select">
+      <Link href="/fine-art/[slug]" as={`/fine-art/${a.fields.slug}`}>
+        <a>
+          <motion.img
+            src={a.fields.image[0].url} alt={a.fields.title}
+            key={i}
+            // animate={ isOpen ? "open" : "closed" }
+            // onClick={ toggleOpen }
+            // variants={ zoomTi } 
+          />
+        </a>
+      </Link>
     </motion.li>
   );
 
@@ -90,15 +96,15 @@ export default function FineArt () {
   ));
 
   return (
+
     <Layout>
       <Head>
-        <title>Fine Art | Travis White</title>
+        <title>Fine Art | { Name }</title>
       </Head>
-      <Tnav />
       <main>
         <Filter />
         <AnimatePresence>
-          <motion.ul className="fineart_wrapper">
+          <motion.ul className="fineart-wrapper">
             {listItems}
             {filterList}
           </motion.ul>
@@ -114,4 +120,15 @@ export default function FineArt () {
       </main>
     </Layout>
   )
+}
+
+export async function getStaticProps() {
+  let data = await fetchEntriesFineArt()
+
+  return {
+    props: {
+      fineArt: await data,
+    },
+    revalidate: 1,
+  }
 }

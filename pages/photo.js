@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-import Layout from 'components/Layout'
-import Tnav from 'components/Tnav'
+import Layout, { Name } from 'components/Layout'
 import PhotoLinks from 'components/PhotoLinks'
 import { motion, useCycle, useSpring } from 'framer-motion'
 
@@ -23,11 +22,10 @@ export default function Photo () {
   return (
     <Layout>
       <Head>
-        <title>Photo | Travis White</title>
+        <title>Photo | { Name }</title>
       </Head>
-      <Tnav />
       {/* wanna do <PhotoLinks /> */}
-      <motion.ul className="photo_wrapper">
+      <motion.ul className="photo-wrapper">
         {images.map((imgSrc, i) => (
           <li className="thumbnail"><img src={imgSrc} key={i} unsized /></li>
         ))}

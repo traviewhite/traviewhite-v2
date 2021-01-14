@@ -1,13 +1,25 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import Layout from 'components/Layout'
-import Tnav from 'components/Tnav'
+import Layout, { Name } from 'components/Layout'
 import { fetchEntriesPost } from 'utils/contentfulPosts'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 // import { useEffect, useState } from 'react'
 
+import styled from 'styled-components';
+
 export default function Design ({ post }) {
+  const HoverText = styled.li(props => ({
+    '&:hover:after': {
+      content: props.shoot,
+      position: 'absolute',
+      bottom: 0,
+      left: 0,
+      right: 0,
+      height: 'auto',
+      background: 'pink'
+    }
+  }))
 
   // NEEDED FOR OPTION ONE OF IMPORTING DATA FROM CONTENTFUL; FROM HERE -->
 
@@ -43,24 +55,22 @@ export default function Design ({ post }) {
   const router = useRouter()
 
   const designItems = post.map((p) => 
-    <li key={p.sys.id} id={p.fields.slug} className="thumbnail">
-      <Link href="/design/[slug]" as={`/design/${p.fields.slug}`}>
-        <a>
+    <Link href="/design/[slug]" as={`/design/${p.fields.slug}`} key={p.sys.id}>
+      <a>
+        <li style={{color: 'white', '&:hover': {color: 'white', '&:after': {content: `'${p.fields.title}'` }}}} id={p.fields.slug} className="thumbnail">
           <img src={p.fields.image[0].url} alt={p.fields.title} />
-        </a>
-      </Link>
-
-    </li>
+        </li>
+      </a>
+    </Link>
   )
 
   return (
     <Layout>
       <Head>
-        <title>Design | Travis White</title>
+        <title>Design | { Name }</title>
       </Head>
-      <Tnav />
       <main>
-        <motion.ul className="gallery_wrapper">
+        <motion.ul className="gallery-wrapper">
           {designItems}
 
           {/* ONE OPTION TO PULL AND PARSE DATA FROM CONTENTFUL */}
@@ -130,3 +140,51 @@ export async function getStaticProps() {
 // );
 
 //<motion.div className="gallery_title"><h3>design&nbsp;<br/>gallery</h3></motion.div>
+
+
+
+
+
+// maybe useful
+
+// // pages/blog/[slug].js
+
+// import {useRouter} from 'next/router'
+// import DefaultErrorPage from 'next/error'
+
+// export async function getStaticProps({ params }) {
+//   // fetch data from CMS through params
+//   const post = await getBlogItem(params.slug)
+//   return {
+//     props: {
+//       post
+//     }
+//   }
+// }
+
+// export async function getStaticPaths() {
+//   return {
+//     fallback: true,
+//     paths: []
+//   }
+// }
+
+// export default function MyPage({post}) {
+//   const router = useRouter()
+
+//   if(router.isFallback) {
+//      return <h1>Loading...</h1>
+//   }
+
+//   // This includes setting the noindex header because static files always return a status 200 but the rendered not found page page should obviously not be indexed
+//   if(!post) {
+//     return <>
+//       <Head>
+//         <meta name="robots" content="noindex">
+//       </Head>
+//       <DefaultErrorPage statusCode={404} />
+//     </>
+//   }
+
+//   return <h1>{post.title}</h1>
+// }

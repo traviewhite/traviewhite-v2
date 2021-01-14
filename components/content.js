@@ -2,7 +2,7 @@
 export const indexIntroData = [
   {
     introTitle: "SKILLS",
-    skillBlurb: "I have 5 years of professional web development experience and 8 years working in the graphic design and print industry.",
+    skillBlurb: "I have 5 years of professional front-end web development experience and 8 years working in the graphic design and print industry.",
     skillBlurbEnd: "Here are a few technologies I use on a daily basis:"
   },
 ];

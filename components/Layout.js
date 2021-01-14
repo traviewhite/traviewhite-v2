@@ -1,15 +1,17 @@
-import Head from '../components/Head'
-import Nav from '../components/Nav'
-//import Navbar from '../components/Navbar'
-//import Footer from '../components/Footer'
+import GlobalHead from 'components/GlobalHead'
+import Nav from 'components/Nav'
+import Tnav from 'components/Tnav'
+
+export const Name = 'Travis White'
 
 const Layout = ({ children })  => {
   return (
     <div className="container">
-      <Head />
+      <GlobalHead />
       <Nav />
+      <Tnav />
       {children}
-      <div className="footerC"><p>©2020 traviewhite.com | TRAVIS WHITE</p></div>
+      <footer><p>© 2020 traviewhite.com | {Name}</p></footer>
     </div>
   )
 }

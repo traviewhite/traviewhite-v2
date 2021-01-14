@@ -1,16 +1,15 @@
 import Head from 'next/head'
-import Layout from 'components/Layout'
-import Tnav from 'components/Tnav'
+import Layout, { Name } from 'components/Layout'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
-// import { client } from 'utils/contentfulPosts'
+import { client } from 'utils/contentfulPosts'
 
 export default function DesignData({ post }) {
-  console.log(post)
+  // console.log(post)
   const router = useRouter()
 
   if (!router.isFallback && !post) {
-    return <p>404!</p>
+    return <p className="error-404">404!</p>
   }
 
   // const imageGallery = Object.entries(post.fields.image).map((p, i) => 
@@ -24,20 +23,27 @@ export default function DesignData({ post }) {
   return (
     <Layout>
       {router.isFallback ? (
-        <p>Loading...</p>
+        <p className="loading">Loading...</p>
       ) : (
         <>
           <Head>
-            <title>{post.fields.title} | Travis White</title>
+            <title>{post.fields.title} | { Name }</title>
           </Head>
-          <Tnav />
+          {/* <div className="image_head"><img src={post.fields.image[0].url} alt="" /></div> */}
           <main>
-            <div className="design_pages">
-              <div className="design_text_content">
+            <div className="design-pages">
+              <div className="design-text-content">
                 <h2>{post.fields.title}</h2>
-                <p>Mood rings animated gifs keds got milk cut-off jean shorts hot pockets. 
+                <div className="design-text-description">
+                  <p>Mood rings animated gifs keds got milk cut-off jean shorts hot pockets. 
                   Converse discovery zone girl power zack morris scrolling text, stretch armstrong 
                   george michael cornrows I don’t want no scrubs hotmail.</p>
+                  <div className="design-tags">
+                    <p>ROLE: Direction</p>
+                    <p>YEAR: 2019</p>
+                  </div>
+
+                </div>
               </div>
               {/* {imageGallery} */}
               { Object.entries(post.fields.image).map((p, i) => 
@@ -50,14 +56,6 @@ export default function DesignData({ post }) {
     </Layout>
   )
 }
-
-const space = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID
-const accessToken = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN
-
-let client = require('contentful').createClient({
-  space: space,
-  accessToken: accessToken,
-})
 
 export async function getStaticPaths() {
   let data = await client.getEntries({
@@ -81,7 +79,7 @@ export async function getStaticProps({ params }) {
   // console.log(`Building page: ${data.items[0].fields.slug}`)
   return {
     props: {
-      post: data.items[0] ?? null,
+      post: await data.items[0] ?? null,
     },
     revalidate: 1,
   }

@@ -1,17 +1,19 @@
-$primaryYellow: #FFE141;
+$--yellow-1: #FFD23F;
 $Navy: #0F3C5B;
 $NavyLt: #405773;
-$Red: #FB9271;
-$Cyan: #76EEEF;
+$--red-1: #FB9271;
+$--cyan-1: #76EEEF;
 $YellowDk: #D8BF39;
 $secondary2Color: #6AA386;
 $secondary3Color: #AAA348;
-$shadow:  rgba(100, 10, 10, 0.2);
+$shadow: rgba(100, 10, 10, 0.2);
 $highlightColor: #DBFFEB;
 
 $fontStackSans: 'Fira Sans', sans-serif;
 $fontStackCode: 'Fira Code', monospace;
+$fontStackAnton: 'Anton', sans-serif;
 
+@import "./globals";
 @import "./include-media";
 @import "./type";
 @import "./nav";
@@ -25,7 +27,6 @@ $fontStackCode: 'Fira Code', monospace;
 
 .container {
   min-height: 100vh;
-  max-width: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -33,48 +34,75 @@ $fontStackCode: 'Fira Code', monospace;
   main {
     max-width: 1280px;
     width: 100%;
-    height: auto;
     margin: 0 auto;
-    padding: 0 1em;
+    padding: 0 1rem;
   }
-  .footerC {
-    padding: 0 0 1em;
-    text-align: center;
-    p {
-      font-size: 0.8em;
-      color: rgba(251,146,113,0.6);
-    }
+}
+footer {
+  padding: 0 0 1rem;
+  text-align: center;
+  p {
+    font-size: 0.8rem;
+    color: rgba(251,146,113,0.6);
   }
 }
 
+.error-404, .loading {
+  text-align: center;
+  margin: 0 auto;
+  padding: 1rem;
+}
+.underline {
+  text-decoration: underline;
+  text-decoration-thickness: 2.25px;
+  text-decoration-color: $--yellow-1;
+  text-underline-offset: 0px;
+  text-decoration-skip-ink: none;
+  text-decoration-style: wavy;
+}
 .no-scroll {
   overflow: hidden;
 }
 
-//scrollbar
-/* width */
+// scrollbar
+// width
 ::-webkit-scrollbar {
   width: 8px;
   height: 6px;
 }
-/* track */
+// track
 ::-webkit-scrollbar-track {
-  background: $primaryYellow;
+  background: $--yellow-1;
 }
-/* handle */
+// handle
 ::-webkit-scrollbar-thumb {
-  background: $Red;
+  background: $--red-1;
   border-radius: 2px;
 }
-/* handle on hover */
+// handle on hover
 ::-webkit-scrollbar-thumb:hover {
   background: $NavyLt;
 }
 
-
+// 
+.box-radius {
+  border-radius: 8px;
+}
+.box-shadow {
+  box-shadow: 10px 12px $shadow;
+  @include media("<tablet") {
+    box-shadow: 8px 10px $shadow;
+  }
+}
+.box-border {
+  border: 4px solid $NavyLt;
+  @include media("<tablet") {
+    border: 4px solid $NavyLt;
+  }
+}
 
 // design
-.gallery_title {
+.gallery-title {
   margin: -4em auto 0;
   z-index: 1;
   text-align: center;
@@ -104,7 +132,7 @@ $fontStackCode: 'Fira Code', monospace;
   border: 4px solid $NavyLt;
   border-radius: 8px;
   box-shadow: 5px 6px $shadow;
-  background-color: $Red;
+  background-color: $--red-1;
   border-radius: 8px;
   object-fit: cover;
   object-position: top center;
@@ -112,7 +140,7 @@ $fontStackCode: 'Fira Code', monospace;
   height: 250px;
   transition: ease 0.2s;
 }
-.fineart_wrapper {
+.fineart-wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   // grid-auto-rows: auto;
@@ -120,14 +148,14 @@ $fontStackCode: 'Fira Code', monospace;
   // grid-template-rows: 3ch auto minmax(100px, 120px);
   grid-gap: 20px;
   margin: 1em auto 2em;
-  .fineart_select {
+  .fineart-select {
     width: auto;
     height: auto;
     img {
-      border: 4px solid $NavyLt;
+      border: 3px solid $NavyLt;
       border-radius: 8px;
       box-shadow: 5px 6px $shadow;
-      background-color: $Red;
+      background-color: $--red-1;
       border-radius: 8px;
       object-fit: cover;
       object-position: top center;
@@ -149,7 +177,7 @@ $fontStackCode: 'Fira Code', monospace;
 }
 
 
-.code_wrapper {
+.code-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -163,7 +191,7 @@ $fontStackCode: 'Fira Code', monospace;
     img {
       object-fit: cover;
       width: 100%;
-      border: 4px solid $NavyLt;
+      border: 3px solid $NavyLt;
       border-radius: 8px;
       box-shadow: 1px 2px $shadow;
       background-color: blanchedalmond;
@@ -174,7 +202,7 @@ $fontStackCode: 'Fira Code', monospace;
         box-shadow: 6px 10px $shadow;
       }
     }
-    .code_description {
+    .code-description {
       margin: 0.8em 0.6em;
       h3 {
         text-align: left;
@@ -182,6 +210,9 @@ $fontStackCode: 'Fira Code', monospace;
         margin-bottom: 5px;
         font-size: 1.8em;
         color: $Navy;
+        @include media("<tablet") {
+          font-size: 1.5em;
+        }
       }
       hr {
         margin: 2px 0 15px;
@@ -192,23 +223,32 @@ $fontStackCode: 'Fira Code', monospace;
         font-size: 0.9em;
         color: $NavyLt;
       }
-      .code_deliverables {
+      .code-deliverables {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        .code_sub_desc {
+        .code-sub-desc {
+          flex: 1;
+          width: auto;
           h5 {
             font-size: 1.4em;
-            font-weight: 600;
+            font-weight: 500;
             letter-spacing: 0px;
             margin-bottom: 5px;
             color: $Navy;
+            @include media("<tablet") {
+              font-size: 1.2em;
+            }
           }
           p {
-            // color: inherit;
+            font-size: 0.9em;
+            font-weight: 400;
+            @include media("<tablet") {
+              font-size: 0.8em;
+            }
           }
         }
-        .code_links {
+        .code-links {
           align-self: flex-end;
           a {
             font-size: 1.5em;
@@ -218,7 +258,7 @@ $fontStackCode: 'Fira Code', monospace;
             transition: ease 0.05s;
             :nth-child(n) {
               &:hover {
-                color: $Red;
+                color: $--red-1;
                 transform: translateX(-1px) translateY(-1px);
               }
             }
@@ -229,7 +269,7 @@ $fontStackCode: 'Fira Code', monospace;
   }
 }
 
-.gallery_wrapper {
+.gallery-wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   // grid-auto-rows: auto;
@@ -238,25 +278,92 @@ $fontStackCode: 'Fira Code', monospace;
   grid-gap: 20px;
   margin: 2em auto 2em;
   .thumbnail {
-    width: auto;
-    height: auto;
+    position: relative;
+    border-radius: 6px;
+    border: 3px solid $NavyLt;
+    box-shadow: 5px 6px $shadow;
+    // object-fit: cover;
+    // object-position: top center;
+    // width: 100%;
+    height: 250px;
+    overflow: hidden;
+    transition: ease 0.2s;
+    &:hover {
+      transform: translateX(-4px) translateY(-4px);
+      box-shadow: 9px 10px $shadow;
+      // &::after {
+      //   content: 'This is a Post Title 2020';
+      //   // z-index: 999;
+      //   display: flex;
+      //   // justify-content: center;
+      //   // align-items: center;
+      //   position: absolute;
+      //   bottom: 0px;
+      //   left: 0px;
+      //   right: 0px;
+      //   // top: 0px;
+      //   height: auto;
+      //   border-radius: 1px;
+      //   // padding-top: 1rem;
+      //   // margin: 0.75rem auto;
+      //   padding: 2rem 0.25rem 0.5rem 0.75rem;
+      //   font-size: 1rem;
+      //   color: blanchedalmond;
+      //   // background-color: rgba(100, 10, 10, 0.5);
+      //   // background: rgb(255,255,255);
+      //   // background: linear-gradient(180deg, rgba(255,225,65,0) 0%, rgba(255,225,65,0) 15%, rgba(64,87,115,0.15) 30%, rgba(64,87,115,0.25) 50%, rgba(64,87,115,0.5) 60%, rgba(64,87,115,0.75) 80%, rgba(64,87,115,0.9) 100%);
+      //   background: rgb(255,255,255);
+      //   // background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 10%, rgba(15, 60, 91,0.15) 45%, rgba(15, 60, 91,0.5) 60%, rgba(15, 60, 91,0.75) 80%, rgba(15, 60, 91,0.85) 100%);
+      //   background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(15, 60, 91,0.9) 100%);
+      //   font-family: $fontStackSans;
+      //   letter-spacing: 0px;
+      //   font-weight: 500;
+      //   // width: 100%;
+      // }
+
+      &::after {
+        // content: 'This is a Post Title 2020';
+        // z-index: 999;
+        display: flex;
+        // justify-content: center;
+        // align-items: center;
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        // top: 0px;
+        height: auto;
+        border-radius: 1px;
+        // padding-top: 1rem;
+        // margin: 0.75rem auto;
+        padding: 2rem 0.25rem 0.5rem 0.75rem;
+        font-size: 1rem;
+        color: blanchedalmond;
+        // background-color: rgba(100, 10, 10, 0.5);
+        // background: rgb(255,255,255);
+        // background: linear-gradient(180deg, rgba(255,225,65,0) 0%, rgba(255,225,65,0) 15%, rgba(64,87,115,0.15) 30%, rgba(64,87,115,0.25) 50%, rgba(64,87,115,0.5) 60%, rgba(64,87,115,0.75) 80%, rgba(64,87,115,0.9) 100%);
+        background: rgb(255,255,255);
+        // background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 10%, rgba(15, 60, 91,0.15) 45%, rgba(15, 60, 91,0.5) 60%, rgba(15, 60, 91,0.75) 80%, rgba(15, 60, 91,0.85) 100%);
+        background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(15, 60, 91,0.9) 100%);
+        font-family: $fontStackSans;
+        letter-spacing: 0px;
+        font-weight: 500;
+        // width: 100%;
+      }
+    }
     img {
-      border: 4px solid $NavyLt;
-      border-radius: 8px;
-      box-shadow: 5px 6px $shadow;
-      background-color: $Red;
-      border-radius: 8px;
+      background-color: $--red-1;
+      // border: 3px solid $NavyLt;
+      // border-radius: 8px;
+      // box-shadow: 5px 6px $shadow;
       object-fit: cover;
       object-position: top center;
       width: 100%;
-      height: 250px;
-      transition: ease 0.2s;
+      height: 255px;
+      // transition: ease 0.2s;
       &:hover {
-        transform: translateX(-4px) translateY(-4px);
-        box-shadow: 9px 10px $shadow;
-        // &::after {
-        //   content: "ssssss";
-        // }
+        // transform: translateX(-4px) translateY(-4px);
+        // box-shadow: 9px 10px $shadow;
       }
     }
     @include media("<phone") {
@@ -265,7 +372,7 @@ $fontStackCode: 'Fira Code', monospace;
   }
 }
 
-.photo_wrapper {
+.photo-wrapper {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -289,7 +396,7 @@ $fontStackCode: 'Fira Code', monospace;
       // border: 4px solid $NavyLt;
       border-radius: 6px;
       box-shadow: 5px 6px $shadow;
-      background-color: $Red;
+      background-color: $--red-1;
       border-radius: 4px;
       object-fit: cover;
       object-position: center;
@@ -312,25 +419,26 @@ $fontStackCode: 'Fira Code', monospace;
 
 
 
-.cyan_btn {
+
+.cyan-btn {
   display: inline-block;
   margin: 0 0.5em 0 0;
   padding: 8px 20px;
   border-radius: 6px;
   box-shadow: 4px 5px $shadow;
   text-decoration: underline;
-  background-color: $Cyan;
+  background-color: $--cyan-1;
   transition: ease 0.2s;
   cursor: pointer;
   &:hover {
     box-shadow: 1px 2px $shadow;
     text-decoration: none;
-    background-color: $primaryYellow;
+    background-color: $--yellow-1;
     transform: translateX(3px) translateY(2px);
   }
 }
 
-.cta_btn {
+.cta-btn {
   display: block;
   max-width: 200px;
   margin: 0 auto 2em;
@@ -338,7 +446,7 @@ $fontStackCode: 'Fira Code', monospace;
   border-radius: 6px;
   box-shadow: 4px 5px $shadow;
   // text-decoration: underline;
-  background-color: $Cyan;
+  background-color: $--cyan-1;
   transition: ease 0.2s;
   color: $NavyLt;
   font-size: 1.2em;
@@ -349,7 +457,7 @@ $fontStackCode: 'Fira Code', monospace;
   &:hover {
     box-shadow: 1px 2px $shadow;
     text-decoration: none;
-    background-color: $primaryYellow;
+    background-color: $--yellow-1;
     transform: translateX(3px) translateY(2px);
   }
   @include media("<tablet") {
@@ -357,7 +465,7 @@ $fontStackCode: 'Fira Code', monospace;
   }
 }
 
-.photo_links {
+.photo-links {
   margin: 1em 0 0;
   padding: 0 1em;
   ul {
@@ -377,14 +485,15 @@ $fontStackCode: 'Fira Code', monospace;
   }
 }
 
-// Social Icons 
-.social_links {
+// Social Icons
+.social-links {
   margin: 0.6em auto 0;
   color: $NavyLt;
   font-size: 2em;
   a {
     :nth-child(n) {
-      margin: 0 10px;
+      height: 2rem;
+      margin: 0 12px;
       cursor: pointer;
       transition: ease 0.05s;
       &:hover {
@@ -395,33 +504,129 @@ $fontStackCode: 'Fira Code', monospace;
   }
 }
 
+.image-head {
+  height: 200px;
+  width: 100%;
+  overflow: hidden;
+  margin: 1em 0 0;
+  object-fit: cover;
+  object-position: center bottom;
+  opacity: 0.8;
+  img {
+    // object-fit: cover;
+    // object-position: center center;
+    width: 100%;
+  }
+}
 
-
-.design_pages {
+.design-pages {
   margin: 3em auto 0;
   text-align: center;
   max-width: 800px;
-  .design_text_content {
+  .design-text-content {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     margin-bottom: 50px;
     h2 {
-      font-size: 2.2em;
-      font-weight: 500;
-      // letter-spacing: 0;
+      // font-family: $fontStackAnton;
+      font-family: $fontStackSans;
+      font-size: 2em;
+      font-weight: 600;
+      letter-spacing: -1px;
       margin-bottom: 20px;
     }
-    p {
-      width: 60%;
-      text-align: left;
-      font-size: 1em;
-      font-weight: 400;
-      line-height: 26px;
+    .design-text-description {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      @include media("<tablet") {
+      flex-direction: column;
+      }
+      p {
+        flex: 1;
+        text-align: left;
+        // font-family: $fontStackSans;
+        letter-spacing: -1px;
+        font-size: 0.9em;
+        font-weight: 400;
+        line-height: 26px;
+        @include media("<tablet") {
+          width: 100%;
+        }
+      }
+      .design-tags {
+        // flex: 1;
+        margin: 0 0 0 5em;
+        @include media("<tablet") {
+          width: 100%;
+          margin: 1.5em 0 0;
+        }
+        p {
+          font-weight: 400;
+          opacity: 0.8;
+          color: $NavyLt;
+        }
+      }
     }
   }
   img {
     width: 100%;
-    margin: 2em auto;
+    margin: 1em auto 2em;
+  }
+}
+
+
+
+.blog-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: center;
+  margin: 2em auto 2em;
+  .blog-item {
+    width: 45%;
+    height: auto;
+    margin: 1rem;
+    padding: 1.25rem;
+    background-color: blanchedalmond;
+    @include media("<tablet") {
+      margin: 1rem;
+      width: 100%;
+    }
+    a {
+      h4 {
+        text-align: left;
+        margin-bottom: 1rem;
+      }
+      :nth-child(n) {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+    img {
+      border: 3px solid $NavyLt;
+      border-radius: 8px;
+      box-shadow: 5px 6px $shadow;
+      background-color: $--red-1;
+      border-radius: 8px;
+      object-fit: cover;
+      object-position: top center;
+      width: 100%;
+      height: 250px;
+      transition: ease 0.2s;
+      &:hover {
+        transform: translateX(-4px) translateY(-4px);
+        box-shadow: 9px 10px $shadow;
+        // &::after {
+        //   content: "ssssss";
+        // }
+      }
+    }
+    @include media("<phone") {
+      width: 100%;
+    }
   }
 }

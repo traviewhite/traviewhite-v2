@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import Layout from 'components/Layout'
-import Tnav from 'components/Tnav'
+import Image from 'next/image'
+import Layout, { Name } from 'components/Layout'
 import { motion } from 'framer-motion'
 import { fetchEntriesCode } from 'utils/contentfulPosts'
 
@@ -13,30 +13,28 @@ export default function Code ({ code }) {
 
   const codeItems = code.map((c) =>
     <li className="code" key={c.sys.id}>
-      <Link href={c.fields.link}>
-        <a target="_blank"><img src={c.fields.image[0].url} alt={c.fields.title} /></a>
-      </Link>
-      <div className="code_description">
+
+        <a href={c.fields.link} target="_blank" rel="noreferrer">
+          <img src={c.fields.image[0].url} alt={c.fields.title} />
+        </a>
+
+      <div className="code-description">
         <h3>{c.fields.title}</h3>
         <p>{c.fields.description}</p>
         {/* <hr/> */}
         <br/>
-        <div className="code_deliverables">
-          <div className="code_sub_desc">
+        <div className="code-deliverables">
+          <div className="code-sub-desc">
             <h5>DELIVERED</h5>
             <p>{c.fields.delivered}</p>
           </div>
-          <div className="code_links">
-            <Link href={c.fields.link}>
-              <a target="_blank">
-                <FontAwesomeIcon icon={faGithub} />
-              </a>
-            </Link>
-            <Link href={c.fields.gitLink}>
-              <a target="_blank">
-                <FontAwesomeIcon icon={faExternalLinkAlt} />
-              </a>
-            </Link>
+          <div className="code-links">
+            <a href={c.fields.link} target="_blank" rel="noreferrer">
+              <FontAwesomeIcon icon={faGithub} />
+            </a>
+            <a href={c.fields.gitLink} target="_blank" rel="noreferrer">
+              <FontAwesomeIcon icon={faExternalLinkAlt} />
+            </a>
           </div>
         </div>
       </div>
@@ -46,11 +44,10 @@ export default function Code ({ code }) {
   return (
     <Layout>
       <Head>
-        <title>Code | Travis White</title>
+        <title>Code | { Name }</title>
       </Head>
-      <Tnav />
       <main>
-        <motion.ul className="code_wrapper">
+        <motion.ul className="code-wrapper">
           {codeItems}
         </motion.ul>
       </main>
@@ -63,7 +60,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      code: await res,
+      code: await res ?? null,
     },
     revalidate: 1,
   }

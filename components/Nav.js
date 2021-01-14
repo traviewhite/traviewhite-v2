@@ -117,7 +117,7 @@ const Nav = () => {
       >
         <NavToggle />
         <motion.div variants={ menuVariants }>
-          <motion.div className="nav_menu">
+          <motion.div className="nav-menu">
             <Links />
           </motion.div>
         </motion.div>

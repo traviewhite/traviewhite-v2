@@ -24,7 +24,7 @@ h2 {
   font-family: $fontStackSans;
   font-weight: bold;
   font-style: normal;
-  font-size: 3em;
+  // font-size: 3em;
   line-height: 1;
   letter-spacing: -0.05em;
 }
@@ -33,21 +33,21 @@ h3 {
   font-family: $fontStackSans;
   font-weight: bold;
   font-style: normal;
-  font-size: 2.5em;
+  font-size: 2.25rem;
   line-height: 1;
   letter-spacing: 0.15em;
   text-align: center;
   @include media("<desktopLg") {
-    font-size: 2.5em;
+    font-size: 2.25rem;
   }
   @include media("<desktop") {
-    font-size: 2.5em;
+    font-size: 2rem;
   }
   @include media("<tablet") {
-    font-size: 1.6em;
+    font-size: 1.5rem;
   }
   @include media("<=phone") {
-    font-size: 1.5em;
+    font-size: 1.5rem;
   }
 }
 h4 {

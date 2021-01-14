@@ -64,7 +64,7 @@ const Filter = () => {
       >
         <FilterToggle />
         <motion.div variants={ menuVariants }>
-          <motion.div className="filter_menu">
+          <motion.div className="filter-menu">
             <FineArtFilter />
           </motion.div>
         </motion.div>

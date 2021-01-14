@@ -38,4 +38,27 @@ export async function fetchEntriesAbout() {
   console.log(`Error getting Entries for ${contentType.name}.`)
 }
 
-export default { fetchEntriesCode, fetchEntriesDesign, fetchEntriesPost, fetchEntriesAbout }
+export async function fetchEntriesBlog() {
+  const entries = await client.getEntries({
+    content_type: 'blog'
+  })
+  if (entries.items) return entries.items
+  console.log(`Error getting Entries for ${contentType.name}.`)
+}
+
+export async function fetchEntriesFineArt() {
+  const entries = await client.getEntries({
+    content_type: 'fineArt'
+  })
+  if (entries.items) return entries.items
+  console.log(`Error getting Entries for ${contentType.name}.`)
+}
+
+export default { 
+  fetchEntriesCode,
+  fetchEntriesDesign,
+  fetchEntriesPost,
+  fetchEntriesAbout,
+  fetchEntriesBlog,
+  fetchEntriesFineArt
+}

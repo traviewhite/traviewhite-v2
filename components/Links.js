@@ -1,13 +1,13 @@
-import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { motion } from 'framer-motion'
 
 const ulvariants = {
   open: {
-    transition: { delay: 0.12, staggerChildren: 0.08, delayChildren: 0.05 }
+    transition: { delay: 0.08, staggerChildren: 0.05, delayChildren: 0.025 }
   },
   closed: {
-    transition: { delay: 0, staggerChildren: 0.02, staggerDirection: -1 }
+    transition: { delay: 0, staggerChildren: 0.1, staggerDirection: -1 }
   }
 }
 
@@ -28,39 +28,50 @@ const variants = {
   }
 }
 
+const linkData = [
+  {
+    "item" : {
+      "link" : "/code",
+      "name" : "CODE"
+    }
+  },
+  {
+    "item" : {
+      "link" : "/design",
+      "name" : "DESIGN"
+    }
+  },
+  {
+    "item" : {
+      "link" : "/fine-art",
+      "name" : "FINE ART"
+    }
+  },
+  {
+    "item" : {
+      "link" : "/photo",
+      "name" : "PHOTO"
+    }
+  },
+  {
+    "item" : {
+      "link" : "/about",
+      "name" : "ABOUT"
+    }
+  },
+]
+
 const Links = () => {
   const router = useRouter()
   return (
     <motion.ul variants={ ulvariants }>
-      <Link href="/code">
-        <motion.li variants={variants}>
-          <a className={router.pathname === '/code' ? 'active' : '' }>CODE</a>
-        </motion.li>
-      </Link>
-
-      <Link href="/design">
-        <motion.li variants={variants}>
-          <a className={router.pathname === '/design' ? 'active' : '' }>DESIGN</a>
-        </motion.li>
-      </Link>
-      
-      <Link href="/fine-art">
-        <motion.li variants={variants}>
-          <a className={router.pathname === '/fine-art' ? 'active' : '' }>FINE ART</a>
-        </motion.li>
-      </Link>
-
-      <Link href="/photo">
-        <motion.li variants={variants}>
-          <a className={router.pathname === '/photo' ? 'active' : '' }>PHOTO</a>
-        </motion.li>
-      </Link>
-
-      <Link href="/about">
-        <motion.li variants={variants}>
-          <a className={router.pathname === '/about' ? 'active' : '' }>ABOUT</a>
-        </motion.li>
-      </Link>
+      {linkData.map((data) => 
+        <Link href={data.item.link} key={data.item.name}>
+          <motion.li variants={ variants }>
+            <a className={router.pathname === `${data.item.link}` ? 'active' : '' }>{data.item.name}</a>
+          </motion.li>
+        </Link>
+      )}
     </motion.ul>
   )
 }

@@ -14,7 +14,7 @@
     background-color: blanchedalmond;
     transform: translateX(3px) translateY(2px);
   }
-  .filter_menu {
+  .filter-menu {
     width: auto;
     height: auto;
     overflow: hidden;
@@ -28,7 +28,7 @@
         margin: 0 0.4em 1em;
       }
       li {
-        background-color: $primaryYellow;
+        background-color: $--yellow-1;
         border-radius: 5px;
         border: 2.5px solid $NavyLt;
         // box-shadow: 2px 3px $shadow;
@@ -42,7 +42,7 @@
         letter-spacing: 0.5px;
         transition: 0.2s ease-out;
         &:hover {
-          background-color: $Red;
+          background-color: $--red-1;
           // box-shadow: 2px 3px $shadow;
         }
         @include media("<tablet") {

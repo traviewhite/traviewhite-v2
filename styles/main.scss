@@ -25,6 +25,16 @@ $fontStackAnton: 'Anton', sans-serif;
 //@import "./showcasePages";
 //@import "./gallery";
 
+
+.block {
+  background: rgb(251, 146, 113);
+  background: linear-gradient(180deg, rgba(251,146,113,1) 0%, rgba(251,146,113,1) 15%, rgba(255,210,63,1) 85%, rgba(255,210,63,1) 100%);
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  z-index: 9999;
+}
+
 .container {
   min-height: 100vh;
   width: 100%;
@@ -495,7 +505,7 @@ footer {
       height: 2rem;
       margin: 0 12px;
       cursor: pointer;
-      transition: ease 0.05s;
+      transition: ease 0.1s;
       &:hover {
         color: $Navy;
         transform: translateX(-1px) translateY(-1px);

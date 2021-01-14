@@ -56,6 +56,25 @@ const menuBtn = {
   }
 }
 
+const homeblock = {
+  open: {
+    opacity: 1,
+    display: 'block',
+    transition: {
+      // opacity: {tween: 200, delay: 1, duration: 0.5, ease: 'easeIn'},  
+      // display: {tween: 200, delay: 1, duration: 0.5, ease: 'easeIn'}      
+    }
+  },
+  hidden: {
+    opacity: 0,
+    display: 'none',
+    transition: {
+      opacity: {tween: 100, delay: 0.25, duration: 0.25, ease: 'easeOut'},
+      display: {tween: 100, delay: 0.5, duration: 0.25, ease: 'easeOut'}
+    }
+  }
+}
+
 
 
 
@@ -121,8 +140,14 @@ export default function Home() {
       <Head>
         <title>{ Name }</title>
       </Head>
+      <motion.div
+        animate='hidden'
+        initial='open'
+        variants={homeblock}
+        className='block' 
+      />
       <Header />
-
+      
 
       <main>
 

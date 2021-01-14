@@ -15,7 +15,7 @@ nav {
   right: 12px;
   z-index: 9999;
   cursor: pointer;
-  transition: ease 0.2s;
+  transition: ease 0.1s;
   &:hover {
     transform: translateX(4px) translateY(5px);
     box-shadow: 1px 2px $shadow;
@@ -44,7 +44,7 @@ nav {
         text-align: center;
         letter-spacing: -1px;
         cursor: pointer;
-        transition: 0.2s ease-out;
+        transition: 0.1s ease-out;
         &:hover {
           background-color: $--red-1;
           box-shadow: 1px 2px $shadow;
@@ -81,15 +81,17 @@ li {
   list-style: none;
 }
 
-// 
+// return to home nav button
 .t-nav {
   margin: 12px 0 0 15px;
   z-index: 999;
+  position: relative;
   img {
+    // width: 20px;
     height: 65px;
-    transition: ease 0.2s;
+    transition: ease 0.1s;
     &:hover {
-      transform: translateX(1px) translateY(3px);
+      transform: translateX(1px) translateY(2px);
     }
   }
 }

@@ -11,9 +11,10 @@ const Layout = ({ children })  => {
       <Nav />
       <Tnav />
       {children}
-      <footer><p>© 2020 traviewhite.com | {Name}</p></footer>
+      <footer><p>© {(new Date().getFullYear())} traviewhite.com | {Name}</p></footer>
     </div>
   )
 }
 
 export default Layout
+

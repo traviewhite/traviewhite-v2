@@ -17,7 +17,7 @@ export default function Photo () {
     "https://source.unsplash.com/random/900x600",
     "https://source.unsplash.com/random/700x900",
     "https://source.unsplash.com/random/600x900"
-  ];
+  ]
 
   return (
     <Layout>
@@ -27,7 +27,7 @@ export default function Photo () {
       {/* wanna do <PhotoLinks /> */}
       <motion.ul className="photo-wrapper">
         {images.map((imgSrc, i) => (
-          <li className="thumbnail"><img src={imgSrc} key={i} unsized /></li>
+          <li className="thumbnail" key={i}><img src={imgSrc} /></li>
         ))}
       </motion.ul>
     </Layout>

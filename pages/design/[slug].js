@@ -47,7 +47,7 @@ export default function DesignData({ post }) {
               </div>
               {/* {imageGallery} */}
               { Object.entries(post.fields.image).map((p, i) => 
-                <img key={i} src={p[1].url} alt={'p[1].url'} />
+                <img key={i} src={p[1].secure_url} alt={'p[1].url'} />
               )}
             </div>
           </main>

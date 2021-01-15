@@ -15,7 +15,10 @@ export default function Code ({ code }) {
     <li className="code" key={c.sys.id}>
 
         <a href={c.fields.link} target="_blank" rel="noreferrer">
-          <img src={c.fields.image[0].url} alt={c.fields.title} />
+          <img 
+            src={c.fields.image[0].secure_url} 
+            alt={c.fields.title} 
+          />
         </a>
 
       <div className="code-description">
@@ -56,11 +59,11 @@ export default function Code ({ code }) {
 }
 
 export async function getStaticProps() {
-  let res = await fetchEntriesCode()
+  let data = await fetchEntriesCode()
 
   return {
     props: {
-      code: await res ?? null,
+      code: await data ?? null,
     },
     revalidate: 1,
   }

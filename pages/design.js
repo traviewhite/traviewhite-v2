@@ -58,7 +58,10 @@ export default function Design ({ post }) {
     <Link href="/design/[slug]" as={`/design/${p.fields.slug}`} key={p.sys.id}>
       <a>
         <li style={{color: 'white', '&:hover': {color: 'white', '&:after': {content: `'${p.fields.title}'` }}}} id={p.fields.slug} className="thumbnail">
-          <img src={p.fields.image[0].url} alt={p.fields.title} />
+          <img 
+            src={p.fields.image[0].secure_url} 
+            alt={p.fields.title} 
+          />
         </li>
       </a>
     </Link>
@@ -101,7 +104,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      post: await data,
+      post: await data ?? null,
     },
     revalidate: 1,
   }

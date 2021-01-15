@@ -6,6 +6,22 @@ export const client = require('contentful').createClient({
   accessToken: accessToken,
 })
 
+export async function fetchEntriesIndex() {
+  const entries = await client.getEntries({
+    content_type: 'index'
+  })
+  if (entries.items) return entries.items
+  console.log(`Error getting Entries for ${contentType.name}.`)
+}
+
+export async function fetchEntriesIndexFeatured() {
+  const entries = await client.getEntries({
+    content_type: 'indexFeatured'
+  })
+  if (entries.items) return entries.items
+  console.log(`Error getting Entries for ${contentType.name}.`)
+}
+
 export async function fetchEntriesCode() {
   const entries = await client.getEntries({
     content_type: 'code'
@@ -55,6 +71,8 @@ export async function fetchEntriesFineArt() {
 }
 
 export default { 
+  fetchEntriesIndex,
+  fetchEntriesIndexFeatured,
   fetchEntriesCode,
   fetchEntriesDesign,
   fetchEntriesPost,

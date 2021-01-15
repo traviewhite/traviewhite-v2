@@ -1,12 +1,11 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import Image from 'next/image'
 import Layout, { Name } from 'components/Layout'
 import Social from 'components/Social'
 import { motion } from 'framer-motion'
 import { fetchEntriesAbout } from 'utils/contentfulPosts'
 import ReactMarkdown from 'react-markdown'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 const aboutVariants = {
   hidden: { opacity: 0, y: 40 },
@@ -32,46 +31,51 @@ const aboutTextVariants = {
 }
 
 export default function About({ about }) {
-  const aboutInfo = about.map((a) =>
-    <motion.div className="about-wrapper" key={a.sys.id}>
-      <motion.section className="about-avi"
-        initial="hidden"
-        animate="visible"
-        variants={aboutVariants}
-      >
-        <img src={a.fields.image[0].url} alt={a.fields.alt} />
-      </motion.section>
-      <motion.section className="about-description-wrapper"
-        initial="hidden"
-        animate="visible"
-        variants={aboutTextVariants}
-      >
-        <div className="about-top box-radius box-shadow">
-          <h2>{a.fields.title}</h2>
-        </div>
-        <div className="about-description-box box-radius box-shadow box-border">
-          <p>
-            <span>{a.fields.intro}</span>
-            <br/><br/>
-          </p>
-          <ReactMarkdown source={a.fields.description} />
-          <div className="about-links">
-            <Link href={'/'}>
-              <a><p className="cyan-btn">RESUME</p></a>
-            </Link>
-          </div>
-          <Social />
-        </div>
-      </motion.section>
-    </motion.div>
-  )
   return (
     <Layout>
       <Head>
         <title>About | { Name }</title>
       </Head>
       <main>
-        { aboutInfo }
+        <motion.div className="about-wrapper" key={about.sys.id}>
+          <motion.section 
+            className="about-avi"
+            initial="hidden"
+            animate="visible"
+            variants={aboutVariants}
+          >
+            <Image
+              src={about.fields.image[0].secure_url} 
+              alt={about.fields.alt}
+              height={about.fields.image[0].height} 
+              width={about.fields.image[0].width}
+              objectFit='cover'
+              objectPosition='50% 50%'
+            />
+          </motion.section>
+          <motion.section className="about-description-wrapper"
+            initial="hidden"
+            animate="visible"
+            variants={aboutTextVariants}
+          >
+            <div className="about-top box-radius box-shadow">
+              <h2>{about.fields.title}</h2>
+            </div>
+            <div className="about-description-box box-radius box-shadow box-border">
+              <p>
+                <span>{about.fields.intro}</span>
+                <br/><br/>
+              </p>
+              <ReactMarkdown source={about.fields.description} />
+              <div className="about-links">
+                <Link href={'/'}>
+                  <a><p className="cyan-btn">RESUME</p></a>
+                </Link>
+              </div>
+              <Social />
+            </div>
+          </motion.section>
+        </motion.div>
       </main>
     </Layout>
   )
@@ -82,7 +86,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      about: await data ?? null,
+      about: await data[0] ?? null,
     },
     revalidate: 1,
   }

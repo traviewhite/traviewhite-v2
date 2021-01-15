@@ -40,7 +40,7 @@ export default function DesignData({ fineArt }) {
                 </div>
               </div>
               { Object.entries(fineArt.fields.image).map((a, i) => 
-                <img key={i} src={a[1].url} alt={'a[1].url'} />
+                <img key={i} src={a[1].secure_url} alt={'a[1].url'} />
               )}
             </div>
           </main>

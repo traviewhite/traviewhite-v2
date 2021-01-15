@@ -83,15 +83,7 @@ li {
 
 // return to home nav button
 .t-nav {
+  width: 50px;
   margin: 12px 0 0 15px;
   z-index: 999;
-  position: relative;
-  img {
-    // width: 20px;
-    height: 65px;
-    transition: ease 0.1s;
-    &:hover {
-      transform: translateX(1px) translateY(2px);
-    }
-  }
 }

@@ -1,20 +1,20 @@
-import React, { useEffect, useState, useMemo, useContext } from 'react'
+import React, { useEffect, useState, useMemo, useRef, createContext } from 'react'
 import { useIntersection } from 'react-use'
-import { motion } from "framer-motion"
+import { motion } from 'framer-motion'
 
-export const IntersectionContext = React.createContext({ inView: true })
+export const IntersectionContext = createContext({ inView: true })
 
 export const IntersectionBox = ({
   children,
   delayOrder,
-  duration = 0.4,
+  duration = 0.3,
   easing = [0.4, 0.5, 0.75, 1],
   reset = false
   }) => {
   const [inView, setInView] = useState(false)
-  const intersectionRef = React.useRef(null)
+  const intersectionRef = useRef(null)
   const intersection = useIntersection(intersectionRef, {
-    threshold: 0.4
+    threshold: 0.45
   })
 
   const transition = useMemo(
@@ -28,7 +28,7 @@ export const IntersectionBox = ({
 
   const variants = {
     hidden: {
-      y: 50,
+      y: 60,
       scale: 0.99,
       opacity: 0,
       transition

@@ -1,28 +1,35 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
+import { motion } from 'framer-motion'
 
 const tLogo = "/t_logo.svg"
 
 const Tnav = () => {
   const router = useRouter()
-
   if (router.route !== (`/`)){
     return (
-      <div className="t-nav">
+      <motion.div 
+        whileHover={{
+          x: 1,
+          y: 2,
+          transition: { duration: 0.1 },
+        }}
+        className="t-nav"
+      >
         <Link href="/">
           <a>
             <Image 
               src={tLogo} 
               alt='traviewhite T logo' 
-              height={'auto'} 
-              width={50} 
+              height={65}
+              width={'auto'} 
               objectFit='contain' 
-              objectPosition='50% 50%' 
+              objectPosition='top center' 
             />
           </a>
         </Link>
-      </div>
+      </motion.div>
     )
   } else {
     return null

@@ -73,11 +73,11 @@ export default function FineArt ({ fineArt }) {
   const [isOpen, toggleOpen] = useCycle(false, true)
   
   const listItems = fineArt.map((a, i) =>
-    <motion.li className="fineart-select">
+    <motion.li className="fineart-select" key={i}>
       <Link href="/fine-art/[slug]" as={`/fine-art/${a.fields.slug}`}>
         <a>
           <motion.img
-            src={a.fields.image[0].url} alt={a.fields.title}
+            src={a.fields.image[0].secure_url} alt={a.fields.title}
             key={i}
             // animate={ isOpen ? "open" : "closed" }
             // onClick={ toggleOpen }

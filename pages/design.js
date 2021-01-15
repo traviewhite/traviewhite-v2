@@ -1,8 +1,10 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import Image from 'next/image'
 import Layout, { Name } from 'components/Layout'
 import { fetchEntriesPost } from 'utils/contentfulPosts'
 import { motion } from 'framer-motion'
+import { fadeIn, stagger} from 'components/MotionA'
 import { useRouter } from 'next/router'
 // import { useEffect, useState } from 'react'
 
@@ -57,12 +59,20 @@ export default function Design ({ post }) {
   const designItems = post.map((p) => 
     <Link href="/design/[slug]" as={`/design/${p.fields.slug}`} key={p.sys.id}>
       <a>
-        <li style={{color: 'white', '&:hover': {color: 'white', '&:after': {content: `'${p.fields.title}'` }}}} id={p.fields.slug} className="thumbnail">
-          <img 
+        <motion.li 
+          id={p.fields.slug} 
+          className="thumbnail"
+          variants={fadeIn}
+        >
+          <Image 
             src={p.fields.image[0].secure_url} 
             alt={p.fields.title} 
+            width={p.fields.image[0].width}
+            height={p.fields.image[0].height}
+            objectFit='cover'
+            objectPosition='top center'
           />
-        </li>
+        </motion.li>
       </a>
     </Link>
   )
@@ -73,7 +83,13 @@ export default function Design ({ post }) {
         <title>Design | { Name }</title>
       </Head>
       <main>
-        <motion.ul className="gallery-wrapper">
+        <motion.ul 
+          className="gallery-wrapper"
+          animate="animate"
+          initial="initial"
+          exit={{ opacity: 0 }}
+          variants={stagger}
+        >
           {designItems}
 
           {/* ONE OPTION TO PULL AND PARSE DATA FROM CONTENTFUL */}

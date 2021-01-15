@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Layout, { Name } from 'components/Layout'
 import { motion } from 'framer-motion'
+import { fadeIn, stagger} from 'components/MotionA'
 import { fetchEntriesCode } from 'utils/contentfulPosts'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -12,7 +13,11 @@ import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
 export default function Code ({ code }) {
 
   const codeItems = code.map((c) =>
-    <li className="code" key={c.sys.id}>
+    <motion.li 
+      key={c.sys.id}
+      className="code"
+      variants={fadeIn}
+    >
 
         <a href={c.fields.link} target="_blank" rel="noreferrer">
           <img 
@@ -21,7 +26,9 @@ export default function Code ({ code }) {
           />
         </a>
 
-      <div className="code-description">
+      <motion.div
+        className="code-description"
+      >
         <h3>{c.fields.title}</h3>
         <p>{c.fields.description}</p>
         {/* <hr/> */}
@@ -40,8 +47,8 @@ export default function Code ({ code }) {
             </a>
           </div>
         </div>
-      </div>
-    </li>
+      </motion.div>
+    </motion.li>
   )
 
   return (
@@ -50,7 +57,13 @@ export default function Code ({ code }) {
         <title>Code | { Name }</title>
       </Head>
       <main>
-        <motion.ul className="code-wrapper">
+        <motion.ul 
+          className="code-wrapper"
+          animate="animate"
+          initial="initial"
+          exit={{ opacity: 0 }}
+          variants={stagger}
+        >
           {codeItems}
         </motion.ul>
       </main>

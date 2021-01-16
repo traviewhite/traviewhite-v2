@@ -47,6 +47,7 @@ h3 {
     font-size: 1.5rem;
   }
   @include media("<=phone") {
+    letter-spacing: 0.05em;
     font-size: 1.5rem;
   }
 }
@@ -100,12 +101,12 @@ p {
   font-style: normal;
   font-size: 1.5em;
   line-height: 1.2;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.025em;
   @include media("<desktopLg") {
     font-size: 1.5em;
   }
   @include media("<desktop") {
-    font-size: 1.2em;
+    font-size: 1.25em;
   }
   @include media("<tablet") {
     font-size: 1em;

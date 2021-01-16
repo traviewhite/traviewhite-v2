@@ -1,5 +1,3 @@
-import { easeIn, easeInOut, easeOut } from '@popmotion/popcorn'
-
 export const fadeIn = {
   initial: {
     y: 30,
@@ -10,7 +8,7 @@ export const fadeIn = {
     opacity: 1,
     transition: {
       duration: .5,
-      ease: easeOut
+      ease: 'easeOut'
     }
   }
 }
@@ -25,7 +23,7 @@ export const fadeInLeft = {
     transition: {
       delay: 0.1,
       duration: .3,
-      ease: easeInOut
+      ease: 'easeInOut'
     }
   }
 }

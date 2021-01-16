@@ -14,7 +14,7 @@ import { fetchEntriesIndex, fetchEntriesIndexFeatured } from 'utils/contentfulPo
 const menuBtn = {
   open: {
     opacity: 1,
-    // overflow: 'no-scroll',
+    // overflow: 'hidden',
     display: 'block',
     width: '100%',
     //maxWidth: '350px',
@@ -39,7 +39,6 @@ const menuBtn = {
 
 export default function Home({ index, featured }) {
   const [isOpen, toggleOpen] = useCycle(false, true)
-
   const animation = useAnimation()
   const [ref, inView, entry] = useInView({ threshold: 0.3 })
   useEffect(() => {
@@ -173,13 +172,14 @@ export default function Home({ index, featured }) {
           { contactSection }
         </IntersectionBox>
       </main>
+
     </Layout>
   )
 }
 
 export async function getStaticProps() {
-  let dataIntro = await fetchEntriesIndex()
-  let dataFeatured = await fetchEntriesIndexFeatured()
+  const dataIntro = await fetchEntriesIndex()
+  const dataFeatured = await fetchEntriesIndexFeatured()
 
   return {
     props: {

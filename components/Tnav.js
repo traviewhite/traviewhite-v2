@@ -20,7 +20,7 @@ const Tnav = () => {
         <Link href="/">
           <a>
             <Image 
-              src={tLogo} 
+              src={tLogo}
               alt='traviewhite T logo' 
               height={65}
               width={'auto'} 

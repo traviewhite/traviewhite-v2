@@ -1,28 +1,14 @@
+import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import Layout, { Name } from 'components/Layout'
-import { fetchEntriesPost } from 'utils/contentfulPosts'
+import { fetchEntriesDesign } from 'utils/contentfulPosts'
 import { motion } from 'framer-motion'
 import { fadeIn, stagger} from 'components/MotionA'
-import { useRouter } from 'next/router'
-// import { useEffect, useState } from 'react'
-
-import styled from 'styled-components';
 
 export default function Design ({ post }) {
-  const HoverText = styled.li(props => ({
-    '&:hover:after': {
-      content: props.shoot,
-      position: 'absolute',
-      bottom: 0,
-      left: 0,
-      right: 0,
-      height: 'auto',
-      background: 'pink'
-    }
-  }))
-
   // NEEDED FOR OPTION ONE OF IMPORTING DATA FROM CONTENTFUL; FROM HERE -->
 
   // const [posts, setPosts] = useState([])
@@ -58,22 +44,20 @@ export default function Design ({ post }) {
 
   const designItems = post.map((p) => 
     <Link href="/design/[slug]" as={`/design/${p.fields.slug}`} key={p.sys.id}>
-      <a>
-        <motion.li 
-          id={p.fields.slug} 
-          className="thumbnail"
-          variants={fadeIn}
-        >
-          <Image 
-            src={p.fields.image[0].secure_url} 
-            alt={p.fields.title} 
-            width={p.fields.image[0].width}
-            height={p.fields.image[0].height}
-            objectFit='cover'
-            objectPosition='top center'
-          />
-        </motion.li>
-      </a>
+      <motion.li 
+        id={p.fields.slug} 
+        className="thumbnail"
+        variants={fadeIn}
+      >
+        <Image 
+          src={p.fields.image[0].secure_url} 
+          alt={p.fields.title} 
+          width={p.fields.image[0].width}
+          height={p.fields.image[0].height}
+          objectFit='cover'
+          objectPosition='top center'
+        />
+      </motion.li>
     </Link>
   )
 
@@ -113,7 +97,7 @@ export default function Design ({ post }) {
 }
 
 export async function getStaticProps() {
-  let data = await fetchEntriesPost()
+  const data = await fetchEntriesDesign()
   // const posts = await res.map((p) => {
   //   return p.fields
   // })

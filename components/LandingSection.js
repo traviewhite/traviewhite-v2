@@ -8,16 +8,24 @@ const homeblock = {
     opacity: 1,
     display: 'block',
     transition: {
-      // opacity: {tween: 200, delay: 1, duration: 0.5, ease: 'easeIn'},  
-      // display: {tween: 200, delay: 1, duration: 0.5, ease: 'easeIn'}      
+      opacity: {duration: 0.25, ease: easeCustom},  
+      display: {duration: 0.5, ease: easeCustom}      
     }
   },
   hidden: {
     opacity: 0,
     display: 'none',
     transition: {
-      opacity: {tween: 100, delay: 0.25, duration: 0.25, ease: easeCustom},
-      display: {tween: 100, delay: 0.5, duration: 0.25, ease: easeCustom}
+      opacity: {delay: 0.25, duration: 0.25, ease: easeCustom},
+      display: {delay: 0.5, duration: 0.25, ease: easeCustom}
+    }
+  },
+  exit: {
+    opacity: 0,
+    display: 'none',
+    transition: {
+      opacity: {delay: 0, duration: 0.1, ease: easeCustom},
+      display: {delay: 0, duration: 0.1, ease: easeCustom}
     }
   }
 }
@@ -73,8 +81,9 @@ const LandingSection = ({ images }) => {
       <motion.div
         animate="hidden"
         initial="open"
+        exit="exit"
         variants={homeblock}
-        className="block" 
+        className="block"
       />
       <motion.div
         initial="hidden"
@@ -128,7 +137,7 @@ const LandingSection = ({ images }) => {
                 >
                   <Image 
                     // src={logo} 
-                    src={images.logoPrimaryImage[0].secure_url} 
+                    src={images.logoPrimaryImage[0].original_secure_url} 
                     alt={images.logoPrimaryAlt} 
                     width={images.logoPrimaryImage[0].width}
                     height={images.logoPrimaryImage[0].height}

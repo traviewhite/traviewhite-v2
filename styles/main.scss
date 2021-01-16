@@ -25,12 +25,22 @@ $fontStackAnton: 'Anton', sans-serif;
 //@import "./showcasePages";
 //@import "./gallery";
 
+#container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+
+}
 .container {
   min-height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
   main {
     max-width: 1280px;
     width: 100%;
@@ -46,6 +56,28 @@ footer {
     color: rgba(251,146,113,0.6);
   }
 }
+canvas { width: 100%; height: 100%; outline: none; z-index: 9999; }
+iframe { width: 100%; height: 100vh; outline: none; z-index: 9999; }
+
+.spline-watermark {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  z-index: 2;
+}
+
+.spline-watermark:hover {
+  opacity: 0.8;
+}
+
+.spline-watermark img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 
 .error-404, .loading {
   text-align: center;
@@ -97,7 +129,7 @@ footer {
 .box-border {
   border: 4px solid $NavyLt;
   @include media("<tablet") {
-    border: 4px solid $NavyLt;
+    border: 3px solid $NavyLt;
   }
 }
 
@@ -182,24 +214,23 @@ footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 2em auto 1em;
+  margin: 3.5rem auto 1rem;
   .code {
     margin: 0 0 2em;
     max-width: 720px;
     width: 100%;
-    height: 100%;
-    img {
-      object-fit: cover;
-      width: 100%;
-      border: 3px solid $NavyLt;
-      border-radius: 8px;
-      box-shadow: 1px 2px $shadow;
-      background-color: blanchedalmond;
-      cursor: pointer;
-      transition: ease 0.15s;
-      &:hover {
-        transform: translateX(-6px) translateY(-10px);
-        box-shadow: 6px 10px $shadow;
+    a {
+      >div:first-child {
+        width: 100%;
+        border-radius: 8px;
+        border: 2px solid $NavyLt !important;
+        box-shadow: 1px 2px $shadow;
+        background-color: blanchedalmond;
+        transition: ease 0.15s;
+        &:hover {
+          transform: translateX(-6px) translateY(-10px);
+          box-shadow: 6px 10px $shadow;
+        }
       }
     }
     .code-description {
@@ -251,12 +282,19 @@ footer {
         .code-links {
           align-self: flex-end;
           a {
-            font-size: 1.5em;
-            color: $NavyLt;
-            margin: 0 6px;
-            cursor: pointer;
-            transition: ease 0.05s;
-            :nth-child(n) {
+            svg {
+              margin: 0 0 0 1em;
+              color: $NavyLt;
+              width: 1.75em;
+              transition: ease 0.05s;
+              @include media("<tablet") {
+                margin: 0 0 0 0.75em;
+                width: 1.5em;
+              }
+              @include media("<=phone") {
+                margin: 0 0 0 0.5em;
+                width: 1.25em;
+              }
               &:hover {
                 color: $--red-1;
                 transform: translateX(-1px) translateY(-1px);
@@ -279,6 +317,7 @@ footer {
   margin: 2em auto 2em;
   .thumbnail {
     position: relative;
+    cursor: pointer;
     >div:first-child {
       background-color: $--red-1;
       width: 100%;

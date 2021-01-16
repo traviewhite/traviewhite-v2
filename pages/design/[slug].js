@@ -3,9 +3,9 @@ import Layout, { Name } from 'components/Layout'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 import { client } from 'utils/contentfulPosts'
+import Helmet from 'react-helmet'
 
 export default function DesignData({ post }) {
-  // console.log(post)
   const router = useRouter()
 
   if (!router.isFallback && !post) {
@@ -22,6 +22,18 @@ export default function DesignData({ post }) {
 
   return (
     <Layout>
+      <Helmet>
+        <style type="text/css">
+          {`
+            body {
+              background-color: blanchedalmond;
+            }
+            ::-webkit-scrollbar-track {
+              background: blanchedalmond;
+            }
+          `}
+        </style>
+      </Helmet>
       {router.isFallback ? (
         <p className="loading">Loading...</p>
       ) : (
@@ -47,7 +59,11 @@ export default function DesignData({ post }) {
               </div>
               {/* {imageGallery} */}
               { Object.entries(post.fields.image).map((p, i) => 
-                <img key={i} src={p[1].secure_url} alt={'p[1].url'} />
+                <img 
+                  key={i} 
+                  src={p[1].secure_url} 
+                  alt={'p[1].url'} 
+                />
               )}
             </div>
           </main>
@@ -59,21 +75,18 @@ export default function DesignData({ post }) {
 
 export async function getStaticPaths() {
   let data = await client.getEntries({
-    content_type: "post",
+    content_type: "design",
   })
   // console.log(data.items[0].fields.slug)
   return {
-    // paths: Object.entries(data.items).map((item) => ({
-    //   params: { slug: item[1].fields.slug },
-    // })),
     paths: data.items.fields?.map(({ slug }) => `/design/${slug}`) ?? [],
     fallback: true,
   }
 }
 
 export async function getStaticProps({ params }) {
-  let data = await client.getEntries({
-    content_type: "post",
+  const data = await client.getEntries({
+    content_type: "design",
     "fields.slug": params.slug,
   })
   // console.log(`Building page: ${data.items[0].fields.slug}`)

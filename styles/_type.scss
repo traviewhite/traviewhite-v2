@@ -1,26 +1,26 @@
 h1 {
-  color: $Navy;
+  color: $--navy-2;
   font-family: $fontStackSans;
   font-weight: bold;
   font-style: normal;
   font-size: 4em;
   line-height: 1;
   letter-spacing: -0.05em;
-  @include media("<desktopLg") {
+  @include media('<desktopLg') {
     font-size: 4em;
   }
-  @include media("<desktop") {
+  @include media('<desktop') {
     font-size: 3.5em;
   }
-  @include media("<tablet") {
+  @include media('<tablet') {
     font-size: 3em;
   }
-  @include media("<=phone") {
+  @include media('<=phone') {
     font-size: 2em;
   }
 }
 h2 {
-  color: $Navy;
+  color: $--navy-2;
   font-family: $fontStackSans;
   font-weight: bold;
   font-style: normal;
@@ -29,7 +29,7 @@ h2 {
   letter-spacing: -0.05em;
 }
 h3 {
-  color: $NavyLt;
+  color: $--navy-1;
   font-family: $fontStackSans;
   font-weight: bold;
   font-style: normal;
@@ -37,22 +37,22 @@ h3 {
   line-height: 1;
   letter-spacing: 0.15em;
   text-align: center;
-  @include media("<desktopLg") {
+  @include media('<desktopLg') {
     font-size: 2.25rem;
   }
-  @include media("<desktop") {
+  @include media('<desktop') {
     font-size: 2rem;
   }
-  @include media("<tablet") {
+  @include media('<tablet') {
     font-size: 1.5rem;
   }
-  @include media("<=phone") {
+  @include media('<=phone') {
     letter-spacing: 0.05em;
     font-size: 1.5rem;
   }
 }
 h4 {
-  color: $NavyLt;
+  color: $--navy-1;
   font-family: $fontStackSans;
   font-weight: bold;
   font-style: normal;
@@ -60,58 +60,58 @@ h4 {
   line-height: 1;
   letter-spacing: 0.2em;
   text-align: center;
-  @include media("<desktopLg") {
+  @include media('<desktopLg') {
     font-size: 2.5em;
   }
-  @include media("<desktop") {
+  @include media('<desktop') {
     font-size: 2em;
   }
-  @include media("<tablet") {
+  @include media('<tablet') {
     font-size: 1.4em;
   }
-  @include media("<=phone") {
+  @include media('<=phone') {
     font-size: 1.3em;
   }
 }
 h5 {
-  color: $NavyLt;
+  color: $--navy-1;
   font-family: $fontStackSans;
   font-weight: 500;
   font-style: normal;
   font-size: 1.5em;
   line-height: 1;
   letter-spacing: 1px;
-  @include media("<desktopLg") {
+  @include media('<desktopLg') {
     font-size: 1.5em;
   }
-  @include media("<desktop") {
+  @include media('<desktop') {
     font-size: 1.5em;
   }
-  @include media("<tablet") {
+  @include media('<tablet') {
     font-size: 1em;
   }
-  @include media("<=phone") {
+  @include media('<=phone') {
     font-size: 1em;
   }
 }
 p {
-  color: $Navy;
+  color: $--navy-2;
   font-family: $fontStackCode;
   font-weight: 500;
   font-style: normal;
   font-size: 1.5em;
   line-height: 1.2;
   letter-spacing: -0.025em;
-  @include media("<desktopLg") {
+  @include media('<desktopLg') {
     font-size: 1.5em;
   }
-  @include media("<desktop") {
+  @include media('<desktop') {
     font-size: 1.25em;
   }
-  @include media("<tablet") {
+  @include media('<tablet') {
     font-size: 1em;
   }
-  @include media("<=phone") {
+  @include media('<=phone') {
     font-size: 1em;
   }
 }

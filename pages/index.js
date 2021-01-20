@@ -8,6 +8,7 @@ import Social from 'components/Social'
 import IntersectionBox from 'components/IntersectionBox'
 import InView, { useInView } from 'react-intersection-observer'
 import { motion, useAnimation, useCycle } from 'framer-motion'
+import ReactMarkdown from 'react-markdown'
 import Helmet from 'react-helmet'
 import { fetchEntriesIndex, fetchEntriesIndexFeatured } from 'utils/contentfulPosts'
 
@@ -21,8 +22,8 @@ const menuBtn = {
     height: 'auto',
     transition: {
       // width: {tween: 100, duration: 0.15, ease: 'easeIn'},
-      height: {tween: 100, duration: 0.15, ease: 'easeIn'}      
-    }
+      height: { tween: 100, duration: 0.15, ease: 'easeIn' },
+    },
   },
   closed: {
     width: '0px',
@@ -32,9 +33,9 @@ const menuBtn = {
     opacity: 1,
     transition: {
       // width: {tween: 100, duration: 0.1, ease: 'easeOut'},
-      height: {tween: 100, duration: 0.1, ease: 'easeOut'}
-    }
-  }
+      height: { tween: 100, duration: 0.1, ease: 'easeOut' },
+    },
+  },
 }
 
 export default function Home({ index, featured }) {
@@ -43,9 +44,9 @@ export default function Home({ index, featured }) {
   const [ref, inView, entry] = useInView({ threshold: 0.3 })
   useEffect(() => {
     if (inView) {
-      animation.start("visible")
+      animation.start('visible')
     } else {
-      animation.start("hidden")
+      animation.start('hidden')
     }
   }, [animation, inView])
   const variants = {
@@ -59,47 +60,60 @@ export default function Home({ index, featured }) {
       opacity: 0,
     },
   }
-  
+
   const introSection = (
-    <div className="box-wrapper">
-      <div className="box-top box-radius box-shadow">
+    <div className='box-wrapper'>
+      <div className='box-top box-radius box-shadow'>
         <h2>{index.fields.introTitle}</h2>
       </div>
-      <div className="box box-radius box-shadow box-border">
+      <div className='box box-radius box-shadow box-border'>
+        <ReactMarkdown source={index.fields.introDescription} />
         <p>
-          {index.fields.introDescription}
-          <br/><br/>
+          {/* {index.fields.introDescription} */}
+          <br />
+          <br />
           {index.fields.skillsTitle}
         </p>
-        <div className="skill-tags">
-          { index.fields.skills.map((skill) => (
+        <div className='skill-tags'>
+          {index.fields.skills.map((skill) => (
             <h5 key={skill}>{skill}</h5>
-          )) }
+          ))}
         </div>
       </div>
     </div>
   )
 
-  const featuredSection = featured.map((item) =>
+  const featuredSection = featured.map((item) => (
     <div key={item.sys.id}>
       <IntersectionBox>
-        <motion.div className="box-wrapper">
-          <div className="box-top box-radius box-shadow">
+        <motion.div
+          drag
+          dragConstraints={{
+            top: -500,
+            left: -500,
+            right: 500,
+            bottom: 500,
+          }}
+          className='box-wrapper'
+        >
+          <div className='box-top box-radius box-shadow'>
             <Link href={item.fields.boxLink}>
-              <a><h2>{item.fields.boxTitle}</h2></a>
+              <a>
+                <h2>{item.fields.boxTitle}</h2>
+              </a>
             </Link>
           </div>
-          <div className="box box-radius box-shadow box-border">
-            <div className="work-box">
+          <div className='box box-radius box-shadow box-border'>
+            <div className='work-box'>
               <Link href={item.fields.itemLink}>
-                <Image 
+                <Image
                   src={item.fields.image[0].secure_url}
                   alt={item.fields.itemTitle}
                   width={item.fields.image[0].width}
                   height={item.fields.image[0].height}
                   objectFit='cover'
                   objectPosition='center center'
-                  />
+                />
               </Link>
               <h3>{item.fields.itemTitle}</h3>
               <p>{item.fields.itemDescription}</p>
@@ -107,36 +121,36 @@ export default function Home({ index, featured }) {
 
             <Link href={item.fields.boxLink}>
               <a>
-                <div className="cta-btn">
-                  VIEW MORE »
-                </div>
+                <div className='cta-btn'>VIEW MORE »</div>
               </a>
             </Link>
           </div>
         </motion.div>
       </IntersectionBox>
     </div>
-  )
+  ))
 
   const contactSection = (
-    <div className="box-wrapper">
-      <div className="box-top box-radius box-shadow"
+    <div className='box-wrapper'>
+      <div
+        className='box-top box-radius box-shadow'
         // onClick={() => { toggleOpen() }}
       >
-        <Link href="/about">
+        <Link href='/about'>
           <h2>CONTACT ME!</h2>
         </Link>
       </div>
-      <motion.div className="box box-radius box-shadow box-border"
+      <motion.div
+        className='box box-radius box-shadow box-border'
         // initial={false}
         // animate={isOpen ? "open" : "closed"}
         // variants={ menuBtn }
       >
-        <div className="contact-box">
+        <div className='contact-box'>
           <h3>HIT ME UP</h3>
-            <a href={`mailto:${index.fields.email}?Subject=Whats%20up!`}>
-              <p className="cyan-btn">{index.fields.email}</p>
-            </a>
+          <a href={`mailto:${index.fields.email}?Subject=Whats%20up!`}>
+            <p className='cyan-btn'>{index.fields.email}</p>
+          </a>
           <Social />
         </div>
       </motion.div>
@@ -146,33 +160,30 @@ export default function Home({ index, featured }) {
   return (
     <Layout>
       <Helmet>
-        <style type="text/css">
-          {`body {
+        <style type='text/css'>
+          {`
+            body {
               // background-color: #FFD23F;
-          }`}
+              // background-color: blanchedalmond;
+              // background-color: rgb(251,146,113);
+            }
+          `}
         </style>
       </Helmet>
 
       <Head>
-        <title>{ Name }</title>
+        <title>{Name}</title>
       </Head>
 
-      <LandingSection 
-        images={ index.fields }
-      />
+      <LandingSection images={index.fields} />
 
       <main>
-        <IntersectionBox>
-          { introSection }
-        </IntersectionBox>
+        <IntersectionBox>{introSection}</IntersectionBox>
 
-        { featuredSection }
+        {featuredSection}
 
-        <IntersectionBox>
-          { contactSection }
-        </IntersectionBox>
+        <IntersectionBox>{contactSection}</IntersectionBox>
       </main>
-
     </Layout>
   )
 }
@@ -183,8 +194,8 @@ export async function getStaticProps() {
 
   return {
     props: {
-      index: await dataIntro[0] ?? null,
-      featured: await dataFeatured ?? null
+      index: (await dataIntro[0]) ?? null,
+      featured: (await dataFeatured) ?? null,
     },
     revalidate: 1,
   }

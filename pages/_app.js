@@ -12,7 +12,11 @@ function App({ Component, pageProps }) {
     router.events.on('routeChangeComplete', () => NProgress.done())
     router.events.on('routeChangeError', () => NProgress.done())
   }, [])
-  return <AnimatePresence exitBeforeEnter><Component {...pageProps} key={router.route}/></AnimatePresence>
+  return (
+    <AnimatePresence exitBeforeEnter>
+      <Component {...pageProps} key={router.route} />
+    </AnimatePresence>
+  )
 }
 
 export default App

@@ -11,19 +11,19 @@ const menuBtn = {
     //maxWidth: '350px',
     height: '560px',
     transition: {
-      width: {tween: 100, duration: 0.15, ease: 'easeIn'},
-      height: {tween: 100, duration: 0.15, ease: 'easeIn'}      
-    }
+      width: { tween: 100, duration: 0.15, ease: 'easeIn' },
+      height: { tween: 100, duration: 0.15, ease: 'easeIn' },
+    },
   },
   closed: {
     width: '60px',
     height: '60px',
     opacity: 1,
     transition: {
-      width: {tween: 100, duration: 0.1, ease: 'easeOut'},
-      height: {tween: 100, duration: 0.1, ease: 'easeOut'}
-    }
-  }
+      width: { tween: 100, duration: 0.1, ease: 'easeOut' },
+      height: { tween: 100, duration: 0.1, ease: 'easeOut' },
+    },
+  },
 }
 const menuVariants = {
   open: {
@@ -33,16 +33,16 @@ const menuVariants = {
     width: 'auto',
     height: 'auto',
     transition: {
-      opacity: { delay: 0.1, duration: 0.3, ease: "easeIn" }      
-    }
+      opacity: { delay: 0.1, duration: 0.3, ease: 'easeIn' },
+    },
   },
   closed: {
     opacity: 0,
     display: 'none',
     transition: {
-      opacity: { duration: 0.07 }
-    }
-  }
+      opacity: { duration: 0.07 },
+    },
+  },
 }
 const backDim = {
   open: {
@@ -60,9 +60,9 @@ const backDim = {
     zIndex: 99,
     //filter: 'blur(10px)',
     transition: {
-      opacity: {duration: 0.5}
+      opacity: { duration: 0.5 },
       //filter: {duration: 0.1, tween: 10}
-    }
+    },
   },
   closed: {
     opacity: 0,
@@ -77,9 +77,9 @@ const backDim = {
     backgroundColor: '#fff',
     zIndex: -10,
     transition: {
-      opacity: {duration: 0.4}
-    }
-  }
+      opacity: { duration: 0.4 },
+    },
+  },
 }
 
 const Nav = () => {
@@ -108,28 +108,32 @@ const Nav = () => {
     <>
       <motion.nav
         initial={false}
-        animate={isOpen ? "open" : "closed"}
-        variants={ menuBtn }
+        animate={isOpen ? 'open' : 'closed'}
+        variants={menuBtn}
         //ref={el => menu = el}
-        onClick={() => { toggleOpen() }}
+        onClick={() => {
+          toggleOpen()
+        }}
         //onClick={() => { menuToggle(), toggleOpen() }}
         //toggle={() => { toggleOpen() }}
       >
         <NavToggle />
-        <motion.div variants={ menuVariants }>
-          <motion.div className="nav-menu">
+        <motion.div variants={menuVariants}>
+          <motion.div className='nav-menu'>
             <Links />
           </motion.div>
         </motion.div>
       </motion.nav>
       <motion.div
         initial={false}
-        animate={isOpen ? "open" : "closed"} 
-        variants={ backDim }
-        onClick={() => { toggleOpen() }}
+        animate={isOpen ? 'open' : 'closed'}
+        variants={backDim}
+        onClick={() => {
+          toggleOpen()
+        }}
       />
     </>
   )
 }
 
-export default Nav 
+export default Nav

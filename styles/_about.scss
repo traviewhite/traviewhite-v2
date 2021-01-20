@@ -6,47 +6,29 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  @include media("<desktop") {
+  @include media('<desktop') {
     flex-direction: column;
   }
   .about-avi {
     margin: 0 1em 0 0;
-    @include media("<desktop") {
+    @include media('<desktop') {
       margin: 1em auto;
     }
-    // >div:first-child {
-    //   border-radius: 999px;
-    //   width: 400px;
-    //   height: 400px;
-    //   @include media("<desktop") {
-    //     width: 350px;
-    //     height: 350px;
-    //   }
-    //   @include media("<tablet") {
-    //     width: 300px;
-    //     height: 300px;
-    //   }
-    //   @include media("<=phone") {
-    //     width: 250px;
-    //     height: 250px;
-    //   }
-    // }
-    img {
+    > div:first-child {
       border-radius: 999px;
       width: 400px;
       height: 400px;
       background-color: $--red-1;
       border: 4px solid $--red-1 !important;
-      // box-shadow: 6px 6px $shadow;
-      @include media("<desktop") {
+      @include media('<desktop') {
         width: 350px;
         height: 350px;
       }
-      @include media("<tablet") {
+      @include media('<tablet') {
         width: 300px;
         height: 300px;
       }
-      @include media("<=phone") {
+      @include media('<=phone') {
         width: 250px;
         height: 250px;
       }
@@ -59,34 +41,34 @@
     align-content: center;
     text-align: center;
     margin: 0 0 5em;
-    @include media("<desktop") {
+    @include media('<desktop') {
       margin: 2em 0 5em;
     }
     .about-top {
       margin: 0 auto -0.6em;
       padding: 20px 2em 20px 2.5em;
-      background-color: $NavyLt;
+      background-color: $--navy-1;
       // border-radius: 6px;
       // box-shadow: 10px 14px $shadow;
-      @include media("<tablet") {
+      @include media('<tablet') {
         padding: 20px 1.2em 20px 1.6em;
         // box-shadow: 8px 12px $shadow;
       }
       h2 {
         letter-spacing: 8px;
         font-size: 2.5rem;
-        color: $--yellow-1;
-        text-shadow: 4px 4px $Navy;
+        color: $--yellow-0;
+        text-shadow: 4px 4px $--navy-2;
         // cursor: pointer;
         // transition: ease 0.15s;
         // &:hover {
-        //   text-shadow: 1px 2px $Navy;
+        //   text-shadow: 1px 2px $--navy-2;
         //   transform: translateX(3px) translateY(2px);
         // }
-        @include media("<tablet") {
+        @include media('<tablet') {
           font-size: 2.25rem;
         }
-        @include media("<=phone") {
+        @include media('<=phone') {
           font-size: 2rem;
           letter-spacing: 6px;
         }
@@ -94,27 +76,27 @@
     }
     .about-description-box {
       margin: 0 auto;
-      padding: 3em 2em 1em;
+      padding: 3em 3em 1em;
       max-width: 600px;
       width: 100%;
       background-color: blanchedalmond;
-      // border-radius: 8px;
-      // box-shadow: 10px 14px $shadow;
-      // border: 4px solid $NavyLt;
-      @include media("<tablet") {
+      @include media('<tablet') {
         padding: 3em 1.5em 1em;
-        // box-shadow: 8px 12px $shadow;
-        // border: 4px solid $NavyLt;
       }
       p {
         font-size: 1em;
-        line-height: 1.6;
-        color: $Navy;
+        line-height: 1.7;
+        // letter-spacing: 0px;
+        // text-align: justify;
+        text-align-last: center;
+        color: $--navy-2;
+        font-family: $fontStackCode;
         span {
-          font-size: 1.6em;
-          font-weight: 600;
-          letter-spacing: -2px;
-          color: $NavyLt;
+          font-size: 1.75em;
+          font-weight: 700;
+          // letter-spacing: -0.1px;
+          // font-family: $fontStackSans;
+          color: $--navy-1;
         }
       }
       .about-links {

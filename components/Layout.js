@@ -11,34 +11,38 @@ export const Name = 'Travis White'
 //   enter: { y: 0, opacity: 1, transition: {duration: 0.5, ease: 'easeInOut'} }
 // }
 const variant2 = {
-  initial: { 
-    opacity: 0, 
+  initial: {
+    opacity: 0,
     // backgroundColor: '#FFD23F',
-    transition: {duration: 0.2, ease: 'easeInOut'} 
+    transition: { duration: 0.2, ease: 'easeInOut' },
   },
-  exit: { 
-    opacity: 0, 
-    // backgroundColor: '#FFD23F', 
-    transition: {duration: 0.2, ease: 'easeInOut'} 
+  exit: {
+    opacity: 0,
+    // backgroundColor: '#FFD23F',
+    transition: { duration: 0.2, ease: 'easeInOut' },
   },
-  enter: { 
-    opacity: 1, 
-    // backgroundColor: 'transparent', 
-    transition: {duration: 0.2, ease: 'easeInOut'} 
-  }
+  enter: {
+    opacity: 1,
+    // backgroundColor: 'transparent',
+    transition: { duration: 0.2, ease: 'easeInOut' },
+  },
 }
 
-const Layout = ({ children })  => {
+const Layout = ({ children }) => {
   return (
-      <motion.div className="container" id="container" >
-        <GlobalHead />
-        <Nav />
-        <Tnav />
-        <motion.div initial="initial" animate="enter" exit="exit" variants={variant2}>{children}</motion.div>
-        <footer>
-          <p>© {(new Date().getFullYear())} traviewhite.com | {Name}</p>
-        </footer>
+    <motion.div className="container" id="container">
+      <GlobalHead />
+      <Nav />
+      <Tnav />
+      <motion.div initial="initial" animate="enter" exit="exit" variants={variant2}>
+        {children}
       </motion.div>
+      <footer>
+        <p>
+          © {new Date().getFullYear()} traviewhite.com | {Name}
+        </p>
+      </footer>
+    </motion.div>
   )
 }
 

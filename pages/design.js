@@ -6,9 +6,9 @@ import { useRouter } from 'next/router'
 import Layout, { Name } from 'components/Layout'
 import { fetchEntriesDesign } from 'utils/contentfulPosts'
 import { motion } from 'framer-motion'
-import { fadeIn, stagger} from 'components/MotionA'
+import { fadeIn, stagger } from 'components/MotionA'
 
-export default function Design ({ post }) {
+export default function Design({ post }) {
   // NEEDED FOR OPTION ONE OF IMPORTING DATA FROM CONTENTFUL; FROM HERE -->
 
   // const [posts, setPosts] = useState([])
@@ -23,16 +23,16 @@ export default function Design ({ post }) {
   //<--- TO HERE
 
   // <li key={p.sys.id} id={p.fields.slug} className="thumbnail" onClick={() => {
-  //   router.push({ 
-  //     pathname: '/design/[slug]', 
+  //   router.push({
+  //     pathname: '/design/[slug]',
   //     query: { slug: p.fields.slug },
   //   })
   // }}>
 
   // <li key={p.sys.id} id={p.fields.slug} className="thumbnail">
   //   <a onClick={() => {
-  //     router.push({ 
-  //       pathname: '/design/[slug]', 
+  //     router.push({
+  //       pathname: '/design/[slug]',
   //       query: { slug: p.fields.slug },
   //     })
   //   }}>
@@ -42,35 +42,34 @@ export default function Design ({ post }) {
 
   const router = useRouter()
 
-  const designItems = post.map((p) => 
-    <Link href="/design/[slug]" as={`/design/${p.fields.slug}`} key={p.sys.id}>
-      <motion.li 
-        id={p.fields.slug} 
-        className="thumbnail"
-        variants={fadeIn}
-      >
-        <Image 
-          src={p.fields.image[0].secure_url} 
-          alt={p.fields.title} 
+  const designItems = post.map((p) => (
+    <Link href='/design/[slug]' as={`/design/${p.fields.slug}`} key={p.sys.id}>
+      <motion.li id={p.fields.slug} className='thumbnail' variants={fadeIn}>
+        <Image
+          src={p.fields.image[0].secure_url}
+          alt={p.fields.title}
           width={p.fields.image[0].width}
           height={p.fields.image[0].height}
           objectFit='cover'
           objectPosition='top center'
         />
+        <p>
+          {p.fields.title} {p.fields.year}
+        </p>
       </motion.li>
     </Link>
-  )
+  ))
 
   return (
     <Layout>
       <Head>
-        <title>Design | { Name }</title>
+        <title>Design | {Name}</title>
       </Head>
       <main>
-        <motion.ul 
-          className="gallery-wrapper"
-          animate="animate"
-          initial="initial"
+        <motion.ul
+          className='gallery-wrapper'
+          animate='animate'
+          initial='initial'
           exit={{ opacity: 0 }}
           variants={stagger}
         >
@@ -89,7 +88,6 @@ export default function Design ({ post }) {
               />
             )
           : null} */}
-
         </motion.ul>
       </main>
     </Layout>
@@ -104,7 +102,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      post: await data ?? null,
+      post: (await data) ?? null,
     },
     revalidate: 1,
   }
@@ -131,7 +129,6 @@ export async function getStaticProps() {
 //   }
 // }
 
-
 // REFERENCE
 
 // const designTings = Object.entries(posts).map((value, i) =>
@@ -143,10 +140,6 @@ export async function getStaticProps() {
 // );
 
 //<motion.div className="gallery_title"><h3>design&nbsp;<br/>gallery</h3></motion.div>
-
-
-
-
 
 // maybe useful
 

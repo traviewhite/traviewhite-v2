@@ -8,115 +8,91 @@ const homeblock = {
     opacity: 1,
     display: 'block',
     transition: {
-      opacity: {duration: 0.25, ease: easeCustom},  
-      display: {duration: 0.5, ease: easeCustom}      
-    }
+      opacity: { duration: 0.25, ease: easeCustom },
+      display: { duration: 0.5, ease: easeCustom },
+    },
   },
   hidden: {
     opacity: 0,
     display: 'none',
     transition: {
-      opacity: {delay: 0.25, duration: 0.25, ease: easeCustom},
-      display: {delay: 0.5, duration: 0.25, ease: easeCustom}
-    }
+      opacity: { delay: 0.25, duration: 0.25, ease: easeCustom },
+      display: { delay: 0.5, duration: 0.25, ease: easeCustom },
+    },
   },
   exit: {
     opacity: 0,
     display: 'none',
     transition: {
-      opacity: {delay: 0, duration: 0.1, ease: easeCustom},
-      display: {delay: 0, duration: 0.1, ease: easeCustom}
-    }
-  }
+      opacity: { delay: 0, duration: 0.1, ease: easeCustom },
+      display: { delay: 0, duration: 0.1, ease: easeCustom },
+    },
+  },
 }
 const heading = {
-  hidden: {opacity: 0, y: -10},
+  hidden: { opacity: 0, y: -10 },
   animate: {
     opacity: 1,
     y: 0,
-    transition: { delay: 0.2, duration: 0.1, ease: easeCustom }
-  }
+    transition: { delay: 0.2, duration: 0.1, ease: easeCustom },
+  },
 }
 const homeAvi = {
-  hidden: {opacity: 0, y: -40},
+  hidden: { opacity: 0, y: -40 },
   animate: {
     opacity: 1,
     y: 0,
-    transition: { delay: 0.55, duration: 0.5, ease: easeCustom }
-  }
-
+    transition: { delay: 0.55, duration: 0.5, ease: easeCustom },
+  },
 }
 const homeAvi2 = {
-  hidden: {opacity: 0, y: -35},
+  hidden: { opacity: 0, y: -35 },
   animate: {
     opacity: 1,
     y: 0,
-    transition: { delay: 0.75, duration: 0.45, ease: easeCustom }
-  }
-
+    transition: { delay: 0.75, duration: 0.45, ease: easeCustom },
+  },
 }
 const homeLogo = {
-  hidden: {opacity: 0, y: 25},
+  hidden: { opacity: 0, y: 25 },
   animate: {
     opacity: 1,
     y: 0,
-    transition: { delay: 0.6, duration: 0.5, ease: easeCustom }
-  }
-
+    transition: { delay: 0.6, duration: 0.5, ease: easeCustom },
+  },
 }
 const text = {
-  hidden: {opacity: 0, y: 35, skeyY: '0deg', rotate: '-8deg'},
+  hidden: { opacity: 0, y: 35, skeyY: '0deg', rotate: '-8deg' },
   animate: {
     opacity: 1,
     y: 0,
     skeyY: '-3.8deg',
     rotate: '-8deg',
-    transition: { delay: 0.8, duration: 0.3, ease: easeCustom }
-  }
+    transition: { delay: 0.8, duration: 0.3, ease: easeCustom },
+  },
 }
 
 const LandingSection = ({ images }) => {
   return (
     <>
-      <motion.div
-        animate="hidden"
-        initial="open"
-        exit="exit"
-        variants={homeblock}
-        className="block"
-      />
-      <motion.div
-        initial="hidden"
-        animate="animate"
-        variants={heading}
-        className="heading"
-      >
-        <div className="center">
-          <Link href="/about">
+      <motion.div animate='hidden' initial='open' exit='exit' variants={homeblock} className='block' />
+      <motion.div initial='hidden' animate='animate' variants={heading} className='heading'>
+        <div className='center'>
+          <Link href='/about'>
             <a>
-              <div className="center-img">
-                <motion.div 
-                  initial="hidden"
-                  animate="animate"
-                  variants={homeAvi}
-                  className="home-avi"
-                >
-                  <Image 
-                    src={images.primaryLandingImage[0].secure_url} 
-                    alt={images.primaryLandingAlt} 
+              <div className='center-img'>
+                <motion.div initial='hidden' animate='animate' variants={homeAvi} className='home-avi'>
+                  <Image
+                    src={images.primaryLandingImage[0].secure_url}
+                    alt={images.primaryLandingAlt}
                     width={images.primaryLandingImage[0].width}
                     height={images.primaryLandingImage[0].height}
                     objectFit='cover'
                   />
                 </motion.div>
-                <motion.div 
-                  initial="hidden"
-                  animate="animate"
-                  variants={homeAvi2}
-                  className="home-mags"
-                >
-                  <Image 
-                    src={images.secondaryLandingImage[0].secure_url} 
+                <motion.div initial='hidden' animate='animate' variants={homeAvi2} className='home-mags'>
+                  <Image
+                    src={images.secondaryLandingImage[0].secure_url}
                     alt={images.secondaryLandingAlt}
                     width={images.secondaryLandingImage[0].width}
                     height={images.secondaryLandingImage[0].height}
@@ -126,19 +102,14 @@ const LandingSection = ({ images }) => {
               </div>
             </a>
           </Link>
-          <div className="center-text">
-            <Link href="/">
+          <div className='center-text'>
+            <Link href='/'>
               <a>
-                <motion.div 
-                  initial="hidden"
-                  animate="animate"
-                  variants={homeLogo}
-                  className="home-logo"
-                >
-                  <Image 
-                    // src={logo} 
-                    src={images.logoPrimaryImage[0].original_secure_url} 
-                    alt={images.logoPrimaryAlt} 
+                <motion.div initial='hidden' animate='animate' variants={homeLogo} className='home-logo'>
+                  <Image
+                    // src={logo}
+                    src={images.logoPrimaryImage[0].original_secure_url}
+                    alt={images.logoPrimaryAlt}
                     width={images.logoPrimaryImage[0].width}
                     height={images.logoPrimaryImage[0].height}
                     objectFit='cover'
@@ -147,12 +118,9 @@ const LandingSection = ({ images }) => {
                 </motion.div>
               </a>
             </Link>
-            <motion.h4
-              initial="hidden"
-              animate="animate"
-              variants={text}
-            >
-              a front-end engineer &<br/>designer
+            <motion.h4 initial='hidden' animate='animate' variants={text}>
+              a front-end engineer &<br />
+              designer
             </motion.h4>
           </div>
         </div>

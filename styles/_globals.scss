@@ -1,9 +1,11 @@
 html,
 body {
   /* background-color: #FFE141; */
+  // background-color: rgb(240, 230, 222);
   background-color: $--yellow-1;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  // background-color: rgb(241, 221, 193);
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+    Helvetica Neue, sans-serif;
 }
 
 a {
@@ -13,10 +15,10 @@ a {
 
 * {
   box-sizing: border-box;
-	font-kerning: auto;
-	text-rendering: optimizeLegibility;
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-font-smoothing: antialiased;
+  font-kerning: auto;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
   margin: 0;
   padding: 0;
 }

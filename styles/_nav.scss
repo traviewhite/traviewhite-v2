@@ -6,9 +6,9 @@ nav {
   font-size: 2.5em;
   font-weight: bold;
   text-align: center;
-  color: $NavyLt;
+  color: $--navy-1;
   background-color: blanchedalmond;
-  border: 4px solid $NavyLt;
+  border: 3px solid $--navy-1;
   border-radius: 6px;
   box-shadow: 4px 5px $shadow;
   top: 12px;
@@ -31,13 +31,13 @@ nav {
       margin: 1em 0;
       width: 100%;
       li {
-        background-color: $--yellow-1;
+        background-color: $--yellow-0;
         border-radius: 6px;
-        border: 4px solid $NavyLt;
+        border: 3px solid $--navy-1;
         box-shadow: 5px 6px $shadow;
         margin: 0.6em 1em;
         padding: 0.2em 0.4em;
-        color: $NavyLt;
+        color: $--navy-1;
         font-family: $fontStackCode;
         font-size: 0.9em;
         font-weight: 500;
@@ -52,7 +52,7 @@ nav {
         }
         a {
           &.active {
-            color: $Navy;
+            color: $--navy-2;
             // text-decoration: underline;
           }
         }

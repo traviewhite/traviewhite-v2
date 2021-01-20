@@ -1,39 +1,48 @@
-$--yellow-1: #FFD23F;
-$Navy: #0F3C5B;
-$NavyLt: #405773;
-$--red-1: #FB9271;
-$--cyan-1: #76EEEF;
-$YellowDk: #D8BF39;
-$secondary2Color: #6AA386;
-$secondary3Color: #AAA348;
+$--yellow-0: rgb(255, 205, 63);
+$--yellow-1: rgb(255, 195, 55);
+$--yellow-2: rgb(255, 200, 33);
+$--yellow-3: rgb(223, 164, 0);
+$--yellow-4: rgb(184, 132, 0);
+$--fuel-1: #f0b327;
+$YellowDk: #d8bf39;
+
+$--navy-1: #435e80;
+$--navy-2: #18415c;
+
+$--red-1: rgb(251, 146, 113);
+
+$--cyan-1: rgb(118, 238, 239);
+$--cyan-2: rgb(74, 217, 255);
+$--cyan-3: rgb(0, 183, 239);
+$--cyan-4: rgb(0, 156, 208);
+$--cyan-4: rgb(0, 130, 177);
+
+$--space-1: #5b686f;
+$--space-2: #454e56;
+$--space-3: #343c44;
+$--space-4: #293038;
+
 $shadow: rgba(100, 10, 10, 0.2);
-$highlightColor: #DBFFEB;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
 $fontStackSans: 'Fira Sans', sans-serif;
 $fontStackCode: 'Fira Code', monospace;
 $fontStackAnton: 'Anton', sans-serif;
+$fontStackInter: 'Inter', sans-serif;
 
-@import "./globals";
-@import "./include-media";
-@import "./type";
-@import "./nav";
-@import "./filter";
-@import "./home";
-@import "./about";
+@import './globals';
+@import './include-media';
+@import './type';
+@import './nav';
+@import './filter';
+@import './home';
+@import './about';
 //@import "./design";
 //@import "./illustration";
 //@import "./showcasePages";
 //@import "./gallery";
 
-#container {
-  min-height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
-
-}
 .container {
   min-height: 100vh;
   width: 100%;
@@ -53,33 +62,12 @@ footer {
   text-align: center;
   p {
     font-size: 0.8rem;
-    color: rgba(251,146,113,0.6);
+    color: $--red-1;
   }
 }
-canvas { width: 100%; height: 100%; outline: none; z-index: 9999; }
-iframe { width: 100%; height: 100vh; outline: none; z-index: 9999; }
 
-.spline-watermark {
-  position: absolute;
-  bottom: 16px;
-  right: 16px;
-  width: 32px;
-  height: 32px;
-  z-index: 2;
-}
-
-.spline-watermark:hover {
-  opacity: 0.8;
-}
-
-.spline-watermark img {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-
-.error-404, .loading {
+.error-404,
+.loading {
   text-align: center;
   margin: 0 auto;
   padding: 1rem;
@@ -113,23 +101,23 @@ iframe { width: 100%; height: 100vh; outline: none; z-index: 9999; }
 }
 // handle on hover
 ::-webkit-scrollbar-thumb:hover {
-  background: $NavyLt;
+  background: $--navy-1;
 }
 
-// 
+//
 .box-radius {
   border-radius: 8px;
 }
 .box-shadow {
   box-shadow: 10px 12px $shadow;
-  @include media("<tablet") {
+  @include media('<tablet') {
     box-shadow: 8px 10px $shadow;
   }
 }
 .box-border {
-  border: 4px solid $NavyLt;
-  @include media("<tablet") {
-    border: 3px solid $NavyLt;
+  border: 3px solid $--navy-1;
+  @include media('<tablet') {
+    border: 3px solid $--navy-1;
   }
 }
 
@@ -138,30 +126,30 @@ iframe { width: 100%; height: 100vh; outline: none; z-index: 9999; }
   margin: -4em auto 0;
   z-index: 1;
   text-align: center;
-  @include media("<tablet") {
+  @include media('<tablet') {
     top: 15px;
   }
   h3 {
     line-height: 0.9;
     font-weight: 900;
     font-style: italic;
-    color: $NavyLt;
+    color: $--navy-1;
     letter-spacing: 4px;
     font-size: 3em;
     text-shadow: 2px 3px $shadow;
-    // -webkit-text-stroke: 1px $NavyLt;
+    // -webkit-text-stroke: 1px $--navy-1;
     // -webkit-text-fill-color: $Cyan;
     //transform: skewY(-4deg);
     transform: rotate(-5deg);
     z-index: 1;
-    @include media("<tablet") {
+    @include media('<tablet') {
       font-size: 2.2em;
     }
   }
 }
 
 .example {
-  border: 4px solid $NavyLt;
+  border: 4px solid $--navy-1;
   border-radius: 8px;
   box-shadow: 5px 6px $shadow;
   background-color: $--red-1;
@@ -184,7 +172,7 @@ iframe { width: 100%; height: 100vh; outline: none; z-index: 9999; }
     width: auto;
     height: auto;
     img {
-      border: 3px solid $NavyLt;
+      border: 3px solid $--navy-1;
       border-radius: 8px;
       box-shadow: 5px 6px $shadow;
       background-color: $--red-1;
@@ -202,12 +190,11 @@ iframe { width: 100%; height: 100vh; outline: none; z-index: 9999; }
         // }
       }
     }
-    @include media("<phone") {
+    @include media('<phone') {
       width: 100%;
     }
   }
 }
-
 
 .code-wrapper {
   display: flex;
@@ -220,28 +207,32 @@ iframe { width: 100%; height: 100vh; outline: none; z-index: 9999; }
     max-width: 720px;
     width: 100%;
     a {
-      >div:first-child {
+      > div:first-child {
         width: 100%;
         border-radius: 8px;
-        border: 2px solid $NavyLt !important;
-        box-shadow: 1px 2px $shadow;
+        // border: 2px solid $--navy-1 !important;
+        box-shadow: 3px 4px $shadow;
         background-color: blanchedalmond;
         transition: ease 0.15s;
         &:hover {
           transform: translateX(-6px) translateY(-10px);
-          box-shadow: 6px 10px $shadow;
+          box-shadow: 9px 14px $shadow;
         }
       }
     }
     .code-description {
-      margin: 0.8em 0.6em;
+      margin: -2rem 1rem 1rem;
+      padding: 3rem 1.5rem 1.5rem;
+      border-radius: 0.5rem;
+      background-color: blanchedalmond;
+      border: 2px solid $--navy-1;
       h3 {
         text-align: left;
-        letter-spacing: 1px;
+        letter-spacing: -0.1px;
         margin-bottom: 5px;
-        font-size: 1.8em;
-        color: $Navy;
-        @include media("<tablet") {
+        font-size: 1.75rem;
+        color: $--navy-2;
+        @include media('<tablet') {
           font-size: 1.5em;
         }
       }
@@ -251,8 +242,8 @@ iframe { width: 100%; height: 100vh; outline: none; z-index: 9999; }
         border: 1px solid $shadow;
       }
       p {
-        font-size: 0.9em;
-        color: $NavyLt;
+        font-size: 0.9rem;
+        color: $--navy-1;
       }
       .code-deliverables {
         display: flex;
@@ -266,15 +257,15 @@ iframe { width: 100%; height: 100vh; outline: none; z-index: 9999; }
             font-weight: 500;
             letter-spacing: 0px;
             margin-bottom: 5px;
-            color: $Navy;
-            @include media("<tablet") {
+            color: $--navy-2;
+            @include media('<tablet') {
               font-size: 1.2em;
             }
           }
           p {
             font-size: 0.9em;
             font-weight: 400;
-            @include media("<tablet") {
+            @include media('<tablet') {
               font-size: 0.8em;
             }
           }
@@ -284,14 +275,13 @@ iframe { width: 100%; height: 100vh; outline: none; z-index: 9999; }
           a {
             svg {
               margin: 0 0 0 1em;
-              color: $NavyLt;
-              width: 1.75em;
+              color: $--navy-1;
+              width: 1.5em;
               transition: ease 0.05s;
-              @include media("<tablet") {
+              @include media('<tablet') {
                 margin: 0 0 0 0.75em;
-                width: 1.5em;
               }
-              @include media("<=phone") {
+              @include media('<=phone') {
                 margin: 0 0 0 0.5em;
                 width: 1.25em;
               }
@@ -318,25 +308,43 @@ iframe { width: 100%; height: 100vh; outline: none; z-index: 9999; }
   .thumbnail {
     position: relative;
     cursor: pointer;
-    >div:first-child {
+    &:hover {
+      p {
+        color: $--navy-2;
+      }
+    }
+    > div:first-child {
       background-color: $--red-1;
       width: 100%;
-      height: 30vh;
+      height: 300px;
+      display: block !important;
       border-radius: 6px;
-      border: 3px solid $NavyLt !important;
-      box-shadow: 5px 6px $shadow;
+      // border: 2px solid $--navy-1 !important;
+      box-shadow: 3px 4px $shadow;
       // overflow: hidden;
       transition: ease 0.15s;
-      @include media("<tablet") {
-        // height: 350px;
-      }
-      @include media("<phone") {
-        // height: 250px;
-      }
       &:hover {
         transform: translateX(-4px) translateY(-4px);
-        box-shadow: 9px 10px $shadow;
+        box-shadow: 7px 8px $shadow;
       }
+      @include media('<tablet') {
+        min-height: 250px;
+      }
+      @include media('<phone') {
+        // height: 250px;
+      }
+    }
+    p {
+      text-align: justify;
+      color: $--navy-1;
+      font-size: 1.25rem;
+      letter-spacing: -1px;
+      margin: -1rem 0.5rem 1rem;
+      padding: 1.25rem 0.75rem 0.5rem;
+      border-radius: 0.25rem;
+      background-color: blanchedalmond;
+      // text-decoration: underline;
+      border: 2px solid $--navy-1;
     }
   }
 }
@@ -350,7 +358,7 @@ iframe { width: 100%; height: 100vh; outline: none; z-index: 9999; }
   width: 100%;
   height: 78vh;
   overflow-x: scroll;
-  @include media("<tablet") {
+  @include media('<tablet') {
     flex-direction: column;
     overflow-x: hidden;
     height: auto;
@@ -358,11 +366,11 @@ iframe { width: 100%; height: 100vh; outline: none; z-index: 9999; }
   .thumbnail {
     width: auto;
     height: auto;
-    @include media("<tablet") {
+    @include media('<tablet') {
       padding: 0 1em;
     }
     img {
-      // border: 4px solid $NavyLt;
+      // border: 4px solid $--navy-1;
       border-radius: 6px;
       box-shadow: 5px 6px $shadow;
       background-color: $--red-1;
@@ -372,7 +380,7 @@ iframe { width: 100%; height: 100vh; outline: none; z-index: 9999; }
       width: auto;
       height: 75vh;
       margin: 0 1em;
-      @include media("<tablet") {
+      @include media('<tablet') {
         width: 100%;
         height: auto;
         margin: 1em auto;
@@ -380,14 +388,6 @@ iframe { width: 100%; height: 100vh; outline: none; z-index: 9999; }
     }
   }
 }
-
-
-
-
-
-
-
-
 
 .cyan-btn {
   display: inline-block;
@@ -417,7 +417,7 @@ iframe { width: 100%; height: 100vh; outline: none; z-index: 9999; }
   // text-decoration: underline;
   background-color: $--cyan-1;
   transition: ease 0.2s;
-  color: $NavyLt;
+  color: $--navy-1;
   font-size: 1.2em;
   font-weight: 500;
   font-family: $fontStackCode;
@@ -429,7 +429,7 @@ iframe { width: 100%; height: 100vh; outline: none; z-index: 9999; }
     background-color: $--yellow-1;
     transform: translateX(3px) translateY(2px);
   }
-  @include media("<tablet") {
+  @include media('<tablet') {
     font-size: 1em;
   }
 }
@@ -445,9 +445,9 @@ iframe { width: 100%; height: 100vh; outline: none; z-index: 9999; }
     li {
       font-size: 1em;
       font-weight: 500;
-      color: $NavyLt;
+      color: $--navy-1;
       font-family: $fontStackCode;
-      @include media("<tablet") {
+      @include media('<tablet') {
         font-size: 0.9em;
       }
     }
@@ -457,7 +457,7 @@ iframe { width: 100%; height: 100vh; outline: none; z-index: 9999; }
 // Social Icons
 .social-links {
   margin: 0.6em auto 0;
-  color: $NavyLt;
+  color: $--navy-1;
   font-size: 2em;
   a {
     :nth-child(n) {
@@ -466,7 +466,7 @@ iframe { width: 100%; height: 100vh; outline: none; z-index: 9999; }
       cursor: pointer;
       transition: ease 0.1s;
       &:hover {
-        color: $Navy;
+        color: $--navy-2;
         transform: translateX(-1px) translateY(-1px);
       }
     }
@@ -509,8 +509,8 @@ iframe { width: 100%; height: 100vh; outline: none; z-index: 9999; }
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      @include media("<tablet") {
-      flex-direction: column;
+      @include media('<tablet') {
+        flex-direction: column;
       }
       p {
         flex: 1;
@@ -520,21 +520,21 @@ iframe { width: 100%; height: 100vh; outline: none; z-index: 9999; }
         font-size: 0.9em;
         font-weight: 400;
         line-height: 26px;
-        @include media("<tablet") {
+        @include media('<tablet') {
           width: 100%;
         }
       }
       .design-tags {
         // flex: 1;
         margin: 0 0 0 5em;
-        @include media("<tablet") {
+        @include media('<tablet') {
           width: 100%;
           margin: 1.5em 0 0;
         }
         p {
           font-weight: 400;
           opacity: 0.8;
-          color: $NavyLt;
+          color: $--navy-1;
         }
       }
     }
@@ -544,8 +544,6 @@ iframe { width: 100%; height: 100vh; outline: none; z-index: 9999; }
     margin: 1em auto 2em;
   }
 }
-
-
 
 .blog-grid {
   display: flex;
@@ -560,7 +558,7 @@ iframe { width: 100%; height: 100vh; outline: none; z-index: 9999; }
     margin: 1rem;
     padding: 1.25rem;
     background-color: blanchedalmond;
-    @include media("<tablet") {
+    @include media('<tablet') {
       margin: 1rem;
       width: 100%;
     }
@@ -576,7 +574,7 @@ iframe { width: 100%; height: 100vh; outline: none; z-index: 9999; }
       }
     }
     img {
-      border: 3px solid $NavyLt;
+      border: 3px solid $--navy-1;
       border-radius: 8px;
       box-shadow: 5px 6px $shadow;
       background-color: $--red-1;
@@ -594,7 +592,7 @@ iframe { width: 100%; height: 100vh; outline: none; z-index: 9999; }
         // }
       }
     }
-    @include media("<phone") {
+    @include media('<phone') {
       width: 100%;
     }
   }

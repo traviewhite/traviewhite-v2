@@ -1,0 +1,105 @@
+.code-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 3.5rem auto 1rem;
+  .code {
+    margin: 0 0 2em;
+    max-width: 720px;
+    width: 100%;
+    a {
+      > div:first-child {
+        width: 100%;
+        border-radius: 8px;
+        // border: 2px solid $--navy-1 !important;
+        box-shadow: 3px 4px $shadow;
+        background-color: blanchedalmond;
+        transition: ease 0.15s;
+        &:hover {
+          transform: translateX(-6px) translateY(-10px);
+          box-shadow: 9px 14px $shadow;
+        }
+      }
+    }
+    .code-description {
+      margin: -2rem 1rem 1rem;
+      padding: 3rem 1.5rem 1.5rem;
+      border-radius: 0.5rem;
+      background-color: blanchedalmond;
+      border: 2px solid $--navy-1;
+      h3 {
+        text-align: left;
+        letter-spacing: -0.1px;
+        margin-bottom: 5px;
+        font-size: 1.75rem;
+        color: $--navy-2;
+        @include media('<tablet') {
+          font-size: 1.5em;
+        }
+      }
+      hr {
+        margin: 1rem auto 0;
+        width: 100%;
+        border-top: 1px solid $--yellow-1;
+      }
+      p {
+        font-size: 0.9rem;
+        color: $--navy-1;
+      }
+      .code-deliverables {
+        padding: 0.5rem 1rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: $--yellow-0;
+        border: 1px $--navy-1 solid;
+        border-radius: 4px;
+        .code-sub-desc {
+          flex: 1;
+          align-self: center;
+          width: auto;
+          h5 {
+            font-size: 1.4em;
+            font-weight: 500;
+            letter-spacing: 0px;
+            margin-bottom: 5px;
+            color: $--navy-2;
+            @include media('<tablet') {
+              font-size: 1.2em;
+            }
+          }
+          p {
+            font-size: 0.9em;
+            font-weight: 400;
+            @include media('<tablet') {
+              font-size: 0.8em;
+            }
+          }
+        }
+        .code-links {
+          align-self: center;
+          a {
+            svg {
+              margin: 0 0 0 1em;
+              color: $--navy-1;
+              width: 1.45em;
+              transition: ease 0.05s;
+              @include media('<tablet') {
+                margin: 0 0 0 0.75em;
+              }
+              @include media('<=phone') {
+                margin: 0 0 0 0.5em;
+                width: 1.25em;
+              }
+              &:hover {
+                color: $--red-1;
+                transform: translateX(-1px) translateY(-1px);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

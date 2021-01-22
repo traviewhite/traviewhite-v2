@@ -42,24 +42,6 @@ export default function Design({ post }) {
 
   const router = useRouter()
 
-  const designItems = post.map((p) => (
-    <Link href='/design/[slug]' as={`/design/${p.fields.slug}`} key={p.sys.id}>
-      <motion.li id={p.fields.slug} className='thumbnail' variants={fadeIn}>
-        <Image
-          src={p.fields.image[0].secure_url}
-          alt={p.fields.title}
-          width={p.fields.image[0].width}
-          height={p.fields.image[0].height}
-          objectFit='cover'
-          objectPosition='top center'
-        />
-        <p>
-          {p.fields.title} {p.fields.year}
-        </p>
-      </motion.li>
-    </Link>
-  ))
-
   return (
     <Layout>
       <Head>
@@ -73,21 +55,25 @@ export default function Design({ post }) {
           exit={{ opacity: 0 }}
           variants={stagger}
         >
-          {designItems}
-
-          {/* ONE OPTION TO PULL AND PARSE DATA FROM CONTENTFUL */}
-          {/* {posts.length > 0
-            ? posts.map((p) => 
-              <Post
-                title={p.fields.title}
-                date={p.fields.date}
-                image={p.fields.image[0].url}
-                alt={p.fields.alt}
-                key={p.fields.title}
-                // url={p.fields.url}
-              />
-            )
-          : null} */}
+          {post.length > 0
+            ? post.map((p) => (
+                <Link href='/design/[slug]' as={`/design/${p.fields.slug}`} key={p.sys.id}>
+                  <motion.li id={p.fields.slug} className='thumbnail' variants={fadeIn}>
+                    <Image
+                      src={p.fields.image[0].secure_url}
+                      alt={p.fields.title}
+                      width={p.fields.image[0].width}
+                      height={p.fields.image[0].height}
+                      objectFit='cover'
+                      objectPosition='top center'
+                    />
+                    <p>
+                      {p.fields.title} {p.fields.year}
+                    </p>
+                  </motion.li>
+                </Link>
+              ))
+            : null}
         </motion.ul>
       </main>
     </Layout>

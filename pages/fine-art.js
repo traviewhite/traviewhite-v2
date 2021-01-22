@@ -6,9 +6,8 @@ import { useRouter } from 'next/router'
 import { motion, useCycle, AnimatePresence } from 'framer-motion'
 import { twhiteImg, designImg } from 'components/content'
 import Filter from 'components/Filter'
-import Example from 'components/shoot'
 
-export default function FineArt ({ fineArt }) {
+export default function FineArt({ fineArt }) {
   const router = useRouter()
 
   const zoomBi = {
@@ -25,9 +24,9 @@ export default function FineArt ({ fineArt }) {
       opacity: 0.4,
       display: 'block',
       transition: {
-        width: {tween: 100, duration: 0.15, ease: 'easeIn'},
-        height: {tween: 100, duration: 0.15, ease: 'easeIn'}      
-      }
+        width: { tween: 100, duration: 0.15, ease: 'easeIn' },
+        height: { tween: 100, duration: 0.15, ease: 'easeIn' },
+      },
     },
     closed: {
       width: 'auto',
@@ -35,10 +34,10 @@ export default function FineArt ({ fineArt }) {
       backgroundColor: 'transparent',
       opacity: 0,
       transition: {
-        width: {tween: 100, duration: 0.1, ease: 'easeOut'},
-        height: {tween: 100, duration: 0.1, ease: 'easeOut'}
-      }
-    }
+        width: { tween: 100, duration: 0.1, ease: 'easeOut' },
+        height: { tween: 100, duration: 0.1, ease: 'easeOut' },
+      },
+    },
   }
   const zoomTi = {
     open: {
@@ -54,8 +53,8 @@ export default function FineArt ({ fineArt }) {
       zIndex: '9999',
       opacity: 1,
       transition: {
-        opacity: { delay: 0, duration: 0.15, ease: "easeIn" }      
-      }
+        opacity: { delay: 0, duration: 0.15, ease: 'easeIn' },
+      },
     },
     closed: {
       width: '100%',
@@ -65,46 +64,41 @@ export default function FineArt ({ fineArt }) {
       zIndex: '1',
       opacity: 1,
       transition: {
-        opacity: { duration: 0.1 }
-      }
-    }
+        opacity: { duration: 0.1 },
+      },
+    },
   }
- 
+
   const [isOpen, toggleOpen] = useCycle(false, true)
-  
-  const listItems = fineArt.map((a, i) =>
-    <motion.li className="fineart-select" key={i}>
-      <Link href="/fine-art/[slug]" as={`/fine-art/${a.fields.slug}`}>
+
+  const listItems = fineArt.map((a, i) => (
+    <motion.li className='fineart-select' key={i}>
+      <Link href='/fine-art/[slug]' as={`/fine-art/${a.fields.slug}`}>
         <a>
           <motion.img
-            src={a.fields.image[0].secure_url} alt={a.fields.title}
+            src={a.fields.image[0].secure_url}
+            alt={a.fields.title}
             key={i}
             // animate={ isOpen ? "open" : "closed" }
             // onClick={ toggleOpen }
-            // variants={ zoomTi } 
+            // variants={ zoomTi }
           />
         </a>
       </Link>
     </motion.li>
-  );
+  ))
 
-  const filterList = twhiteImg.map((twhiteImg) => (
-    <li
-      key={twhiteImg}
-      name={twhiteImg}
-    />
-  ));
+  const filterList = twhiteImg.map((twhiteImg) => <li key={twhiteImg} name={twhiteImg} />)
 
   return (
-
     <Layout>
       <Head>
-        <title>Fine Art | { Name }</title>
+        <title>Fine Art | {Name}</title>
       </Head>
       <main>
         <Filter />
         <AnimatePresence>
-          <motion.ul className="fineart-wrapper">
+          <motion.ul className='fineart-wrapper'>
             {listItems}
             {filterList}
           </motion.ul>

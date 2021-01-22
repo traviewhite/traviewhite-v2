@@ -38,7 +38,7 @@ export default function About({ about }) {
         <title>About | {Name}</title>
       </Head>
       <Helmet>
-        <style type="text/css">
+        <style type='text/css'>
           {`
             body {
               // background-color: #FFD23F;
@@ -49,43 +49,43 @@ export default function About({ about }) {
         </style>
       </Helmet>
       <main>
-        <motion.div className="about-wrapper" key={about.sys.id}>
-          <motion.section className="about-avi" initial="hidden" animate="visible" variants={aboutVariants}>
+        <motion.div className='about-wrapper' key={about.sys.id}>
+          <motion.section className='about-avi' initial='hidden' animate='visible' variants={aboutVariants}>
             <Image
               src={about.fields.image[0].secure_url}
               alt={about.fields.alt}
               height={about.fields.image[0].height}
               width={about.fields.image[0].width}
-              objectFit="cover"
-              objectPosition="50% 50%"
+              objectFit='cover'
+              objectPosition='50% 50%'
             />
           </motion.section>
           <motion.section
-            className="about-description-wrapper"
-            initial="hidden"
-            animate="visible"
+            className='about-description-wrapper'
+            initial='hidden'
+            animate='visible'
             variants={aboutTextVariants}
           >
-            <div className="about-top box-radius box-shadow">
+            <div className='about-top box-radius box-shadow'>
               <h2>{about.fields.title}</h2>
             </div>
-            <div className="about-description-box box-radius box-shadow box-border">
+            <div className='about-description-box box-radius box-shadow box-border'>
               <p>
                 <span>{about.fields.intro}</span>
                 <br />
                 <br />
               </p>
               <ReactMarkdown source={about.fields.description} />
-              <div className="about-links">
+              <div className='about-links'>
                 <a>
-                  <p className="cyan-btn">RESUME.pdf</p>
+                  <p className='cyan-btn'>RESUME.pdf</p>
                 </a>
                 <a
-                  href="https://www.notion.so/deanwilliams/Travis-White-4883c991b5c943b897404e9cc297f69b"
-                  target="_blank"
-                  rel="noreferrer"
+                  href='https://www.notion.so/deanwilliams/Travis-White-4883c991b5c943b897404e9cc297f69b'
+                  target='_blank'
+                  rel='noreferrer'
                 >
-                  <p className="cyan-btn">RESUME.notion</p>
+                  <p className='cyan-btn'>RESUME.notion</p>
                 </a>
               </div>
               <Social />

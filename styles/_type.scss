@@ -44,7 +44,11 @@ h3 {
     font-size: 2rem;
   }
   @include media('<tablet') {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
+  }
+  @include media('<phoneLg') {
+    letter-spacing: 0.05em;
+    font-size: 1.65rem;
   }
   @include media('<=phone') {
     letter-spacing: 0.05em;
@@ -78,20 +82,20 @@ h5 {
   font-family: $fontStackSans;
   font-weight: 500;
   font-style: normal;
-  font-size: 1.5em;
+  font-size: 1.25rem;
   line-height: 1;
   letter-spacing: 1px;
   @include media('<desktopLg') {
-    font-size: 1.5em;
+    font-size: 1.25rem;
   }
   @include media('<desktop') {
-    font-size: 1.5em;
+    font-size: 1.25rem;
   }
   @include media('<tablet') {
-    font-size: 1em;
+    font-size: 1rem;
   }
   @include media('<=phone') {
-    font-size: 1em;
+    font-size: 1rem;
   }
 }
 p {
@@ -99,19 +103,22 @@ p {
   font-family: $fontStackCode;
   font-weight: 500;
   font-style: normal;
-  font-size: 1.5em;
-  line-height: 1.2;
+  font-size: 1rem;
+  line-height: 1.4;
   letter-spacing: -0.025em;
   @include media('<desktopLg') {
-    font-size: 1.5em;
+    font-size: 1rem;
   }
   @include media('<desktop') {
-    font-size: 1.25em;
+    font-size: 1rem;
   }
   @include media('<tablet') {
-    font-size: 1em;
+    font-size: 1rem;
+  }
+  @include media('<phoneLg') {
+    font-size: 0.9rem;
   }
   @include media('<=phone') {
-    font-size: 1em;
+    font-size: 0.8rem;
   }
 }

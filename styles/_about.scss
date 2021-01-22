@@ -77,22 +77,22 @@
     .about-description-box {
       margin: 0 auto;
       padding: 3em 3em 1em;
-      max-width: 600px;
+      max-width: 700px;
       width: 100%;
       background-color: blanchedalmond;
       @include media('<tablet') {
         padding: 3em 1.5em 1em;
       }
       p {
-        font-size: 1em;
-        line-height: 1.7;
+        font-size: 1rem;
+        line-height: 1.6;
         // letter-spacing: 0px;
         // text-align: justify;
         text-align-last: center;
         color: $--navy-2;
         font-family: $fontStackCode;
         span {
-          font-size: 1.75em;
+          font-size: 1.75rem;
           font-weight: 700;
           // letter-spacing: -0.1px;
           // font-family: $fontStackSans;
@@ -101,7 +101,20 @@
       }
       .about-links {
         margin: 2em 0 2em;
-        p {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        @include media('<tabletSm') {
+          justify-content: space-evenly;
+        }
+        @include media('<phoneLg') {
+          flex-direction: column;
+        }
+        a {
+          margin: 0 0.5rem;
+          @include media('<phoneLg') {
+            margin: 0.5rem 0;
+          }
         }
       }
     }

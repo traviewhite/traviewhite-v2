@@ -1,0 +1,52 @@
+.blog-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: center;
+  margin: 2em auto 2em;
+  .blog-item {
+    width: 45%;
+    height: auto;
+    margin: 1rem;
+    padding: 1.25rem;
+    background-color: blanchedalmond;
+    @include media('<tablet') {
+      margin: 1rem;
+      width: 100%;
+    }
+    a {
+      h4 {
+        text-align: left;
+        margin-bottom: 1rem;
+      }
+      :nth-child(n) {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+    img {
+      border: 3px solid $--navy-1;
+      border-radius: 8px;
+      box-shadow: 5px 6px $shadow;
+      background-color: $--red-1;
+      border-radius: 8px;
+      object-fit: cover;
+      object-position: top center;
+      width: 100%;
+      height: 250px;
+      transition: ease 0.2s;
+      &:hover {
+        transform: translateX(-4px) translateY(-4px);
+        box-shadow: 9px 10px $shadow;
+        // &::after {
+        //   content: "ssssss";
+        // }
+      }
+    }
+    @include media('<phone') {
+      width: 100%;
+    }
+  }
+}

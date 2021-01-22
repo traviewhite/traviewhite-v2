@@ -39,11 +39,11 @@ export default function Code({ code }) {
         <motion.div className='code-description'>
           <h3>{c.fields.title}</h3>
           <p>{c.fields.description}</p>
-          {/* <hr/> */}
+          {/* <hr /> */}
           <br />
           <div className='code-deliverables'>
             <div className='code-sub-desc'>
-              <h5>DELIVERED</h5>
+              {/* <h5>TOOLS</h5> */}
               <p>{c.fields.delivered}</p>
             </div>
             <div className='code-links'>

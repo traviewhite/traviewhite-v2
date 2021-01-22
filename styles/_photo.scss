@@ -1,0 +1,60 @@
+.photo-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin: 2em auto;
+  max-width: 100%;
+  width: 100%;
+  height: 78vh;
+  overflow-x: scroll;
+  @include media('<tablet') {
+    flex-direction: column;
+    overflow-x: hidden;
+    height: auto;
+  }
+  .thumbnail {
+    width: auto;
+    height: auto;
+    @include media('<tablet') {
+      padding: 0 1em;
+    }
+    img {
+      // border: 4px solid $--navy-1;
+      border-radius: 6px;
+      box-shadow: 5px 6px $shadow;
+      background-color: $--red-1;
+      border-radius: 4px;
+      object-fit: cover;
+      object-position: center;
+      width: auto;
+      height: 75vh;
+      margin: 0 1em;
+      @include media('<tablet') {
+        width: 100%;
+        height: auto;
+        margin: 1em auto;
+      }
+    }
+  }
+}
+
+// future link styles
+.photo-links {
+  margin: 1em 0 0;
+  padding: 0 1em;
+  ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    li {
+      font-size: 1em;
+      font-weight: 500;
+      color: $--navy-1;
+      font-family: $fontStackCode;
+      @include media('<tablet') {
+        font-size: 0.9em;
+      }
+    }
+  }
+}

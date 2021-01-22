@@ -39,6 +39,7 @@ const menuBtn = {
 }
 
 export default function Home({ index, featured }) {
+  console.log(featured)
   const [isOpen, toggleOpen] = useCycle(false, true)
   const animation = useAnimation()
   const [ref, inView, entry] = useInView({ threshold: 0.3 })
@@ -61,41 +62,10 @@ export default function Home({ index, featured }) {
     },
   }
 
-  const introSection = (
-    <div className='box-wrapper'>
-      <div className='box-top box-radius box-shadow'>
-        <h2>{index.fields.introTitle}</h2>
-      </div>
-      <div className='box box-radius box-shadow box-border'>
-        <ReactMarkdown source={index.fields.introDescription} />
-        <p>
-          {/* {index.fields.introDescription} */}
-          <br />
-          <br />
-          {index.fields.skillsTitle}
-        </p>
-        <div className='skill-tags'>
-          {index.fields.skills.map((skill) => (
-            <h5 key={skill}>{skill}</h5>
-          ))}
-        </div>
-      </div>
-    </div>
-  )
-
   const featuredSection = featured.map((item) => (
     <div key={item.sys.id}>
       <IntersectionBox>
-        <motion.div
-          drag
-          dragConstraints={{
-            top: -500,
-            left: -500,
-            right: 500,
-            bottom: 500,
-          }}
-          className='box-wrapper'
-        >
+        <motion.div className='box-wrapper'>
           <div className='box-top box-radius box-shadow'>
             <Link href={item.fields.boxLink}>
               <a>
@@ -112,10 +82,11 @@ export default function Home({ index, featured }) {
                   width={item.fields.image[0].width}
                   height={item.fields.image[0].height}
                   objectFit='cover'
-                  objectPosition='center center'
+                  objectPosition='top center'
                 />
               </Link>
               <h3>{item.fields.itemTitle}</h3>
+              <hr />
               <p>{item.fields.itemDescription}</p>
             </div>
 
@@ -130,33 +101,6 @@ export default function Home({ index, featured }) {
     </div>
   ))
 
-  const contactSection = (
-    <div className='box-wrapper'>
-      <div
-        className='box-top box-radius box-shadow'
-        // onClick={() => { toggleOpen() }}
-      >
-        <Link href='/about'>
-          <h2>CONTACT ME!</h2>
-        </Link>
-      </div>
-      <motion.div
-        className='box box-radius box-shadow box-border'
-        // initial={false}
-        // animate={isOpen ? "open" : "closed"}
-        // variants={ menuBtn }
-      >
-        <div className='contact-box'>
-          <h3>HIT ME UP</h3>
-          <a href={`mailto:${index.fields.email}?Subject=Whats%20up!`}>
-            <p className='cyan-btn'>{index.fields.email}</p>
-          </a>
-          <Social />
-        </div>
-      </motion.div>
-    </div>
-  )
-
   return (
     <Layout>
       <Helmet>
@@ -164,8 +108,6 @@ export default function Home({ index, featured }) {
           {`
             body {
               // background-color: #FFD23F;
-              // background-color: blanchedalmond;
-              // background-color: rgb(251,146,113);
             }
           `}
         </style>
@@ -178,11 +120,77 @@ export default function Home({ index, featured }) {
       <LandingSection images={index.fields} />
 
       <main>
-        <IntersectionBox>{introSection}</IntersectionBox>
+        <IntersectionBox>
+          <div className='box-wrapper'>
+            <div className='box-top box-radius box-shadow'>
+              <h2>{index.fields.introTitle}</h2>
+            </div>
+            <div className='box box-radius box-shadow box-border'>
+              <div className='box-intro-about'>
+                <div className='box-intro-img'>
+                  <Image
+                    src={index.fields.introImage[0].secure_url}
+                    alt={index.fields.introImageAlt}
+                    // height={index.fields.introImage[0].height}
+                    // width={index.fields.introImage[0].width}
+                    layout='fill'
+                    objectFit='cover'
+                  />
+                </div>
+                <div className='box-intro-text'>
+                  <ReactMarkdown source={index.fields.introDescription} />
+                  <Link href='/about'>
+                    <a>
+                      <div className='box-intro-btn cta-btn'>
+                        READ MORE
+                        <br /> ON NOTION »
+                      </div>
+                    </a>
+                  </Link>
+                </div>
+              </div>
+
+              <div className='skills-section'>
+                <h4>{index.fields.skillsTitle}</h4>
+                <div className='skill-tags'>
+                  {index.fields.skills && index.fields.skills.map((skill) => <h5 key={skill}>{skill}</h5>)}
+                </div>
+              </div>
+            </div>
+          </div>
+        </IntersectionBox>
 
         {featuredSection}
 
-        <IntersectionBox>{contactSection}</IntersectionBox>
+        <IntersectionBox>
+          <div className='box-wrapper'>
+            <div
+              className='box-top box-radius box-shadow'
+              // onClick={() => { toggleOpen() }}
+            >
+              <Link href='/about'>
+                <h2>CONTACT ME!</h2>
+              </Link>
+            </div>
+            <motion.div
+              className='box box-radius box-shadow box-border'
+              // initial={false}
+              // animate={isOpen ? "open" : "closed"}
+              // variants={ menuBtn }
+            >
+              <div className='contact-box'>
+                <h3>HIT ME UP</h3>
+                <p>{index.fields.contactStatus}</p>
+                <div className='email-btn'>
+                  <a href={`mailto:${index.fields.email}?Subject=Whats%20up!`}>
+                    <p className='cyan-btn'>{index.fields.email}</p>
+                  </a>
+                </div>
+                <Social />
+              </div>
+            </motion.div>
+          </div>
+        </IntersectionBox>
       </main>
     </Layout>
   )

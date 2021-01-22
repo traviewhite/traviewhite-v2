@@ -8,8 +8,9 @@ const menuBtn = {
     opacity: 1,
     overflow: 'no-scroll',
     width: '350px',
-    //maxWidth: '350px',
-    height: '560px',
+    // old height
+    // height: '560px',
+    height: '360px',
     transition: {
       width: { tween: 100, duration: 0.15, ease: 'easeIn' },
       height: { tween: 100, duration: 0.15, ease: 'easeIn' },

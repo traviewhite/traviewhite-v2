@@ -1,38 +1,50 @@
 .photo-wrapper {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
-  margin: 2em auto;
-  max-width: 100%;
+  justify-content: space-evenly;
+  align-content: space-between;
+  flex-wrap: wrap;
+  margin: 2rem auto;
   width: 100%;
-  height: 78vh;
-  overflow-x: scroll;
-  @include media('<tablet') {
-    flex-direction: column;
-    overflow-x: hidden;
-    height: auto;
-  }
   .thumbnail {
     width: auto;
     height: auto;
-    @include media('<tablet') {
-      padding: 0 1em;
-    }
+    padding: 1rem;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-content: space-between;
+    flex-wrap: wrap;
+    margin: 2rem auto;
     img {
-      // border: 4px solid $--navy-1;
+      object-fit: contain;
+      margin: 1rem;
       border-radius: 6px;
+      max-width: 100%;
+      height: 50vh;
       box-shadow: 5px 6px $shadow;
       background-color: $--red-1;
-      border-radius: 4px;
-      object-fit: cover;
-      object-position: center;
-      width: auto;
-      height: 75vh;
-      margin: 0 1em;
       @include media('<tablet') {
-        width: 100%;
+        margin: 1rem auto;
         height: auto;
-        margin: 1em auto;
+        width: 100%;
+      }
+      @include media('<tabletSm') {
+        // height: 300px;
+      }
+    }
+    > div:first-child {
+      border-radius: 6px;
+      height: 60vh;
+      display: block !important;
+      box-shadow: 5px 6px $shadow;
+      background-color: $--red-1;
+      @include media('<tablet') {
+        margin: 0 auto;
+      }
+      @include media('<tabletSm') {
+        // height: 300px;
       }
     }
   }

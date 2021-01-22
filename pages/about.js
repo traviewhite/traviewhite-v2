@@ -42,8 +42,6 @@ export default function About({ about }) {
           {`
             body {
               // background-color: #FFD23F;
-              // background-color: blanchedalmond;
-              // background-color: rgb(251,146,113);
             }
           `}
         </style>
@@ -77,7 +75,7 @@ export default function About({ about }) {
               </p>
               <ReactMarkdown source={about.fields.description} />
               <div className='about-links'>
-                <a>
+                <a href='/Resume - Travis White.pdf' target='_blank' rel='noreferrer'>
                   <p className='cyan-btn'>RESUME.pdf</p>
                 </a>
                 <a

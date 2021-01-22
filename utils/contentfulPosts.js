@@ -8,7 +8,7 @@ export const client = require('contentful').createClient({
 
 export async function fetchEntriesIndex() {
   const entries = await client.getEntries({
-    content_type: 'index'
+    content_type: 'index',
   })
   if (entries.items) return entries.items
   console.log(`Error getting Entries for ${contentType.name}.`)
@@ -16,7 +16,7 @@ export async function fetchEntriesIndex() {
 
 export async function fetchEntriesIndexFeatured() {
   const entries = await client.getEntries({
-    content_type: 'indexFeatured'
+    content_type: 'indexFeatured',
   })
   if (entries.items) return entries.items
   console.log(`Error getting Entries for ${contentType.name}.`)
@@ -24,7 +24,7 @@ export async function fetchEntriesIndexFeatured() {
 
 export async function fetchEntriesCode() {
   const entries = await client.getEntries({
-    content_type: 'code'
+    content_type: 'code',
   })
   if (entries.items) return entries.items
   console.log(`Error getting Entries for ${contentType.name}.`)
@@ -32,7 +32,7 @@ export async function fetchEntriesCode() {
 
 export async function fetchEntriesDesign() {
   const entries = await client.getEntries({
-    content_type: 'design'
+    content_type: 'design',
   })
   if (entries.items) return entries.items
   console.log(`Error getting Entries for ${contentType.name}.`)
@@ -40,7 +40,7 @@ export async function fetchEntriesDesign() {
 
 export async function fetchEntriesPost() {
   const entries = await client.getEntries({
-    content_type: 'post'
+    content_type: 'post',
   })
   if (entries.items) return entries.items
   console.log(`Error getting Entries for ${contentType.name}.`)
@@ -48,7 +48,7 @@ export async function fetchEntriesPost() {
 
 export async function fetchEntriesAbout() {
   const entries = await client.getEntries({
-    content_type: 'about'
+    content_type: 'about',
   })
   if (entries.items) return entries.items
   console.log(`Error getting Entries for ${contentType.name}.`)
@@ -56,7 +56,7 @@ export async function fetchEntriesAbout() {
 
 export async function fetchEntriesBlog() {
   const entries = await client.getEntries({
-    content_type: 'blog'
+    content_type: 'blog',
   })
   if (entries.items) return entries.items
   console.log(`Error getting Entries for ${contentType.name}.`)
@@ -64,13 +64,21 @@ export async function fetchEntriesBlog() {
 
 export async function fetchEntriesFineArt() {
   const entries = await client.getEntries({
-    content_type: 'fineArt'
+    content_type: 'fineArt',
   })
   if (entries.items) return entries.items
   console.log(`Error getting Entries for ${contentType.name}.`)
 }
 
-export default { 
+export async function fetchEntriesPhoto() {
+  const entries = await client.getEntries({
+    content_type: 'photo',
+  })
+  if (entries.items) return entries.items
+  console.log(`Error getting Entries for ${contentType.name}.`)
+}
+
+export default {
   fetchEntriesIndex,
   fetchEntriesIndexFeatured,
   fetchEntriesCode,
@@ -78,5 +86,6 @@ export default {
   fetchEntriesPost,
   fetchEntriesAbout,
   fetchEntriesBlog,
-  fetchEntriesFineArt
+  fetchEntriesFineArt,
+  fetchEntriesPhoto,
 }

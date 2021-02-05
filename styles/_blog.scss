@@ -2,13 +2,13 @@
   max-width: 550px;
   margin: 0 auto -0.7rem;
   padding: 1rem 1.5rem 1.5rem;
-  background-color: $--navy-1;
+  border: 2px solid $--navy-1;
+  background-color: blanchedalmond;
   h1 {
     margin-bottom: 0.5rem;
-    letter-spacing: 6px;
+    letter-spacing: 2px;
     font-size: 2.75rem;
-    color: $--yellow-0;
-    text-shadow: 4px 4px $--navy-2;
+    color: $--navy-2;
     cursor: default;
     @include media('<tablet') {
       font-size: 2.5rem;
@@ -22,7 +22,7 @@
     }
   }
   p {
-    color: $--yellow-2;
+    color: $--navy-1;
     // text-indent: 0.5rem;
   }
 }

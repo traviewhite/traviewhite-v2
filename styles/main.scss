@@ -141,16 +141,16 @@ $fontStackInter: 'Inter', sans-serif;
   margin: 0 0.5em 0 0;
   padding: 8px 20px;
   border-radius: 6px;
-  box-shadow: 4px 5px $shadow;
+  box-shadow: 3px 4px $shadow;
   text-decoration: underline;
   background-color: $--cyan-1;
-  transition: ease 0.2s;
+  transition: ease 0.15s;
   cursor: pointer;
   &:hover {
-    box-shadow: 1px 2px $shadow;
+    box-shadow: 1px 1px $shadow;
     text-decoration: none;
     background-color: $--yellow-1;
-    transform: translateX(3px) translateY(2px);
+    transform: translateX(2px) translateY(3px);
   }
 }
 .cta-btn {
@@ -162,12 +162,12 @@ $fontStackInter: 'Inter', sans-serif;
   box-shadow: 4px 5px $shadow;
   // text-decoration: underline;
   background-color: $--cyan-1;
-  transition: ease 0.2s;
   color: $--navy-1;
   font-size: 1.2em;
   font-weight: 500;
   font-family: $fontStackCode;
   letter-spacing: 0.5px;
+  transition: ease 0.15s;
   cursor: pointer;
   &:hover {
     box-shadow: 1px 2px $shadow;

@@ -75,7 +75,7 @@ export default function About({ about }) {
               </p>
               <ReactMarkdown source={about.fields.description} />
               <div className='about-links'>
-                <a href='/Resume - Travis White.pdf' target='_blank' rel='noreferrer'>
+                <a href='/Travis White - Resume.pdf' target='_blank' rel='noreferrer'>
                   <p className='cyan-btn'>RESUME.pdf</p>
                 </a>
                 <a

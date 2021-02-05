@@ -39,7 +39,7 @@ const menuBtn = {
 }
 
 export default function Home({ index, featured }) {
-  console.log(featured)
+  // console.log(featured)
   const [isOpen, toggleOpen] = useCycle(false, true)
   const animation = useAnimation()
   const [ref, inView, entry] = useInView({ threshold: 0.3 })
@@ -92,7 +92,7 @@ export default function Home({ index, featured }) {
 
             <Link href={item.fields.boxLink}>
               <a>
-                <div className='cta-btn'>VIEW MORE »</div>
+                <div className='cta-btn'>VIEW MORE →</div>
               </a>
             </Link>
           </div>
@@ -143,7 +143,7 @@ export default function Home({ index, featured }) {
                     <a>
                       <div className='box-intro-btn cta-btn'>
                         READ MORE
-                        <br /> ON NOTION »
+                        <br /> ON NOTION →
                       </div>
                     </a>
                   </Link>

@@ -4,42 +4,42 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 library.add(fab)
 
 const socialData = {
-  "socials" : [
+  socials: [
     {
-      "item" : {
-        "link" : "https://github.com/traviewhite",
-        "icon" : "github"
-      }
+      item: {
+        link: 'https://github.com/traviewhite',
+        icon: 'github',
+      },
     },
     {
-      "item" : {
-        "link" : "http://instagram.com/traviewhite",
-        "icon" : "instagram"
-      }
+      item: {
+        link: 'http://instagram.com/traviewhite',
+        icon: 'instagram',
+      },
     },
     {
-      "item" : {
-        "link" : "http://dribbble.com/traviewhite",
-        "icon" : "dribbble"
-      }
+      item: {
+        link: 'http://dribbble.com/traviewhite',
+        icon: 'dribbble',
+      },
     },
     {
-      "item" : {
-        "link" : "https://linkedin.com/in/traviewhite",
-        "icon" : "linkedin"
-      }
-    }
-  ]
+      item: {
+        link: 'https://linkedin.com/in/traviewhite',
+        icon: 'linkedin',
+      },
+    },
+  ],
 }
 
 export const Social = () => {
   return (
-    <div className="social-links">
-      {socialData.socials.map((i) => 
-        <a href={i.item.link} target="_blank" rel="noreferrer" key={i.item.link}>
-          <FontAwesomeIcon icon={["fab", i.item.icon]} />
+    <div className='social-links'>
+      {socialData.socials.map((i) => (
+        <a href={i.item.link} target='_blank' rel='noopener noreferrer' key={i.item.link}>
+          <FontAwesomeIcon icon={['fab', i.item.icon]} />
         </a>
-      )}
+      ))}
     </div>
   )
 }

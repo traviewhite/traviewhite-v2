@@ -4,17 +4,20 @@ import Layout, { Name } from 'components/Layout'
 import { fetchEntriesBlog } from 'utils/contentfulPosts'
 import ReactMarkdown from 'react-markdown'
 import Truncate from 'react-truncate'
+import Moment from 'react-moment'
 import { motion } from 'framer-motion'
 
 export default function Blog({ blog }) {
   const blogItems = blog.map((b) => (
-    <article key={b.sys.id} id={b.fields.slug} className='blog-item box-radius box-border'>
+    <article key={b.sys.id} id={b.fields.slug} className='blog-item box-radius'>
       <Link href='/blog/[slug]' as={`/blog/${b.fields.slug}`}>
         <a>
           <h4>{b.fields.title}</h4>
         </a>
       </Link>
-      <div>{b.fields.date}</div>
+      <div>
+        <Moment format='LL'>{b.fields.date}</Moment>
+      </div>
       <p>
         <Truncate lines={3}>
           <ReactMarkdown source={b.fields.content} />

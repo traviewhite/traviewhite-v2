@@ -1,10 +1,11 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Layout, { Name } from 'components/Layout'
-import ReactMarkdown from 'react-markdown'
 import { client } from 'utils/contentfulPosts'
-import { motion } from 'framer-motion'
+import ReactMarkdown from 'react-markdown'
+import Moment from 'react-moment'
 import Helmet from 'react-helmet'
+import { motion } from 'framer-motion'
 
 export default function DesignData({ blog }) {
   const router = useRouter()
@@ -37,10 +38,13 @@ export default function DesignData({ blog }) {
             </title>
           </Head>
           <main>
-            <div className='design-pages'>
-              <div className='design-text-content'>
+            <div className='blog-pages box-radius'>
+              <div className='blog-content'>
                 <h2>{blog.fields.title}</h2>
-                <div className='design-text-description'>
+                <p>
+                  <Moment format='LL'>{blog.fields.date}</Moment>
+                </p>
+                <div className='blog-description'>
                   <ReactMarkdown source={blog.fields.content} />
                 </div>
               </div>

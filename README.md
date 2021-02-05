@@ -1,6 +1,6 @@
 # Travis White Personal Site
 
-## [traviewhite.com](https://www.traviewhite.com/)
+🔗 [traviewhite.com](https://www.traviewhite.com/)
 
 > This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 > Deployed with [Vercel](https://www.vercel.com).
@@ -16,9 +16,8 @@ npm install / yarn install
 ```
 npm run dev / yarn dev
 ```
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Learn More
 

@@ -48,14 +48,10 @@ export default function DesignData({ post }) {
               <div className='design-text-content'>
                 <h2>{post.fields.title}</h2>
                 <div className='design-text-description'>
-                  <p>
-                    Mood rings animated gifs keds got milk cut-off jean shorts hot pockets. Converse discovery zone girl
-                    power zack morris scrolling text, stretch armstrong george michael cornrows I don’t want no scrubs
-                    hotmail.
-                  </p>
+                  <p>{post.fields.description}</p>
                   <div className='design-tags'>
-                    <p>ROLE: Direction</p>
-                    <p>YEAR: 2019</p>
+                    <p>ROLE: Art Direction</p>
+                    <p>YEAR: {post.fields.year}</p>
                   </div>
                 </div>
               </div>

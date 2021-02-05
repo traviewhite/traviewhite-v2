@@ -67,9 +67,7 @@ export default function Design({ post }) {
                       objectFit='cover'
                       objectPosition='top center'
                     />
-                    <p>
-                      {p.fields.title} {p.fields.year}
-                    </p>
+                    <p>{p.fields.title}</p>
                   </motion.li>
                 </Link>
               ))

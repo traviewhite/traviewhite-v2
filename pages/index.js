@@ -141,10 +141,7 @@ export default function Home({ index, featured }) {
                   <ReactMarkdown source={index.fields.introDescription} />
                   <Link href='/about'>
                     <a>
-                      <div className='box-intro-btn cta-btn'>
-                        READ MORE
-                        <br /> ON NOTION →
-                      </div>
+                      <div className='box-intro-btn cta-btn'>READ MORE →</div>
                     </a>
                   </Link>
                 </div>

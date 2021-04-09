@@ -55,7 +55,7 @@ export default function Design({ post }) {
           exit={{ opacity: 0 }}
           variants={stagger}
         >
-          {post.length > 0
+          {post && post.length > 0
             ? post.map((p) => (
                 <Link href='/design/[slug]' as={`/design/${p.fields.slug}`} key={p.sys.id}>
                   <motion.li id={p.fields.slug} className='thumbnail' variants={fadeIn}>
